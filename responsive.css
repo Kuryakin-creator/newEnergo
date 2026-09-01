@@ -903,6 +903,7 @@
     .horizontal-numbers__metrics,
     .horizontal-numbers__metrics--three {
         grid-template-columns: minmax(0, 1fr);
+        background: transparent;
     }
 
     .horizontal-numbers__metrics .number-context {
@@ -1211,90 +1212,10 @@
     }
 }
 
-/* Мобильный swipe-сценарий показателей секции 04. */
+/* На мобильных секция 04 остаётся вертикальной, без переходов между экранами. */
 @media (max-width: 767px) {
-    .horizontal-numbers__sticky {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .horizontal-numbers__track {
-        display: flex;
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        overscroll-behavior-x: contain;
-        scroll-behavior: smooth;
-        scroll-snap-type: x mandatory;
-        touch-action: pan-x pan-y;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .horizontal-numbers__panel {
-        width: 100%;
-        min-width: 100%;
-        flex: 0 0 100%;
-        border-top: 0;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-    }
-
-    .horizontal-numbers__panel--intro {
-        min-height: 720px;
-    }
-
-    .horizontal-numbers__panel:not(.horizontal-numbers__panel--intro) {
-        min-height: 720px;
-    }
-
     .horizontal-numbers__swipe-nav {
-        position: absolute;
-        z-index: 4;
-        right: 16px;
-        bottom: 14px;
-        left: 16px;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(44px, 1fr));
-        gap: 4px;
-        padding: 0;
-    }
-
-    .horizontal-numbers__swipe-nav button {
-        position: relative;
-        display: grid;
-        min-width: 44px;
-        min-height: 44px;
-        padding: 14px 0 0;
-        border: 0;
-        background: transparent;
-        color: rgba(245,243,238,.38);
-        font-size: 8px;
-        letter-spacing: .12em;
-        transition: color .28s ease;
-    }
-
-    .horizontal-numbers__swipe-nav button::before {
-        position: absolute;
-        top: 10px;
-        right: 5px;
-        left: 5px;
-        height: 1px;
-        background: currentColor;
-        content: "";
-        opacity: 0;
-        transform: scaleX(0);
-        transform-origin: left center;
-        transition: opacity .28s ease, transform .34s var(--ease), background .28s ease;
-    }
-
-    .horizontal-numbers__swipe-nav button[aria-current="true"] {
-        color: var(--yellow);
-    }
-
-    .horizontal-numbers__swipe-nav button[aria-current="true"]::before {
-        background: var(--yellow);
-        opacity: 1;
-        transform: scaleX(1);
+        display: none;
     }
 }
 
