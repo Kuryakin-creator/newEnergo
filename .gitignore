@@ -1,0 +1,10 @@
+﻿tmp/
+_pgbackup/
+pinegrow.json
+projectdb.pgml
+*.zip
+*.rar
+*.7z
+*.tmp
+*.bak
+Thumbs.db

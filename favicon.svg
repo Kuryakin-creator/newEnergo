@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ЭнергоГрупп">
+  <rect width="64" height="64" rx="12" fill="#182742"/>
+  <path d="M0 0h64v4H0z" fill="#f08a18"/>
+  <path d="M15 18h18v6H21v5h11v6H21v5h12v6H15V18Zm23 0h15v6h-9v22h-6V18Z" fill="#f5f3ee"/>
+</svg>
