@@ -3090,9 +3090,12 @@ em {
 }
 
 .partners-directory {
-    width: 100vw;
+    position: fixed;
+    inset: 0;
+    width: 100%;
     max-width: none;
-    height: 100dvh;
+    height: 100vh;
+    height: 100lvh;
     max-height: none;
     margin: 0;
     padding: 0;
@@ -3104,7 +3107,7 @@ em {
 }
 
 .partners-directory::backdrop {
-    background: rgba(4,16,30,.82);
+    background: #071321;
 }
 
 body.partners-directory-open {
@@ -6516,9 +6519,12 @@ body.partners-directory-open {
 
 /* Полноэкранный каталог выполненных проектов */
 .projects-directory {
-    width: 100vw;
+    position: fixed;
+    inset: 0;
+    width: 100%;
     max-width: none;
-    height: 100dvh;
+    height: 100vh;
+    height: 100lvh;
     max-height: none;
     margin: 0;
     padding: 0;
@@ -6529,7 +6535,7 @@ body.partners-directory-open {
 }
 
 .projects-directory::backdrop {
-    background: rgba(4,16,30,.86);
+    background: #071321;
 }
 
 body.projects-directory-open {

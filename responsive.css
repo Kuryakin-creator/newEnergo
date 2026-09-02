@@ -1266,6 +1266,37 @@
         object-position: center;
     }
 
+    .hero-bottom,
+    .hero-bottom.shell {
+        opacity: 1;
+        pointer-events: none;
+        will-change: opacity;
+        transition: opacity .56s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .hero-media,
+    .hero-transition-image {
+        transition: opacity .72s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .hero-media {
+        opacity: 1;
+    }
+
+    .hero-transition-image {
+        opacity: 0;
+    }
+
+    .hero.is-mobile-media-active .hero-media,
+    .hero.is-mobile-media-active .hero-bottom,
+    .hero.is-mobile-media-active .hero-bottom.shell {
+        opacity: 0;
+    }
+
+    .hero-transition-image.is-mobile-media-active {
+        opacity: 1;
+    }
+
     .contact-form .consent input[type="checkbox"] {
         width: 18px;
         height: 18px;
@@ -1279,13 +1310,6 @@
 @media (max-width: 767px) {
     .context-rail-mobile {
         display: none !important;
-    }
-
-    .hero-bottom,
-    .hero-bottom.shell {
-        opacity: calc(1 - var(--hero-image-progress, 0) * 1.12);
-        pointer-events: none;
-        will-change: opacity;
     }
 
     .competencies-mark p {
@@ -1350,6 +1374,13 @@
     *::before,
     *::after {
         scroll-behavior: auto !important;
+    }
+
+    .hero-media,
+    .hero-transition-image,
+    .hero-bottom,
+    .hero-bottom.shell {
+        transition: none;
     }
 }
 
@@ -1604,5 +1635,41 @@
 @media (max-width: 1199px) {
     .about-story .manifesto .section-mark {
         top: 14px;
+    }
+}
+
+/* Каждая основная сцена занимает минимум фактическую высоту окна браузера. */
+.hero,
+.hero-bottom,
+.hero-bottom.shell,
+.about-story > .manifesto,
+.about-story > .mission,
+.horizontal-numbers,
+#services.services,
+.geography,
+.partners,
+.contact {
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+}
+
+.hero-transition-image {
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+}
+
+@media (min-width: 1200px) {
+    #services.services {
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+    }
+
+    .horizontal-numbers__sticky {
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
     }
 }

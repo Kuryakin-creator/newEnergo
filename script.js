@@ -69,6 +69,10 @@ const heroTransition = {
   frame: null,
   scrollBoost: 0
 };
+const startsAfterMobileHeroTransition = window.innerWidth < 1200 && window.scrollY > 1;
+const mobileHeroTransition = {
+  active: startsAfterMobileHeroTransition
+};
 const heroTransitionDuration = 1250;
 const heroTransitionScrollRange = 600;
 const heroWheelThreshold = 6;
@@ -162,13 +166,18 @@ function updateHeroTransition(currentScroll = window.scrollY) {
   const scrollDistance = useExtendedHero
     ? Math.max(hero.offsetHeight - window.innerHeight, 1)
     : Math.max(hero.offsetHeight, 1);
-  const usesTriggeredTransition = window.innerWidth >= 1200;
-  const heroProgress = usesTriggeredTransition
+  const usesDesktopTriggeredTransition = window.innerWidth >= 1200;
+  const usesMobileTriggeredTransition = window.innerWidth < 1200;
+  const heroProgress = usesDesktopTriggeredTransition
     ? heroTransition.progress
-    : clamp(-rect.top / scrollDistance);
+    : usesMobileTriggeredTransition
+      ? Number(mobileHeroTransition.active)
+      : clamp(-rect.top / scrollDistance);
   const imageProgress = 1 - Math.pow(1 - clamp(heroProgress / .92), 3);
 
-  if (!usesTriggeredTransition) {
+  if (usesMobileTriggeredTransition) {
+    hero.classList.toggle('is-letters-active', heroProgress > .001);
+  } else if (!usesDesktopTriggeredTransition) {
     if (reducedMotionQuery.matches || heroProgress <= .001) {
       hero.classList.remove('is-letters-active');
     } else if (currentScroll > previousScroll) {
@@ -179,6 +188,19 @@ function updateHeroTransition(currentScroll = window.scrollY) {
   hero.style.setProperty('--hero-image-progress', imageProgress.toFixed(4));
   const mediaIsCovered = mission && mission.getBoundingClientRect().top <= 0;
   heroTransitionImage.style.setProperty('--hero-image-progress', mediaIsCovered ? '0' : imageProgress.toFixed(4));
+}
+
+function updateMobileHeroTransition(currentScroll = window.scrollY) {
+  if (window.innerWidth >= 1200) {
+    hero?.classList.remove('is-mobile-media-active');
+    heroTransitionImage?.classList.remove('is-mobile-media-active');
+    return;
+  }
+
+  mobileHeroTransition.active = currentScroll > 1;
+  const mediaIsCovered = mission && mission.getBoundingClientRect().top <= 0;
+  hero?.classList.toggle('is-mobile-media-active', mobileHeroTransition.active);
+  heroTransitionImage?.classList.toggle('is-mobile-media-active', mobileHeroTransition.active && !mediaIsCovered);
 }
 
 function updateScrollIndicators(current = window.scrollY) {
@@ -390,6 +412,7 @@ function updateScrollUI() {
   if (!isPostHero && menu.classList.contains('is-open')) closeMenu();
   updateScrollIndicators(current);
 
+  updateMobileHeroTransition(current);
   updateHeroTransition(current);
   updateIntroSharedMedia();
   updateScrollDrifts();
