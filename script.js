@@ -799,7 +799,7 @@ if (competenciesRoot) {
       mainImage: 'assets/images/competency-civil-main-v2.jpg',
       mainSrcset: 'assets/images/competency-civil-main-v2.jpg 1280w',
       mainSize: [1280, 720],
-      mainPosition: 'center',
+      mainPosition: '72% center',
       mainAlt: 'Высотный многофункциональный комплекс',
       detailImage: 'assets/images/competency-civil-detail-v2.jpg',
       detailSrcset: 'assets/images/competency-civil-detail-v2.jpg 1254w',

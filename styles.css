@@ -7283,21 +7283,10 @@ body.projects-directory-open {
     background: #0d365a;
 }
 
-.services[data-active-competency="civil"] .competency-main-media::before {
-    position: absolute;
-    z-index: 0;
-    inset: -28px;
-    content: "";
-    background: url("assets/images/competency-civil-main-v2.jpg") center / cover no-repeat;
-    filter: blur(20px) saturate(.82);
-    opacity: .72;
-    transform: scale(1.08);
-}
-
 .services[data-active-competency="civil"] .competency-main-media img {
     position: relative;
     z-index: 1;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .competency-media-mask {
