@@ -401,7 +401,8 @@ function refreshArchitecturalDepths() {
 function updateScrollUI() {
   const current = window.scrollY;
 
-  const isPostHero = current >= getHeroRestingScroll() - 2;
+  const postHeroThreshold = Math.max(getHeroRestingScroll() - 2, 24);
+  const isPostHero = current >= postHeroThreshold;
   header.classList.toggle('is-scrolled', isPostHero);
   header.classList.toggle('is-post-hero', isPostHero);
   header.classList.remove('is-hidden');
@@ -836,6 +837,7 @@ if (competenciesRoot) {
 
   const renderCompetency = index => {
     const item = competencies[index];
+    competenciesRoot.dataset.activeCompetency = item.id;
     competencyNumber.textContent = item.number;
     competencyTitle.textContent = item.title;
     competencySubtitle.textContent = item.subtitle;
