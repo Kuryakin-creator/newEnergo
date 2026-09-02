@@ -1444,6 +1444,15 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
+    .horizontal-numbers__metrics,
+    .horizontal-numbers__metrics--three {
+        background: transparent;
+    }
+
+    .competency-detail-media {
+        display: none;
+    }
+
     #services.services {
         padding-top: 0;
     }
@@ -1547,6 +1556,12 @@
         top: 6px;
         left: 8px;
     }
+}
+
+/* Удалённый CTA не должен появляться даже при загрузке старой HTML-разметки из кеша. */
+.context-rail,
+.context-rail-mobile {
+    display: none !important;
 }
 
 /* Мобильная и планшетная шапка: логотип уходит после первого скролла, меню остаётся доступным. */
