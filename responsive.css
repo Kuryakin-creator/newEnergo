@@ -1738,3 +1738,33 @@
         height: 100dvh;
     }
 }
+
+@media (max-width: 1199px) {
+    .hero,
+    .hero-bottom,
+    .hero-bottom.shell,
+    .hero-transition-image {
+        height: 100dvh;
+        min-height: 100dvh;
+    }
+
+    .hero.is-mobile-media-active .hero-bottom,
+    .hero.is-mobile-media-active .hero-bottom.shell {
+        opacity: 1;
+    }
+
+    .menu-toggle {
+        border: 1px solid rgba(255, 255, 255, .72);
+        background: rgba(16, 41, 67, .9);
+        box-shadow: 0 0 0 1px rgba(16, 41, 67, .7);
+    }
+}
+
+@media (max-width: 767px) {
+    .intro-shared-image {
+        top: 0;
+        height: 100%;
+        transform: none;
+        will-change: auto;
+    }
+}
