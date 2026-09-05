@@ -84,6 +84,30 @@ const smoothScroll = {
   frame: null
 };
 
+// Единый состав экранов на всех ширинах; карточки и их анимация сохраняются.
+if (horizontalNumbers) {
+  const numberGroups = [
+    { title: 'Ресурсы компании', cards: ['employees', 'equipment', 'facilities'] },
+    { title: 'Энергетическая инфраструктура', cards: ['powerlines', 'connected', 'supports'] },
+    { title: 'Энергетическое строительство', cards: ['substations', 'hdd', 'built'] }
+  ];
+  horizontalNumberPanels.slice(1).forEach((panel, index) => {
+    const group = numberGroups[index];
+    const metrics = panel.querySelector('.horizontal-numbers__metrics');
+    group.cards.forEach(key => metrics.append(horizontalNumbers.querySelector(`.number-card--${key}`)));
+    panel.querySelector('.number-context').textContent = group.title;
+    panel.setAttribute('aria-label', group.title);
+    horizontalNumbersSwipeButtons[index + 1]?.setAttribute('aria-label', group.title);
+  });
+  [
+    ['facilities', 'производственных площадей'],
+    ['hdd', 'проколов выполнено методом ГНБ']
+  ].forEach(([key, text]) => {
+    const caption = horizontalNumbers.querySelector(`.number-card--${key} > p`);
+    caption.textContent = text;
+  });
+}
+
 if (horizontalNumbersTrack && horizontalNumbersSwipeButtons.length) {
   let numbersSwipeFrame = 0;
 
@@ -434,7 +458,7 @@ function updateScrollUI() {
       const focus = 1 - distance;
       const easedFocus = focus * focus * (3 - 2 * focus);
       let maximumScale = 1.05;
-      if (card.classList.contains('number-card--employees')) maximumScale = 1.2;
+      if (card.classList.contains('number-card--employees') || card.classList.contains('number-card--powerlines')) maximumScale = 1.2;
       if (card.classList.contains('number-card--substations')) maximumScale = 1.14;
       if (card.classList.contains('number-card--hdd')) maximumScale = 1.07;
       if (card.classList.contains('number-card--built')) maximumScale = 1.08;
@@ -504,6 +528,8 @@ document.addEventListener('click', event => {
   settleHeroTransitionForTarget(target);
   anchorNavigationUntil = performance.now() + 1400;
   header.classList.remove('is-hidden');
+  // Показываем нижние подписи «О компании» после перехода на desktop.
+  const anchorOffset = target === about && window.innerWidth >= 1024 ? 40 : 0;
   let targetTop = 0;
   let offsetNode = target;
   while (offsetNode) {
@@ -511,7 +537,7 @@ document.addEventListener('click', event => {
     offsetNode = offsetNode.offsetParent;
   }
   window.scrollTo({
-    top: targetTop,
+    top: targetTop + anchorOffset,
     left: 0,
     behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
   });
@@ -520,7 +546,7 @@ document.addEventListener('click', event => {
     const alignAnchor = () => {
       if (anchorAligned) return;
       anchorAligned = true;
-      const visualOffset = target.getBoundingClientRect().top;
+      const visualOffset = target.getBoundingClientRect().top + anchorOffset;
       if (Math.abs(visualOffset) > 1) {
         window.scrollTo({ top: window.scrollY + visualOffset, left: 0, behavior: 'auto' });
       }
@@ -756,14 +782,14 @@ if (competenciesRoot) {
       title: 'Объекты энергетики',
       subtitle: 'Энергия для развития',
       description: 'Проектируем и строим электрические сети, линии электропередачи и трансформаторные подстанции. Выполняем наружное освещение, пусконаладочные работы и ГНБ.',
-      mainImage: 'assets/images/competency-energy-main-v2.jpg',
-      mainSrcset: 'assets/images/competency-energy-main-v2.jpg 1280w',
-      mainSize: [1280, 720],
+      mainImage: 'assets/images/competency-energy-main-ai-v1.jpg',
+      mainSrcset: 'assets/images/competency-energy-main-ai-v1.jpg 1341w',
+      mainSize: [1341, 1173],
       mainPosition: '52% center',
       mainAlt: 'Силовые трансформаторы на энергетическом объекте',
-      detailImage: 'assets/images/competency-energy-detail-v2.jpg',
-      detailSrcset: 'assets/images/competency-energy-detail-v2.jpg 853w',
-      detailSize: [853, 1280],
+      detailImage: 'assets/images/competency-energy-detail-ai-v1.jpg',
+      detailSrcset: 'assets/images/competency-energy-detail-ai-v1.jpg 1024w',
+      detailSize: [1024, 1536],
       detailPosition: '52% center',
       detailAlt: 'Крупный план оборудования силового трансформатора',
       linkLabel: 'Обсудить объект',
@@ -776,16 +802,16 @@ if (competenciesRoot) {
       title: 'Промышленные объекты',
       subtitle: 'Коммерческая недвижимость · Инженерные сети',
       description: 'Проектируем и строим коммерческую недвижимость класса В/В+, автомобильные дороги и инженерные сети. Обеспечиваем электроснабжение строительных площадок.',
-      mainImage: 'assets/images/competency-industrial-main-1440.webp',
-      mainSrcset: 'assets/images/competency-industrial-main-720.webp 720w, assets/images/competency-industrial-main-1440.webp 1440w',
-      mainSize: [1440, 960],
-      mainPosition: '58% center',
-      mainAlt: 'Современный промышленный комплекс с инженерными коммуникациями',
-      detailImage: 'assets/images/competency-industrial-detail-720.webp',
-      detailSrcset: 'assets/images/competency-industrial-detail-360.webp 360w, assets/images/competency-industrial-detail-720.webp 720w',
-      detailSize: [720, 1080],
+      mainImage: 'assets/images/competency-tower-main-ai-v1.jpg',
+      mainSrcset: 'assets/images/competency-tower-main-ai-v1.jpg 1341w',
+      mainSize: [1341, 1173],
+      mainPosition: '72% center',
+      mainAlt: 'Высотный многофункциональный комплекс',
+      detailImage: 'assets/images/competency-tower-detail-ai-v1.jpg',
+      detailSrcset: 'assets/images/competency-tower-detail-ai-v1.jpg 1024w',
+      detailSize: [1024, 1536],
       detailPosition: 'center',
-      detailAlt: 'Промышленные трубопроводы и металлические соединения',
+      detailAlt: 'Деталь остеклённого фасада высотного комплекса',
       linkLabel: 'Обсудить промышленный объект',
       href: '#contacts'
     },
@@ -796,16 +822,16 @@ if (competenciesRoot) {
       title: 'Объекты гражданского назначения',
       subtitle: 'Жилые дома · Комфорт-класс',
       description: 'Строим кирпичные многоэтажные жилые дома комфорт-класса с индивидуальным отоплением и выполняем полный комплекс работ до ввода объекта в эксплуатацию.',
-      mainImage: 'assets/images/competency-civil-main-v2.jpg',
-      mainSrcset: 'assets/images/competency-civil-main-v2.jpg 1280w',
-      mainSize: [1280, 720],
-      mainPosition: '72% center',
-      mainAlt: 'Высотный многофункциональный комплекс',
-      detailImage: 'assets/images/competency-civil-detail-v2.jpg',
-      detailSrcset: 'assets/images/competency-civil-detail-v2.jpg 1254w',
-      detailSize: [1254, 1254],
-      detailPosition: '72% center',
-      detailAlt: 'Деталь остеклённого фасада высотного комплекса',
+      mainImage: 'assets/images/competency-residential-main-ai-v1.jpg',
+      mainSrcset: 'assets/images/competency-residential-main-ai-v1.jpg 1341w',
+      mainSize: [1341, 1173],
+      mainPosition: 'center 25%',
+      mainAlt: 'Кирпичный жилой дом с вертикальным остеклением — иллюстративная обработка',
+      detailImage: 'assets/images/competency-residential-detail-ai-v1.jpg',
+      detailSrcset: 'assets/images/competency-residential-detail-ai-v1.jpg 1024w',
+      detailSize: [1024, 1536],
+      detailPosition: 'center',
+      detailAlt: 'Кирпичная кладка, остекление и наружные коммуникации жилого дома',
       linkLabel: 'Обсудить гражданский объект',
       href: '#contacts'
     }
@@ -1022,49 +1048,9 @@ if (geography) {
   if (regionsCount !== 17 || new Set(regionsData.map(region => region.id)).size !== regionsCount) {
     console.error('На карте должно быть ровно 17 уникальных регионов');
   }
-  const geographyProjects = {
-    tver: [
-      {
-        title: 'Западный мост',
-        description: 'Переустройство воздушных линий электропередачи напряжением 0,4–110 кВ при строительстве мостового перехода через Волгу в Твери.'
-      },
-      {
-        title: 'ПС 110 кВ «Западная Двина»',
-        description: 'Ремонт силового трансформатора ТДТН-40000/110/35/10.',
-        meta: 'Заказчик: ПАО «МРСК Центра» — «Тверьэнерго» · 2020'
-      }
-    ],
-    moscow: [
-      {
-        title: 'Освещение скоростной дороги М‑11',
-        description: 'Устройство освещения на участках км 58–97 и км 208–258.',
-        meta: 'Заказчик: Государственная компания «Автодор» · 2016–2019'
-      },
-      {
-        title: 'Аструм-Сити',
-        description: 'Объект коммерческой недвижимости класса B/B+ — шестое по высоте здание в Московской области.'
-      }
-    ],
-    vologda: [
-      {
-        title: 'Монтаж трансформатора ТДН-25000/110 УХЛ1 А',
-        description: 'ПС 110/10 кВ с питанием по ЛЭП 110 кВ от ПС 220 кВ «РПП-1» для нужд Череповецкого тепличного комплекса «Новый».',
-        meta: 'Заказчик: ООО «Череповецкий ТК «Новый» · 2019'
-      }
-    ],
-    voronezh: [
-      {
-        title: 'Реконструкция ВЛ 110 кВ «НВАЭС — Лискинская 1, 2»',
-        description: 'Разнос цепей ВЛ 110 кВ в разные анкерные участки в рамках схемы выдачи мощности Нововоронежской АЭС‑2.',
-        meta: 'Заказчик: филиал ПАО «МРСК Центра» — «Воронежэнерго» · 2018'
-      }
-    ]
-  };
   let geographyControls = [...geography.querySelectorAll('.geography-point')];
   const geographyMap = geography.querySelector('.geography-map');
   const geographyName = geography.querySelector('[data-geography-name]');
-  const geographyIndex = geography.querySelector('[data-geography-index]');
-  const geographyProjectList = geography.querySelector('[data-geography-projects]');
   const geographyPopup = geography.querySelector('[data-geography-popup]');
   let activeRegion = '';
   let visibleRegion = '';
@@ -1113,37 +1099,6 @@ if (geography) {
 
   const renderRegion = region => {
     geographyName.textContent = geographyNames[region];
-    const projects = geographyProjects[region] || [];
-    geographyIndex.textContent = projects.length
-      ? `${projects.length} ${projects.length === 1 ? 'проект' : 'проекта'}`
-      : 'Регион присутствия';
-    geographyProjectList.replaceChildren();
-    if (!projects.length) {
-      const neutral = document.createElement('p');
-      neutral.className = 'geography-neutral';
-      neutral.textContent = 'Регион присутствия ЭнергоГрупп';
-      geographyProjectList.append(neutral);
-      return;
-    }
-    projects.forEach((project, index) => {
-      const row = document.createElement('p');
-      const number = document.createElement('b');
-      const copy = document.createElement('span');
-      number.textContent = String(index + 1).padStart(2, '0');
-      copy.textContent = project.title;
-      if (project.description) {
-        const detail = document.createElement('small');
-        detail.textContent = project.description;
-        copy.append(detail);
-      }
-      if (project.meta) {
-        const meta = document.createElement('em');
-        meta.textContent = project.meta;
-        copy.append(meta);
-      }
-      row.append(number, copy);
-      geographyProjectList.append(row);
-    });
   };
 
   const positionGeographyPopup = region => {
@@ -1325,6 +1280,35 @@ if (geography) {
   closeRegion();
 }
 
+// Keep desktop dialogs in browser history so native Back also closes them.
+const bindDirectoryHistory = (dialog, trigger, key) => {
+  if (!dialog || !trigger) return;
+  const desktop = window.matchMedia('(min-width: 1200px)');
+  let restoring = false;
+
+  trigger.addEventListener('click', () => {
+    if (!desktop.matches || !dialog.open || restoring) return;
+    history.pushState({ ...history.state, energoDirectory: key }, '');
+  });
+
+  window.addEventListener('popstate', () => {
+    if (history.state?.energoDirectory !== key) {
+      if (dialog.open) dialog.close();
+    } else if (desktop.matches && !dialog.open) {
+      restoring = true;
+      try {
+        trigger.click();
+      } finally {
+        restoring = false;
+      }
+    }
+  });
+
+  dialog.addEventListener('close', () => {
+    if (history.state?.energoDirectory === key) history.back();
+  });
+};
+
 const projectsDirectory = document.querySelector('[data-projects-directory]');
 const projectsDirectoryOpen = document.querySelector('[data-projects-directory-open]');
 const projectsDirectoryClose = document.querySelector('[data-projects-directory-close]');
@@ -1346,6 +1330,7 @@ projectsDirectory?.addEventListener('close', () => {
   document.body.classList.remove('projects-directory-open');
   projectsDirectoryOpen?.focus();
 });
+bindDirectoryHistory(projectsDirectory, projectsDirectoryOpen, 'projects');
 
 const partnersSlider = document.querySelector('[data-partners-slider]');
 
@@ -1399,6 +1384,7 @@ if (partnersSlider) {
     document.body.classList.remove('partners-directory-open');
     partnersDirectoryOpen?.focus();
   });
+  bindDirectoryHistory(partnersDirectory, partnersDirectoryOpen, 'partners');
 
   const getVisiblePartners = () => window.innerWidth < 768 ? 1 : window.innerWidth <= 1100 ? 2 : 3;
 

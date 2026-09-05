@@ -1,10 +1,28 @@
+@font-face {
+    font-family: "Tektur";
+    src: url("assets/fonts/tektur/Tektur-wdth-wght.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Exo 2";
+    src: url("assets/fonts/exo2/Exo2-wght.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
 :root {
+    --accent: #f48612;
+    --accent-rgb: 244, 134, 18;
     --navy: #182742;
     --navy-deep: #101a2b;
     --blue: #7f899b;
-    --yellow: #d8a04b;
-    --peach: #d8a04b;
-    --copper: #d8a04b;
+    --yellow: var(--accent);
+    --peach: var(--accent);
+    --copper: var(--accent);
     --paper: #f1efe9;
     --surface: #e5e2db;
     --mission-grey: #5f6b78;
@@ -114,12 +132,12 @@
     }
 
     .horizontal-numbers__metrics .number-card--substations > strong {
-        color: #ffa500;
+        color: var(--accent);
         font-size: clamp(92px, 13vw, 220px);
     }
 
     .horizontal-numbers__metrics .number-card--employees > strong {
-        color: #ffa500;
+        color: var(--accent);
         font-size: clamp(104px, 14vw, 232px);
     }
 
@@ -134,7 +152,8 @@
 
     .horizontal-numbers__metrics .number-card--built {
         top: 13%;
-        right: 9%;
+        right: auto;
+        left: 58%;
     }
 
     .horizontal-numbers__metrics .number-card--facilities {
@@ -143,7 +162,7 @@
     }
 
     .horizontal-numbers__metrics .number-card--facilities > strong {
-        color: #ffa500;
+        color: var(--accent);
         font-size: clamp(84px, 11vw, 188px);
     }
 
@@ -152,8 +171,9 @@
     }
 
     .horizontal-numbers__metrics .number-card--equipment {
-        right: 17%;
+        right: auto;
         bottom: 9%;
+        left: 58%;
     }
 
     .horizontal-numbers__metrics .number-card--equipment > strong {
@@ -192,6 +212,79 @@
 
     .horizontal-numbers__panel:nth-child(4) .number-context {
         left: 8%;
+    }
+}
+
+/* Desktop-композиция привязана к роли показателя в экране, а не к его названию. */
+@media (min-width: 1200px) {
+    .horizontal-numbers__panel .horizontal-numbers__metrics > .number-context {
+        top: 7%;
+        right: auto;
+        left: 8%;
+        width: 42%;
+        max-width: none;
+    }
+
+    .horizontal-numbers__metrics > .number-card:first-of-type {
+        top: 35%;
+        right: auto;
+        bottom: auto;
+        left: 8%;
+        width: 42%;
+    }
+
+    .horizontal-numbers__metrics > .number-card:nth-of-type(2),
+    .horizontal-numbers__metrics > .number-card:nth-of-type(3) {
+        right: auto;
+        bottom: auto;
+        left: 58%;
+        width: 34%;
+    }
+
+    .horizontal-numbers__metrics > .number-card:nth-of-type(2) {
+        top: 13%;
+        right: auto;
+        bottom: auto;
+        left: 58%;
+    }
+
+    .horizontal-numbers__metrics > .number-card:nth-of-type(3) {
+        top: 65%;
+    }
+
+    .horizontal-numbers__metrics > .number-card > strong {
+        width: max-content;
+    }
+
+    .horizontal-numbers__metrics > .number-card:first-of-type > strong {
+        color: var(--accent);
+        height: clamp(84px, 11vw, 188px);
+        font-size: clamp(84px, 11vw, 188px);
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .horizontal-numbers__metrics > .number-card--powerlines:first-of-type > strong {
+        font-size: clamp(92px, 8.8vw, 154px);
+        font-weight: 400;
+    }
+
+    .horizontal-numbers__metrics > .number-card--powerlines:first-of-type > strong small {
+        font-size: .34em;
+        font-weight: 300;
+    }
+
+    .horizontal-numbers__metrics > .number-card:nth-of-type(2) > strong,
+    .horizontal-numbers__metrics > .number-card:nth-of-type(3) > strong {
+        color: var(--white);
+        height: clamp(62px, 7.2vw, 124px);
+        font-size: clamp(52px, 5.6vw, 96px);
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .horizontal-numbers__metrics > .number-card > p {
+        margin-top: clamp(30px, 4vh, 46px);
     }
 }
 
@@ -240,7 +333,7 @@
     .horizontal-numbers__metrics .number-card--employees > strong,
     .horizontal-numbers__metrics .number-card--substations > strong,
     .horizontal-numbers__metrics .number-card--facilities > strong {
-        color: #ffa500;
+        color: var(--accent);
         font-size: clamp(72px, 20vw, 96px);
         white-space: normal;
     }
@@ -866,6 +959,7 @@ em {
 
 .hero-copy {
     width: min(820px, 72%);
+    translate: 0 20px;
 }
 
 .hero-intro {
@@ -1271,7 +1365,7 @@ em {
 
 .mission-text > p {
     margin: 0 0 70px;
-    font-size: clamp(21px, 2.25rem, 38px);
+    font-size: clamp(23px, calc(2.25rem + 2px), 40px);
     font-weight: 300;
     line-height: 1.45;
 }
@@ -1289,14 +1383,14 @@ em {
 }
 
 .mission-text span {
-    font-size: 8px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: .15em;
 }
 
 .mission-text div p {
     margin: 0;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.75;
 }
 
@@ -1524,6 +1618,7 @@ em {
 
 .horizontal-numbers__sticky {
     position: sticky;
+    background: #142137 url("assets/images/numbers-powerline-muted.png") center / cover no-repeat;
     top: 0;
     width: 100%;
     height: 100vh;
@@ -1578,7 +1673,7 @@ em {
 }
 
 .numbers-head h2 em {
-    color: #ffa500;
+    color: var(--accent);
 }
 
 .horizontal-numbers__metrics {
@@ -1609,7 +1704,7 @@ em {
     font-weight: 300;
     letter-spacing: 0;
     white-space: nowrap;
-    color: #ffa500;
+    color: var(--accent);
 }
 
 .number-card sup {
@@ -2640,8 +2735,8 @@ em {
     height: 7px;
     border-radius: 50%;
     content: "";
-    background: #ffad17;
-    box-shadow: 0 0 7px 2px rgba(255,173,23,.9), 0 0 20px 7px rgba(255,141,0,.28);
+    background: var(--accent);
+    box-shadow: 0 0 7px 2px rgba(var(--accent-rgb),.9), 0 0 20px 7px rgba(var(--accent-rgb),.28);
     transform: translate(-50%, -50%);
     transition: transform .24s var(--ease), box-shadow .24s ease;
 }
@@ -2663,7 +2758,7 @@ em {
 .geography-point:focus-visible::before,
 .geography-point.is-preview::before,
 .geography-point.is-active::before {
-    box-shadow: 0 0 10px 3px rgba(255,187,61,1), 0 0 28px 10px rgba(255,141,0,.4);
+    box-shadow: 0 0 10px 3px rgba(var(--accent-rgb),1), 0 0 28px 10px rgba(var(--accent-rgb),.4);
     transform: translate(-50%, -50%) scale(1.3);
 }
 
@@ -2737,7 +2832,7 @@ em {
     transition: color .2s ease;
 }
 
-.geography-list button span { color: rgba(255,173,23,.62); }
+.geography-list button span { color: rgba(var(--accent-rgb),.62); }
 .geography-list button:hover,
 .geography-list button:focus-visible,
 .geography-list button.is-preview,
@@ -3656,8 +3751,12 @@ body.partners-directory-open {
     align-items: start;
 }
 
-.brand-footer img {
-    width: 160px;
+.brand.brand-footer {
+    width: clamp(189px, 14.4vw, 234px);
+}
+
+.brand.brand-footer img {
+    width: 100%;
     max-width: 100%;
     height: auto;
 }
@@ -4350,7 +4449,7 @@ body.partners-directory-open {
 
     .mission-text > p {
         margin-bottom: 45px;
-        font-size: 21px;
+        font-size: 23px;
     }
 
     .numbers-head,
@@ -5638,7 +5737,7 @@ body.partners-directory-open {
 
     .about-story .mission-text > p {
         margin-bottom: clamp(54px, 7vh, 72px);
-        font-size: clamp(20px, 1.35vw, 26px);
+        font-size: clamp(22px, calc(1.35vw + 2px), 28px);
         line-height: 1.42;
     }
 
@@ -5835,7 +5934,7 @@ body.partners-directory-open {
 .geography-point.is-active::before {
     opacity: 1;
     animation-play-state: paused;
-    box-shadow: 0 0 11px 4px rgba(255,187,61,1), 0 0 30px 11px rgba(255,141,0,.42);
+    box-shadow: 0 0 11px 4px rgba(var(--accent-rgb),1), 0 0 30px 11px rgba(var(--accent-rgb),.42);
     transform: translate(-50%, -50%) scale(1.5);
 }
 
@@ -5934,12 +6033,6 @@ body.partners-directory-open {
 
 .geography-region > span { color: var(--yellow); font-size: 8px; letter-spacing: .17em; }
 .geography-region h3 { margin: 12px 0 18px; font-size: 17px; font-weight: 400; line-height: 1.1; text-transform: uppercase; }
-.geography-region [data-geography-projects] { display: grid; gap: 13px; }
-.geography-region [data-geography-projects] > p { display: grid; grid-template-columns: 28px minmax(0,1fr); margin: 0; color: var(--white); font-size: 11px; line-height: 1.35; }
-.geography-region [data-geography-projects] b { color: var(--yellow); font-size: 8px; font-weight: 400; }
-.geography-region [data-geography-projects] small { display: block; margin-top: 3px; color: rgba(215,220,225,.58); font-size: 9px; }
-.geography-region .geography-neutral { display: block; color: rgba(215,220,225,.65); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
-
 .geography-map.is-popup-open > img {
     transform: scale(1.012);
     transition: clip-path 680ms cubic-bezier(.22,1,.36,1), transform .45s var(--ease);
@@ -6019,8 +6112,6 @@ body.partners-directory-open {
     .geography-point > span { display: block; max-width: 82px; font-size: 7px; letter-spacing: .04em; }
     .geography-region { width: min(264px, calc(100% - 24px)); padding: 17px; }
     .geography-region h3 { margin: 9px 0 13px; font-size: 15px; }
-    .geography-region [data-geography-projects] { gap: 9px; }
-    .geography-region [data-geography-projects] small { font-size: 8px; }
     .geography-all { order: 3; align-self: flex-start; margin: 30px 0 0; font-size: 18px; }
     .geography-panel { width: 100%; padding: 24px 20px; }
 }
@@ -6139,7 +6230,7 @@ body.partners-directory-open {
 
 .geography-land-outline {
     fill: none;
-    stroke: rgba(222,151,49,.42);
+    stroke: rgba(var(--accent-rgb),.42);
     stroke-width: 1.2;
     stroke-dasharray: 3400;
     stroke-dashoffset: 3400;
@@ -6172,14 +6263,14 @@ body.partners-directory-open {
 
 .geography-region-shape {
     fill: rgba(35,52,67,.08);
-    stroke: rgba(222,151,49,.12);
+    stroke: rgba(var(--accent-rgb),.12);
     stroke-width: 1;
     vector-effect: non-scaling-stroke;
     transition: fill .32s ease, stroke .32s ease, opacity .32s ease;
 }
 
 .geography-marker-core {
-    fill: #ffb22d;
+    fill: var(--accent);
     filter: url(#geography-glow);
     transform-box: fill-box;
     transform-origin: center;
@@ -6210,7 +6301,7 @@ body.partners-directory-open {
 .geography-point.is-preview .geography-region-shape,
 .geography-point.is-active .geography-region-shape {
     fill: rgba(100,121,136,.25);
-    stroke: rgba(255,171,35,.88);
+    stroke: rgba(var(--accent-rgb),.88);
 }
 
 .geography-point:hover .geography-marker-core,
@@ -6262,7 +6353,7 @@ body.partners-directory-open {
     .geography-map-svg { width: 118%; transform: translateX(-9%); }
     .geography-label { display: none; }
     .geography-all { order: 5; margin: 34px 0 0; padding-bottom: 10px; }
-    .geography-region { position: fixed; top: auto !important; right: 12px; bottom: 12px; left: 12px !important; width: auto; padding: 18px; transform: translateY(18px); }
+    .geography-region { position: absolute; top: 20px; right: auto; bottom: auto; left: 20px; width: max-content; max-width: calc(100% - 24px); padding: 12px 15px; transform: translateY(8px); }
     .geography-region.is-open { transform: none; }
     .geography-panel { position: fixed; inset: auto 0 0; width: 100%; height: min(72svh, 620px); padding: 22px 20px; transform: translateY(102%); }
     .geography-panel.is-open { transform: none; }
@@ -6278,9 +6369,9 @@ body.partners-directory-open {
 
 /* Обновлённая палитра и фоны секций 02–03, 05–09. */
 :root {
-    --yellow: #f48612;
-    --peach: #f48612;
-    --copper: #f48612;
+    --yellow: var(--accent);
+    --peach: var(--accent);
+    --copper: var(--accent);
 }
 
 .manifesto {
@@ -6509,7 +6600,7 @@ body.partners-directory-open {
     .about-story .mission-text > p {
         max-width: 720px;
         margin-bottom: 50px;
-        font-size: clamp(25px, 3.2vw, 30px);
+        font-size: clamp(27px, calc(3.2vw + 2px), 32px);
     }
 
     .about-story .mission-text > div {
@@ -6686,7 +6777,7 @@ body.projects-directory-open {
 }
 
 .project-directory-card__copy span {
-    color: #b96510;
+    color: var(--accent);
 }
 
 .project-directory-card__copy h3 {
@@ -6732,17 +6823,6 @@ body.projects-directory-open {
 .project-directory-card:focus-visible {
     z-index: 3;
     transform: scale(1.018);
-}
-
-.geography-region [data-geography-projects] em {
-    display: block;
-    margin-top: 8px;
-    color: var(--yellow);
-    font-size: 8px;
-    font-style: normal;
-    line-height: 1.45;
-    letter-spacing: .08em;
-    text-transform: uppercase;
 }
 
 .geography-region {
@@ -6866,7 +6946,7 @@ body.projects-directory-open {
 }
 
 .geography-total strong {
-    color: #f48612;
+    color: var(--accent);
     font-size: clamp(92px, 8vw, 142px);
     font-weight: 200;
     line-height: .72;
@@ -6890,7 +6970,7 @@ body.projects-directory-open {
     line-height: 1.35;
 }
 
-.geography-all span { color: #f48612; }
+.geography-all span { color: var(--accent); }
 
 .geography-map {
     grid-column: 2;
@@ -6927,7 +7007,7 @@ body.projects-directory-open {
 
 .geography-context-region.is-present {
     fill: #29333a;
-    stroke: rgba(236,137,28,.52);
+    stroke: rgba(var(--accent-rgb),.52);
 }
 
 .geography-land-outline { display: none; }
@@ -6964,7 +7044,7 @@ body.projects-directory-open {
 .geography-point.is-active .geography-marker-core {
     opacity: 1;
     transform: scale(1.6);
-    filter: drop-shadow(0 0 6px #f48612) drop-shadow(0 0 18px rgba(244,134,18,.9));
+    filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 18px rgba(var(--accent-rgb),.9));
 }
 
 .geography-point:hover .geography-marker-pulse,
@@ -6981,7 +7061,7 @@ body.projects-directory-open {
 
 .geography-region-shape {
     fill: rgba(71,83,91,.08);
-    stroke: rgba(229,134,34,.18);
+    stroke: rgba(var(--accent-rgb),.18);
     stroke-width: .75;
     vector-effect: non-scaling-stroke;
     transition: fill .3s ease, stroke .3s ease, opacity .3s ease;
@@ -6995,10 +7075,10 @@ body.projects-directory-open {
 
 .geography-marker-core {
     fill: #fff8ea;
-    stroke: #f48612;
+    stroke: var(--accent);
     stroke-width: 1.3;
     opacity: 0;
-    filter: drop-shadow(0 0 4px rgba(244,134,18,.95)) drop-shadow(0 0 10px rgba(244,134,18,.52));
+    filter: drop-shadow(0 0 4px rgba(var(--accent-rgb),.95)) drop-shadow(0 0 10px rgba(var(--accent-rgb),.52));
     transform: scale(.65);
     transform-box: fill-box;
     transform-origin: center;
@@ -7012,7 +7092,7 @@ body.projects-directory-open {
 
 .geography-marker-pulse {
     fill: none;
-    stroke: rgba(244,134,18,.68);
+    stroke: rgba(var(--accent-rgb),.68);
     stroke-width: 1;
     opacity: 0;
     transform-box: fill-box;
@@ -7041,7 +7121,7 @@ body.projects-directory-open {
 .geography-point.is-preview .geography-region-shape,
 .geography-point.is-active .geography-region-shape {
     fill: rgba(113,126,135,.28);
-    stroke: rgba(244,134,18,.9);
+    stroke: rgba(var(--accent-rgb),.9);
 }
 
 .geography-map.has-preview .geography-point:not(.is-preview):not(.is-active) { opacity: .7; }
@@ -7115,8 +7195,8 @@ body.projects-directory-open {
     height: 100svh;
     min-height: 100svh;
     padding: 0;
-    border-top: 1px solid rgba(216,160,75,.38);
-    border-bottom: 1px solid rgba(216,160,75,.38);
+    border-top: 1px solid rgba(var(--accent-rgb),.38);
+    border-bottom: 1px solid rgba(var(--accent-rgb),.38);
     scroll-margin-top: 0;
     background: var(--navy-deep);
     color: var(--navy);
@@ -7238,7 +7318,7 @@ body.projects-directory-open {
 }
 
 .competencies-body > a span {
-    color: #c8772c;
+    color: var(--accent);
 }
 
 .competencies-media {
@@ -7286,8 +7366,7 @@ body.projects-directory-open {
 .services[data-active-competency="civil"] .competency-main-media img {
     position: relative;
     z-index: 1;
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover;
     transform: scale(1);
 }
 
@@ -7302,6 +7381,7 @@ body.projects-directory-open {
 }
 
 .competency-detail-media {
+    display: none;
     position: absolute;
     z-index: 4;
     left: clamp(-106px, -6vw, -72px);
@@ -7414,13 +7494,13 @@ body.projects-directory-open {
 
 .competency-arrows button:hover,
 .competencies-body > a:hover {
-    color: #c8772c;
+    color: var(--accent);
 }
 
 .competency-arrows button:focus-visible,
 .competency-tabs button:focus-visible,
 .competencies-body > a:focus-visible {
-    outline: 2px solid #c8772c;
+    outline: 2px solid var(--accent);
     outline-offset: 4px;
 }
 
@@ -7685,7 +7765,7 @@ body.projects-directory-open {
     animation: none;
     opacity: 1;
     transform: scale(1.32);
-    filter: drop-shadow(0 0 6px #f48612) drop-shadow(0 0 17px rgba(244,134,18,.82));
+    filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 17px rgba(var(--accent-rgb),.82));
 }
 
 .geography-map.is-visible .geography-point:hover .geography-marker-pulse,
@@ -7700,28 +7780,28 @@ body.projects-directory-open {
     0% {
         opacity: 0;
         transform: translateY(-26px) scale(.76);
-        filter: drop-shadow(0 0 0 rgba(244,134,18,0));
+        filter: drop-shadow(0 0 0 rgba(var(--accent-rgb),0));
     }
     78% {
         opacity: 1;
         transform: translateY(1px) scale(1.03);
-        filter: drop-shadow(0 0 11px rgba(244,134,18,.76));
+        filter: drop-shadow(0 0 11px rgba(var(--accent-rgb),.76));
     }
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
-        filter: drop-shadow(0 0 0 rgba(244,134,18,0));
+        filter: drop-shadow(0 0 0 rgba(var(--accent-rgb),0));
     }
 }
 
 @keyframes geography-marker-core-breathe {
     0%, 100% {
         transform: scale(1);
-        filter: drop-shadow(0 0 5px rgba(244,134,18,.96)) drop-shadow(0 0 13px rgba(244,134,18,.55));
+        filter: drop-shadow(0 0 5px rgba(var(--accent-rgb),.96)) drop-shadow(0 0 13px rgba(var(--accent-rgb),.55));
     }
     50% {
         transform: scale(1.18);
-        filter: drop-shadow(0 0 6px #f48612) drop-shadow(0 0 16px rgba(244,134,18,.72));
+        filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 16px rgba(var(--accent-rgb),.72));
     }
 }
 
@@ -7745,7 +7825,7 @@ body.projects-directory-open {
     --font-text: "IBM Plex Sans", Arial, sans-serif;
     --type-dark: #182742;
     --type-light: #f5f3ee;
-    --type-accent: #f48612;
+    --type-accent: var(--accent);
 }
 
 body,
@@ -8004,63 +8084,39 @@ section h2 em,
     }
 }
 
-/* Подробная карточка объекта на карте. */
+/* Компактная плашка региона на карте. */
 .geography .geography-region {
-    width: min(440px, calc(100% - 28px));
-    max-height: calc(100% - 28px);
-    padding: 26px;
-    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    max-width: min(320px, calc(100% - 28px));
+    max-height: none;
+    padding: 12px 16px;
+    overflow: visible;
     background: #071320;
 }
 
-.geography .geography-region [data-geography-projects] {
-    gap: 18px;
-}
-
-.geography .geography-region [data-geography-projects] > p {
-    grid-template-columns: 30px minmax(0, 1fr);
-    font-size: 11px;
-}
-
-.geography .geography-region [data-geography-projects] small {
-    margin-top: 7px;
-    font-size: 9px;
-    line-height: 1.5;
-    letter-spacing: .02em;
-    text-transform: none;
-}
-
-.geography .geography-region [data-geography-projects] em {
-    display: block;
-    margin-top: 9px;
-    color: var(--yellow);
-    font-size: 8px;
-    font-style: normal;
-    line-height: 1.45;
-    letter-spacing: .07em;
-    text-transform: uppercase;
+.geography .geography-region h3 {
+    margin: 0;
+    font-size: clamp(14px, 1vw, 18px);
+    line-height: 1.15;
 }
 
 @media (max-width: 767px) {
     .geography .geography-region {
-        position: fixed;
+        position: absolute;
         z-index: 20;
-        inset: auto 0 0 !important;
-        width: 100%;
-        max-height: min(72svh, 560px);
-        padding: 22px 20px calc(24px + env(safe-area-inset-bottom));
-        border: 0;
-        border-top: 1px solid rgba(255,255,255,.22);
-        border-radius: 0;
-        transform: translateY(18px);
+        inset: auto;
+        width: max-content;
+        max-width: calc(100% - 24px);
+        padding: 11px 14px;
+        border: 1px solid rgba(255,255,255,.22);
+        border-radius: 2px;
+        transform: translateY(8px);
     }
 
     .geography .geography-region h3 {
-        margin: 10px 0 18px;
-        font-size: 18px;
-    }
-
-    .geography .geography-region [data-geography-projects] > p {
-        font-size: 10px;
+        margin: 0;
+        font-size: 14px;
     }
 }

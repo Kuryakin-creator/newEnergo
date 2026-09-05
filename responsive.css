@@ -357,8 +357,12 @@
     .about-story .mission-text > p {
         max-width: 680px;
         margin-bottom: 46px;
-        font-size: clamp(18px, 2.5vw, 24px);
+        font-size: clamp(19px, calc(2.5vw + 1px), 25px);
         line-height: 1.48;
+    }
+
+    .about-story .mission-text span {
+        font-size: 9px;
     }
 
     .about-story .mission-text > div {
@@ -369,7 +373,7 @@
     }
 
     .about-story .mission-text > div > p {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 1.65;
     }
 
@@ -388,6 +392,7 @@
         width: 100%;
         height: auto;
         overflow: visible;
+        background: none;
     }
 
     .horizontal-numbers__track {
@@ -400,6 +405,7 @@
 
     .horizontal-numbers__panel {
         width: 100%;
+        background: #142137 url("assets/images/numbers-powerline-muted.png") center / cover no-repeat;
         min-width: 0;
         height: auto;
         min-height: 0;
@@ -869,7 +875,7 @@
 
     .about-story .mission-text > p {
         margin-bottom: 36px;
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .about-story .mission-text > div {
@@ -878,7 +884,7 @@
     }
 
     .about-story .mission-text > div > p {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .horizontal-numbers__panel {
@@ -1676,10 +1682,54 @@
 }
 
 @media (min-width: 1200px) {
+    :root {
+        --desktop-menu-button-width: 80px;
+        --desktop-menu-height: 68px;
+        --desktop-menu-top: calc((var(--desktop-header-height) - var(--desktop-menu-height)) / 2);
+    }
+
+    .site-header.is-post-hero .header-actions {
+        top: var(--desktop-menu-top);
+    }
+
+    .site-header.is-post-hero .menu-toggle {
+        width: var(--desktop-menu-button-width);
+        height: var(--desktop-menu-height);
+        padding-inline: 24px;
+    }
+
+    .mobile-menu {
+        top: var(--desktop-menu-top);
+        right: calc(22px + var(--desktop-menu-button-width));
+        width: calc(100vw - 44px - var(--desktop-menu-button-width));
+        height: var(--desktop-menu-height);
+        padding-right: 0;
+    }
+
+    .mobile-menu .menu-brand img {
+        height: var(--desktop-menu-height);
+    }
+
+    .about-story .mission-heading,
+    .about-story .mission-text {
+        translate: 0 -35px;
+    }
+
     #services.services {
         height: 100vh;
         height: 100svh;
         height: 100dvh;
+    }
+
+    #services .competency-main-media {
+        bottom: clamp(104px, 13.5vh, 146px);
+    }
+
+    #services .competency-detail-media {
+        left: 0;
+        bottom: calc(clamp(104px, 13.5vh, 146px) + 24px);
+        width: clamp(140px, 11vw, 210px);
+        height: clamp(210px, 27vh, 300px);
     }
 
     .horizontal-numbers__sticky {
