@@ -405,12 +405,16 @@
 
     .horizontal-numbers__panel {
         width: 100%;
-        background: #142137 url("assets/images/numbers-powerline-muted.png") center / cover no-repeat;
+        background: #142137;
         min-width: 0;
         height: auto;
         min-height: 0;
         padding: clamp(74px, 9vw, 104px) 0;
         border-top: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .horizontal-numbers__panel--intro {
+        background: #142137 url("assets/images/numbers-powerline-muted.png") left center / cover no-repeat;
     }
 
     .horizontal-numbers__panel:first-child {
@@ -444,9 +448,9 @@
         width: 100%;
         min-height: 0;
         grid-template-columns: 1.08fr .92fr;
-        gap: 1px;
+        gap: 0;
         border: 0;
-        background: rgba(255, 255, 255, .12);
+        background: #142137;
     }
 
     .horizontal-numbers__metrics .number-context {
@@ -455,7 +459,7 @@
         max-width: none;
         margin: 0;
         padding: 0 0 24px;
-        background: var(--navy);
+        background: #142137;
         color: rgba(232, 238, 247, .52);
         font-size: clamp(14px, 2vw, 20px);
         line-height: 1.35;
@@ -484,7 +488,7 @@
         flex-direction: column;
         justify-content: space-between;
         border: 0;
-        background: var(--navy);
+        background: #142137;
     }
 
     .horizontal-numbers__metrics .number-card:first-of-type {
@@ -710,7 +714,7 @@
     }
 
     .partners-directory__hero > img {
-        object-position: 62% center;
+        object-position: center top;
     }
 
     .partners-directory__content {
@@ -1450,6 +1454,82 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
+    .geography-layout {
+        display: flex;
+        width: var(--shell);
+        height: auto;
+        min-height: 0;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .geography-copy {
+        min-height: 0;
+        padding: 0;
+    }
+
+    .geography-title {
+        margin-top: clamp(50px, 7vw, 72px);
+    }
+
+    .geography-title h2 {
+        max-width: 100%;
+        font-size: clamp(54px, 7vw, 72px);
+    }
+
+    .geography-title .geography-total {
+        margin-top: clamp(30px, 4vw, 44px);
+    }
+
+    .geography-total strong {
+        font-size: clamp(88px, 10vw, 108px);
+    }
+
+    .geography-map {
+        order: 3;
+        width: 100%;
+        height: clamp(380px, 52vw, 520px);
+        min-height: 0;
+        margin: clamp(30px, 4vw, 44px) auto 0;
+        padding: 0;
+        overflow: visible;
+    }
+
+    .geography-map-svg,
+    .geography-map.is-visible .geography-map-svg {
+        width: 100%;
+        height: 100%;
+        transform: none;
+    }
+
+    .geography-all {
+        order: 5;
+        align-self: flex-start;
+        min-height: 44px;
+        margin: clamp(28px, 4vw, 42px) 0 0;
+    }
+
+    .contact-details .brand-footer {
+        order: 1;
+    }
+
+    .contact-details > p {
+        order: 2;
+        transform: translateY(18px);
+    }
+
+    .contact-details > a[href^="mailto:"] {
+        order: 3;
+    }
+
+    .contact-details > a[href^="tel:"] {
+        order: 4;
+    }
+
+    .contact-details .to-top {
+        order: 5;
+    }
+
     .horizontal-numbers__metrics,
     .horizontal-numbers__metrics--three {
         background: transparent;
@@ -1751,6 +1831,14 @@
     .hero.is-mobile-media-active .hero-bottom,
     .hero.is-mobile-media-active .hero-bottom.shell {
         opacity: 1;
+    }
+
+    .hero h1 {
+        transition: opacity .42s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .hero.is-mobile-media-active h1 {
+        opacity: 0;
     }
 
     .menu-toggle {

@@ -3232,8 +3232,9 @@ body.partners-directory-open {
 }
 
 .partners-directory__hero > img {
+    height: 200%;
     object-fit: cover;
-    object-position: 58% center;
+    object-position: center top;
 }
 
 .partners-directory__shade {

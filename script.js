@@ -1311,6 +1311,7 @@ const bindDirectoryHistory = (dialog, trigger, key) => {
 
 const projectsDirectory = document.querySelector('[data-projects-directory]');
 const projectsDirectoryOpen = document.querySelector('[data-projects-directory-open]');
+const projectsDirectoryNavLinks = document.querySelectorAll('[data-projects-directory-nav-open]');
 const projectsDirectoryClose = document.querySelector('[data-projects-directory-close]');
 
 const closeProjectsDirectory = () => {
@@ -1322,6 +1323,11 @@ projectsDirectoryOpen?.addEventListener('click', () => {
   projectsDirectory.showModal();
   document.body.classList.add('projects-directory-open');
 });
+projectsDirectoryNavLinks.forEach(link => link.addEventListener('click', event => {
+  event.preventDefault();
+  event.stopPropagation();
+  projectsDirectoryOpen?.click();
+}));
 projectsDirectoryClose?.addEventListener('click', closeProjectsDirectory);
 projectsDirectory?.addEventListener('click', event => {
   if (event.target === projectsDirectory) closeProjectsDirectory();
@@ -1343,6 +1349,7 @@ if (partnersSlider) {
   const partnersCounter = partnersSlider.querySelector('[data-partners-counter]');
   const partnersDirectory = document.querySelector('[data-partners-directory]');
   const partnersDirectoryOpen = document.querySelector('[data-partners-directory-open]');
+  const partnersDirectoryNavLinks = document.querySelectorAll('[data-partners-directory-nav-open]');
   const partnersDirectoryClose = document.querySelector('[data-partners-directory-close]');
   const partnersDirectoryGrid = document.querySelector('[data-partners-directory-grid]');
   let partnerIndex = 0;
@@ -1376,6 +1383,11 @@ if (partnersSlider) {
   };
 
   partnersDirectoryOpen?.addEventListener('click', openPartnersDirectory);
+  partnersDirectoryNavLinks.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    partnersDirectoryOpen?.click();
+  }));
   partnersDirectoryClose?.addEventListener('click', closePartnersDirectory);
   partnersDirectory?.addEventListener('click', event => {
     if (event.target === partnersDirectory) closePartnersDirectory();

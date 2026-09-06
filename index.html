@@ -26,9 +26,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="css/theme.css" rel="stylesheet" type="text/css"> 
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&family=Montserrat:wght@100;200;400;500;600&family=Onest:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="styles.css?v=50">
-        <link rel="stylesheet" href="responsive.css?v=35">
-        <script src="script.js?v=34" defer></script>
+        <link rel="stylesheet" href="styles.css?v=51">
+        <link rel="stylesheet" href="responsive.css?v=41">
+        <script src="script.js?v=36" defer></script>
     </head>     
     <body> 
         <a class="skip-link" href="#main">К содержанию</a> 
@@ -44,8 +44,8 @@
                 <nav class="desktop-nav" aria-label="Основная навигация"> 
                     <a href="#about">О компании</a> 
                     <a href="#services">Компетенции</a> 
-                    <a href="#geography">Проекты</a> 
-                    <a href="#partners">Партнёры</a> 
+                    <a href="#geography" data-projects-directory-nav-open>Проекты</a>
+                    <a href="#partners" data-partners-directory-nav-open>Партнёры</a>
                     <a href="#contacts">Контакты</a> 
                 </nav>                 
                 <div class="header-actions"> 
@@ -61,8 +61,8 @@
             <nav aria-label="Мобильная навигация"> 
                 <a href="#about"><span>02</span>О компании</a> 
                 <a href="#services"><span>05</span>Компетенции</a> 
-                <a href="#geography"><span>06</span>Проекты</a> 
-                <a href="#partners"><span>07</span>Партнёры</a> 
+                <a href="#geography" data-projects-directory-nav-open><span>06</span>Проекты</a>
+                <a href="#partners" data-partners-directory-nav-open><span>07</span>Партнёры</a>
                 <a href="#contacts"><span>08</span>Контакты</a> 
             </nav>             
             <div class="mobile-contact"> 
@@ -405,7 +405,7 @@
         <dialog class="partners-directory" data-partners-directory aria-labelledby="partners-directory-title">
             <div class="partners-directory__page">
                 <header class="partners-directory__hero">
-                    <img src="assets/images/competency-industrial-main-1440.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Промышленный объект с инженерной инфраструктурой">
+                    <img src="assets/images/competency-energy-detail-v2.jpg" width="853" height="1280" loading="lazy" decoding="async" alt="Трансформаторное оборудование энергетического объекта">
                     <div class="partners-directory__shade" aria-hidden="true"></div>
                     <p>ЭнергоГрупп · партнёры</p>
                     <h2 id="partners-directory-title">Наши партнёры</h2>
