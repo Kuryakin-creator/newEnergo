@@ -1682,7 +1682,11 @@
     }
 
     .hero h1 {
-        top: clamp(220px, 30svh, 300px);
+        top: clamp(230px, calc(100svh - 490px), 430px);
+    }
+
+    .hero-copy {
+        bottom: clamp(80px, 14svh, 125px);
     }
 
     .projects-directory__hero > img {
@@ -1694,11 +1698,66 @@
 
 @media (max-width: 767px) {
     .hero h1 {
-        top: clamp(285px, 39svh, 350px);
+        top: clamp(293px, calc(100svh - 410px), 440px);
+    }
+
+    .hero-copy {
+        bottom: clamp(48px, 8svh, 72px);
+    }
+
+    .hero-caption {
+        font-size: clamp(17px, calc(5.2vw - 2px), 21px);
     }
 
     .projects-directory__hero > img {
         transform: scale(1.85);
+    }
+}
+
+@media (max-width: 767px) and (max-height: 560px) and (orientation: landscape) {
+    .hero-bottom,
+    .hero-bottom.shell {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: clamp(34px, 8svh, 48px);
+    }
+
+    .hero h1 {
+        position: relative;
+        inset: auto;
+        order: 1;
+        margin: 0 0 clamp(30px, 8svh, 40px);
+    }
+
+    .hero-copy {
+        position: relative;
+        inset: auto;
+        order: 2;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .hero-bottom,
+    .hero-bottom.shell {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: clamp(80px, 14svh, 125px);
+    }
+
+    .hero h1 {
+        position: relative;
+        inset: auto;
+        order: 1;
+        margin: 0 0 clamp(64px, 8svh, 84px);
+    }
+
+    .hero-copy {
+        position: relative;
+        inset: auto;
+        order: 2;
     }
 }
 
