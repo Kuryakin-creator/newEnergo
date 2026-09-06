@@ -88,8 +88,8 @@ const smoothScroll = {
 if (horizontalNumbers) {
   const numberGroups = [
     { title: 'Ресурсы компании', cards: ['employees', 'equipment', 'facilities'] },
-    { title: 'Энергетическая инфраструктура', cards: ['powerlines', 'connected', 'supports'] },
-    { title: 'Энергетическое строительство', cards: ['substations', 'hdd', 'built'] }
+    { title: 'Энергетическая инфраструктура созданная нами', cards: ['substations', 'connected', 'supports'] },
+    { title: 'Энергетическое строительство', cards: ['powerlines', 'hdd', 'built'] }
   ];
   horizontalNumberPanels.slice(1).forEach((panel, index) => {
     const group = numberGroups[index];
@@ -100,7 +100,7 @@ if (horizontalNumbers) {
     horizontalNumbersSwipeButtons[index + 1]?.setAttribute('aria-label', group.title);
   });
   [
-    ['facilities', 'производственных площадей'],
+    ['facilities', 'собственных производственных площадей'],
     ['hdd', 'проколов выполнено методом ГНБ']
   ].forEach(([key, text]) => {
     const caption = horizontalNumbers.querySelector(`.number-card--${key} > p`);
