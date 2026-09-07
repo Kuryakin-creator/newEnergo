@@ -3764,7 +3764,7 @@ body.partners-directory-open {
 }
 
 .brand.brand-footer {
-    width: clamp(189px, 14.4vw, 234px);
+    width: clamp(150px, 11.5vw, 190px);
 }
 
 .brand.brand-footer img {

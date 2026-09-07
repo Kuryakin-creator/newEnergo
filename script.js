@@ -782,9 +782,9 @@ if (competenciesRoot) {
       title: 'Объекты энергетики',
       subtitle: 'Энергия для развития',
       description: 'Проектируем и строим электрические сети, линии электропередачи и трансформаторные подстанции. Выполняем наружное освещение, пусконаладочные работы и ГНБ.',
-      mainImage: 'assets/images/competency-energy-main-ai-v1.jpg',
-      mainSrcset: 'assets/images/competency-energy-main-ai-v1.jpg 1341w',
-      mainSize: [1341, 1173],
+      mainImage: 'assets/images/competency-energy-main-photo-1.jpg',
+      mainSrcset: 'assets/images/competency-energy-main-photo-1.jpg 892w',
+      mainSize: [892, 502],
       mainPosition: '52% center',
       mainAlt: 'Силовые трансформаторы на энергетическом объекте',
       detailImage: 'assets/images/competency-energy-detail-ai-v1.jpg',
@@ -1056,16 +1056,16 @@ if (geography) {
   let visibleRegion = '';
   let geographyCloseTimer = 0;
   const geographyMarkerPositions = {
-    murmansk: [971, 91], leningrad: [546, 237], vologda: [794, 220], smolensk: [529, 391],
-    tver: [615, 320], yaroslavl: [713, 374], moscow: [622, 387], vladimir: [730, 448],
-    nizhny: [788, 455], bryansk: [453, 527], oryol: [558, 453], tula: [667, 492],
-    ryazan: [751, 535], lipetsk: [669, 677], tambov: [672, 578], voronezh: [552, 639],
-    volgograd: [784, 684]
+    murmansk: [769, 134], leningrad: [350, 334], vologda: [612, 436], smolensk: [356, 523],
+    tver: [428, 433], yaroslavl: [525, 481], moscow: [433, 525], vladimir: [518, 555],
+    nizhny: [733, 605], bryansk: [284, 674], oryol: [378, 644], tula: [449, 617],
+    ryazan: [591, 626], lipetsk: [498, 721], tambov: [582, 743], voronezh: [497, 806],
+    volgograd: [698, 916]
   };
   const geographyMarkerOrder = [...geographyControls].sort((first, second) => {
     const [firstX, firstY] = geographyMarkerPositions[first.dataset.region];
     const [secondX, secondY] = geographyMarkerPositions[second.dataset.region];
-    return (firstX / 1633 + firstY / 963) - (secondX / 1633 + secondY / 963);
+    return (firstX / 1400 + firstY / 1123) - (secondX / 1400 + secondY / 1123);
   });
   const geographyMarkerDelays = Object.fromEntries(
     geographyMarkerOrder.map((control, index) => [control.dataset.region, index * 220])
