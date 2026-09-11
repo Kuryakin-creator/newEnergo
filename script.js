@@ -1211,11 +1211,11 @@ if (geography) {
   let visibleRegion = '';
   let geographyCloseTimer = 0;
   const geographyMarkerPositions = {
-    murmansk: [703, 211], leningrad: [364, 323], vologda: [524, 365], smolensk: [372, 534],
-    tver: [428, 442], yaroslavl: [494, 474], moscow: [435, 515], vladimir: [516, 529],
-    nizhny: [736, 552], bryansk: [270, 667], oryol: [375, 651], tula: [452, 586],
-    ryazan: [604, 626], lipetsk: [465, 669], tambov: [536, 669], voronezh: [578, 730],
-    volgograd: [783, 737]
+    murmansk: [807, 136], leningrad: [545, 272], vologda: [603, 354], smolensk: [385, 389],
+    tver: [474, 373], yaroslavl: [560, 420], moscow: [468, 454], vladimir: [526, 496],
+    nizhny: [573, 550], bryansk: [345, 450], oryol: [376, 495], tula: [421, 494],
+    ryazan: [475, 531], lipetsk: [448, 592], tambov: [500, 614], voronezh: [416, 712],
+    volgograd: [408, 824]
   };
   const geographyMarkerOrder = [...geographyControls].sort((first, second) => {
     const [firstX, firstY] = geographyMarkerPositions[first.dataset.region];
