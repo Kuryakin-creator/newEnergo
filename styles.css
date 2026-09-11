@@ -364,6 +364,10 @@ section[id],
     scroll-margin-top: var(--header-h);
 }
 
+#geography {
+    scroll-margin-top: 0;
+}
+
 body {
     margin: 0;
     overflow-x: hidden;
@@ -6205,6 +6209,53 @@ body.partners-directory-open {
     line-height: 1.4;
 }
 
+.geography-region-list {
+    width: max-content;
+    max-width: 100%;
+    margin: clamp(24px, 3vh, 34px) 0 0;
+    padding: 0;
+    list-style: none;
+    color: rgba(245, 246, 247, .7);
+    font-size: clamp(9px, .65vw, 11px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.geography-region-list li {
+    position: relative;
+    padding: 6px 0;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: opacity .16s linear, transform .24s cubic-bezier(.22, 1, .36, 1);
+    white-space: nowrap;
+}
+
+.geography-region-list li::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: "";
+    background: rgba(245, 246, 247, .16);
+    transform: scaleX(1);
+    transform-origin: left center;
+    transition: opacity .16s linear, transform .24s cubic-bezier(.22, 1, .36, 1);
+}
+
+.geography-layout.is-region-wave-ready .geography-region-list li {
+    opacity: var(--region-wave-opacity, 1);
+    transform: translate3d(var(--region-wave-shift, 0), 0, 0) scale(var(--region-wave-scale, 1));
+    transform-origin: left center;
+}
+
+.geography-layout.is-region-wave-ready .geography-region-list li::after {
+    opacity: var(--region-line-opacity, 1);
+    transform: scaleX(1);
+}
+
 .geography-all {
     margin: 0 0 clamp(52px, 6vh, 76px) clamp(28px, 3.6vw, 62px);
     padding-bottom: 12px;
@@ -6953,6 +7004,8 @@ body.projects-directory-open {
 .geography-title .geography-total {
     display: flex;
     align-items: flex-end;
+    align-self: start;
+    justify-self: start;
     gap: clamp(18px, 2vw, 30px);
     margin-top: clamp(44px, 6vh, 66px);
 }
@@ -7007,30 +7060,33 @@ body.projects-directory-open {
     transition: none;
 }
 
-.geography-terrain { filter: url(#geography-relief); }
+.geography-map-art { pointer-events: none; }
+
+.geography-terrain {
+    pointer-events: none;
+    filter: url(#geography-relief) drop-shadow(0 0 8px rgba(0, 0, 0, .34));
+}
 
 .geography-context-region {
-    fill: #202a31;
-    stroke: rgba(211,126,35,.38);
-    stroke-width: .62;
+    fill: #15191c;
+    stroke: rgba(var(--accent-rgb), .88);
+    stroke-width: .72;
     vector-effect: non-scaling-stroke;
     transition: opacity .3s ease, fill .3s ease, stroke .3s ease;
 }
 
 .geography-context-region.is-present {
-    fill: #29333a;
-    stroke: rgba(var(--accent-rgb),.52);
+    fill: #20262a;
+    stroke: rgba(var(--accent-rgb), 1);
 }
 
 .geography-land-outline { display: none; }
-.geography-map:not(.has-geometry) .geography-points { opacity: 1; }
+.geography-map:not(.has-geometry) .geography-points { opacity: 0; }
 
 .geography-map:not(.has-geometry) .geography-region-shape {
     fill: rgba(0,0,0,.001);
     stroke: transparent;
 }
-
-.geography-map-art { pointer-events: none; }
 
 .geography-map:not(.has-geometry) .geography-label { display: none; }
 
@@ -7198,7 +7254,9 @@ body.projects-directory-open {
     .geography-total strong,
     .geography-total span,
     .geography-all,
+    .geography-region-list li,
     .geography-marker-core { opacity: 1; transform: none; animation: none; transition: none; }
+    .geography-region-list li::after { transform: none; transition: none; }
     .geography-marker-pulse { display: none; }
 }
 
@@ -7434,12 +7492,12 @@ body.projects-directory-open {
 }
 
 .competency-arrows button {
-    min-width: 30px;
+    min-width: 34px;
     padding: 10px 0;
     border: 0;
     background: transparent;
     color: #6c7780;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1;
 }
 
@@ -8131,4 +8189,192 @@ section h2 em,
         margin: 0;
         font-size: 14px;
     }
+}
+
+/* 07 — все логотипы партнёров непосредственно в секции */
+.partners {
+    padding-bottom: clamp(96px, 9vw, 144px);
+}
+
+.partners-grid {
+    grid-column: 1 / -1;
+    min-width: 0;
+    margin-top: clamp(64px, 8vh, 96px);
+}
+
+.partners-grid__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(8px, .9vw, 14px);
+}
+
+.partners-grid .partner-card {
+    width: 100%;
+    min-width: 0;
+    height: clamp(178px, 14vw, 224px);
+    padding: clamp(30px, 3vw, 48px);
+    background: #fff;
+}
+
+.partners-grid .partner-card img {
+    width: min(100%, 240px);
+    height: clamp(78px, 7vw, 112px);
+}
+
+/* 08 — разрешительные документы */
+.permits {
+    position: relative;
+    min-height: max(760px, 100svh);
+    overflow: clip;
+    color: var(--text);
+    background: var(--paper);
+}
+
+.permits::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .42;
+    background:
+        linear-gradient(90deg, transparent calc(50% - .5px), rgba(24,39,66,.07) 50%, transparent calc(50% + .5px)),
+        linear-gradient(rgba(24,39,66,.045) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 72px;
+}
+
+.permits-layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(22px, 2.2vw, 42px);
+    min-height: max(760px, 100svh);
+    padding-block: clamp(64px, 7vh, 96px) clamp(72px, 8vh, 112px);
+}
+
+.permits-mark {
+    grid-column: 1 / 6;
+    grid-row: 1;
+}
+
+.permits-title {
+    grid-column: 1 / 7;
+    grid-row: 2;
+    align-self: start;
+    margin-top: clamp(82px, 11vh, 138px);
+}
+
+.permits-title .kicker {
+    margin-bottom: clamp(22px, 3vh, 34px);
+    color: var(--blue);
+}
+
+.permits-title h2 {
+    max-width: 780px;
+    font-size: clamp(58px, 5.3vw, 96px);
+    font-weight: 200;
+    line-height: .88;
+    letter-spacing: -.052em;
+}
+
+.permits-title h2 span,
+.permits-title h2 em {
+    display: block;
+}
+
+.permits-title h2 em {
+    color: var(--accent);
+    font-style: normal;
+}
+
+.permits-title > p:last-child {
+    max-width: 570px;
+    margin-top: clamp(32px, 4vh, 48px);
+    color: #626c78;
+    font-size: clamp(14px, 1.05vw, 18px);
+    line-height: 1.55;
+}
+
+.permits-metric {
+    grid-column: 1 / 6;
+    grid-row: 3;
+    align-self: end;
+    display: grid;
+    grid-template-columns: minmax(150px, .65fr) 1fr;
+    align-items: end;
+    gap: clamp(20px, 2vw, 34px);
+    padding-top: clamp(28px, 4vh, 46px);
+    border-top: 1px solid rgba(24,39,66,.22);
+}
+
+.permits-metric p {
+    padding-bottom: .5em;
+    color: #697380;
+    font-size: clamp(10px, .75vw, 13px);
+    line-height: 1.45;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.permits-metric strong {
+    color: var(--navy);
+    font-size: clamp(96px, 10vw, 176px);
+    font-weight: 200;
+    line-height: .72;
+    letter-spacing: -.065em;
+    white-space: nowrap;
+}
+
+.permits-metric strong span {
+    color: var(--accent);
+    font-size: .25em;
+    font-weight: 500;
+    letter-spacing: -.02em;
+}
+
+.permits-register {
+    grid-column: 7 / 13;
+    grid-row: 2 / 4;
+    align-self: center;
+    margin: clamp(72px, 9vh, 110px) 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid rgba(24,39,66,.28);
+}
+
+.permits-register li {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: clamp(18px, 1.7vw, 30px);
+    align-items: start;
+    min-height: clamp(90px, 10.5vh, 122px);
+    padding: clamp(22px, 2.7vh, 32px) 0;
+    border-bottom: 1px solid rgba(24,39,66,.18);
+}
+
+.permits-register li > span {
+    padding-top: .14em;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+}
+
+.permits-register strong {
+    display: block;
+    max-width: 680px;
+    font-size: clamp(14px, 1.08vw, 19px);
+    font-weight: 500;
+    line-height: 1.38;
+}
+
+.permits-register small {
+    display: block;
+    margin-top: 9px;
+    color: #717b86;
+    font-size: clamp(10px, .76vw, 13px);
+    line-height: 1.4;
+    letter-spacing: .055em;
+    text-transform: uppercase;
 }

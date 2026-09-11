@@ -774,66 +774,145 @@ document.querySelectorAll('[data-form]').forEach(form => {
 const competenciesRoot = document.querySelector('[data-competencies]');
 
 if (competenciesRoot) {
+  const competencyPhoto = (file, size, alt, position = 'center') => ({
+    src: `assets/images/competencies/${file}`,
+    size,
+    alt,
+    position
+  });
   const competencies = [
     {
-      id: 'energy',
+      id: 'internal-networks',
       number: '01',
-      navigationLabel: 'ЭНЕРГЕТИКА',
-      title: 'Объекты энергетики',
-      subtitle: 'Энергия для развития',
-      description: 'Проектируем и строим электрические сети, линии электропередачи и трансформаторные подстанции. Выполняем наружное освещение, пусконаладочные работы и ГНБ.',
-      mainImage: 'assets/images/competency-energy-main-photo-1.jpg',
-      mainSrcset: 'assets/images/competency-energy-main-photo-1.jpg 892w',
-      mainSize: [892, 502],
-      mainPosition: '52% center',
-      mainAlt: 'Силовые трансформаторы на энергетическом объекте',
-      detailImage: 'assets/images/competency-energy-detail-ai-v1.jpg',
-      detailSrcset: 'assets/images/competency-energy-detail-ai-v1.jpg 1024w',
-      detailSize: [1024, 1536],
-      detailPosition: '52% center',
-      detailAlt: 'Крупный план оборудования силового трансформатора',
-      linkLabel: 'Обсудить объект',
-      href: '#contacts'
+      navigationLabel: 'ВНУТРЕННИЕ СЕТИ',
+      title: 'Внутренние электрические сети',
+      subtitle: 'Инженерные системы',
+      description: ['Внутренняя электрическая сеть', 'Пожарная сигнализация', 'Охранная сигнализация', 'Локальная сеть', 'Диспетчеризация'],
+      photos: [
+        competencyPhoto('internal-01-enhanced.png', [1448, 1086], 'Внутренние электрические сети в офисном помещении'),
+        competencyPhoto('internal-02-enhanced.png', [1448, 1086], 'Монтаж внутренних электрических сетей'),
+        competencyPhoto('internal-03.jpg', [1280, 964], 'Освещение и кабельные трассы офисного пространства'),
+        competencyPhoto('internal-04.jpg', [1280, 964], 'Смонтированные внутренние инженерные сети'),
+        competencyPhoto('internal-05.jpg', [1280, 964], 'Электроснабжение современного офисного помещения'),
+        competencyPhoto('internal-06.jpg', [1280, 964], 'Кабельные лотки и освещение в офисе'),
+        competencyPhoto('internal-07.jpg', [1280, 964], 'Внутренние электрические сети открытого офиса'),
+        competencyPhoto('internal-08-enhanced.png', [1448, 1086], 'Кабельная трасса внутренней электрической сети')
+      ]
     },
     {
-      id: 'industrial',
+      id: 'cable-lines',
       number: '02',
-      navigationLabel: 'ПРОМЫШЛЕННОСТЬ',
-      title: 'Промышленные объекты',
-      subtitle: 'Коммерческая недвижимость · Инженерные сети',
-      description: 'Проектируем и строим коммерческую недвижимость класса В/В+, автомобильные дороги и инженерные сети. Обеспечиваем электроснабжение строительных площадок.',
-      mainImage: 'assets/images/competency-tower-main-ai-v1.jpg',
-      mainSrcset: 'assets/images/competency-tower-main-ai-v1.jpg 1341w',
-      mainSize: [1341, 1173],
-      mainPosition: '72% center',
-      mainAlt: 'Высотный многофункциональный комплекс',
-      detailImage: 'assets/images/competency-tower-detail-ai-v1.jpg',
-      detailSrcset: 'assets/images/competency-tower-detail-ai-v1.jpg 1024w',
-      detailSize: [1024, 1536],
-      detailPosition: 'center',
-      detailAlt: 'Деталь остеклённого фасада высотного комплекса',
-      linkLabel: 'Обсудить промышленный объект',
-      href: '#contacts'
+      navigationLabel: 'КАБЕЛЬНЫЕ ЛИНИИ',
+      title: 'Кабельные линии',
+      subtitle: 'Энергетическая инфраструктура',
+      description: ['Собственная спецтехника', 'Профессиональный инженерный состав', 'Аккредитация заводов-изготовителей', 'Оптимизация сроков', 'Многолетний опыт строительства'],
+      photos: [
+        competencyPhoto('cable-01.jpg', [1489, 915], 'Прокладка кабельной линии собственной спецтехникой'),
+        competencyPhoto('cable-02.jpg', [1489, 1045], 'Подготовка трассы для прокладки кабельных линий'),
+        competencyPhoto('cable-03.jpg', [1489, 1050], 'Земляные работы при строительстве кабельной линии')
+      ]
+    },
+    {
+      id: 'overhead-lines',
+      number: '03',
+      navigationLabel: 'ВОЗДУШНЫЕ ЛИНИИ',
+      title: 'Воздушные линии электропередачи',
+      subtitle: 'Электросетевое строительство',
+      description: ['Проектирование воздушных линий', 'Строительство и реконструкция ВЛ', 'Монтаж опор и проводов'],
+      photos: [
+        competencyPhoto('overhead-01.jpg', [1280, 960], 'Монтаж опоры воздушной линии электропередачи'),
+        competencyPhoto('overhead-02-enhanced.png', [1448, 1086], 'Установка железобетонной опоры воздушной линии'),
+        competencyPhoto('overhead-03-enhanced.png', [1448, 1086], 'Монтаж опор воздушной линии кранами'),
+        competencyPhoto('overhead-04.jpg', [1280, 960], 'Опора воздушной линии и техника ЭнергоГрупп'),
+        competencyPhoto('overhead-05.jpg', [1280, 960], 'Установленная опора воздушной линии'),
+        competencyPhoto('overhead-06.jpg', [1280, 960], 'Кран при строительстве воздушной линии электропередачи'),
+        competencyPhoto('overhead-07.jpg', [1280, 960], 'Работы на опоре воздушной линии электропередачи')
+      ]
+    },
+    {
+      id: 'substations',
+      number: '04',
+      navigationLabel: 'ПОДСТАНЦИИ',
+      title: 'Распределительные пункты и трансформаторные подстанции',
+      subtitle: 'Подстанционная инфраструктура',
+      description: ['Технико-экономическое обоснование', 'Проектирование', 'Строительство'],
+      photos: [
+        competencyPhoto('substation-01-clean.png', [1448, 1086], 'Трансформаторная подстанция после строительства'),
+        competencyPhoto('substation-02.jpg', [1280, 960], 'Распределительное устройство и трансформаторная подстанция'),
+        competencyPhoto('substation-03.jpg', [1280, 960], 'Строительство основания распределительного пункта'),
+        competencyPhoto('substation-04.jpg', [1280, 960], 'Подстанция с воздушными линиями электропередачи'),
+        competencyPhoto('substation-05.jpg', [1280, 960], 'Территория новой трансформаторной подстанции'),
+        competencyPhoto('substation-06.png', [1448, 1086], 'Трансформаторная подстанция без рекламной маркировки')
+      ]
+    },
+    {
+      id: 'decorative-lighting',
+      number: '05',
+      navigationLabel: 'АРХИТЕКТУРНОЕ ОСВЕЩЕНИЕ',
+      title: 'Декоративное и архитектурное освещение',
+      subtitle: 'Светотехнические решения',
+      description: ['Проектирование', 'Монтажные работы'],
+      photos: [competencyPhoto('decorative-lighting-01.jpg', [1489, 905], 'Декоративное архитектурное освещение здания')]
+    },
+    {
+      id: 'outdoor-lighting',
+      number: '06',
+      navigationLabel: 'НАРУЖНОЕ ОСВЕЩЕНИЕ',
+      title: 'Наружное электроосвещение',
+      subtitle: 'Инфраструктурное освещение',
+      description: ['Проектирование', 'Строительство'],
+      photos: [
+        competencyPhoto('outdoor-lighting-01.jpg', [1280, 960], 'Работы по устройству наружного электроосвещения ночью'),
+        competencyPhoto('outdoor-lighting-02.jpg', [1489, 780], 'Освещение участка автомобильной дороги М-11')
+      ]
+    },
+    {
+      id: 'commissioning',
+      number: '07',
+      navigationLabel: 'ПУСКОНАЛАДКА',
+      title: 'Пусконаладочные работы',
+      subtitle: 'Наладка инженерных систем',
+      description: ['Наладка работоспособности систем', 'Проверка проектной документации', 'Подготовка к вводу в эксплуатацию'],
+      photos: [
+        competencyPhoto('commissioning-01-enhanced.png', [1448, 1086], 'Работы на оборудовании трансформаторной подстанции'),
+        competencyPhoto('commissioning-02-enhanced.png', [1448, 1086], 'Специалист выполняет пусконаладочные работы'),
+        competencyPhoto('commissioning-03.jpg', [1489, 895], 'Проверка электрического оборудования при пусконаладке')
+      ]
+    },
+    {
+      id: 'hdd',
+      number: '08',
+      navigationLabel: 'ГНБ',
+      title: 'ГНБ — горизонтально-направленное бурение',
+      subtitle: 'Бестраншейная прокладка коммуникаций',
+      description: ['Собственные установки', 'Квалифицированный инженерный состав', 'Оптимизация сроков', 'Многолетний опыт строительства'],
+      photos: [competencyPhoto('hdd-01.jpg', [1489, 780], 'Горизонтально-направленное бурение под автомобильной дорогой')]
     },
     {
       id: 'civil',
-      number: '03',
-      navigationLabel: 'ГРАЖДАНСКИЕ',
-      title: 'Объекты гражданского назначения',
-      subtitle: 'Жилые дома · Комфорт-класс',
-      description: 'Строим кирпичные многоэтажные жилые дома комфорт-класса с индивидуальным отоплением и выполняем полный комплекс работ до ввода объекта в эксплуатацию.',
-      mainImage: 'assets/images/competency-residential-main-ai-v1.jpg',
-      mainSrcset: 'assets/images/competency-residential-main-ai-v1.jpg 1341w',
-      mainSize: [1341, 1173],
-      mainPosition: 'center 25%',
-      mainAlt: 'Кирпичный жилой дом с вертикальным остеклением — иллюстративная обработка',
-      detailImage: 'assets/images/competency-residential-detail-ai-v1.jpg',
-      detailSrcset: 'assets/images/competency-residential-detail-ai-v1.jpg 1024w',
-      detailSize: [1024, 1536],
-      detailPosition: 'center',
-      detailAlt: 'Кирпичная кладка, остекление и наружные коммуникации жилого дома',
-      linkLabel: 'Обсудить гражданский объект',
-      href: '#contacts'
+      number: '09',
+      navigationLabel: 'ГРАЖДАНСКОЕ СТРОИТЕЛЬСТВО',
+      title: 'Гражданское строительство',
+      subtitle: 'Жилые объекты',
+      description: ['Кирпичные многоэтажные жилые дома', 'Индивидуальное отопление', 'Объекты комфорт-класса'],
+      photos: [
+        competencyPhoto('civil-01-enhanced.png', [1448, 1086], 'Кирпичный многоэтажный жилой дом'),
+        competencyPhoto('civil-02-enhanced.png', [1448, 1086], 'Завершённый жилой дом комфорт-класса'),
+        competencyPhoto('civil-03-enhanced.png', [1448, 1086], 'Фасад введённого в эксплуатацию жилого дома'),
+        competencyPhoto('civil-04-enhanced.png', [1448, 1086], 'Строительство кирпичного жилого дома')
+      ]
+    },
+    {
+      id: 'industrial',
+      number: '10',
+      navigationLabel: 'ПРОМЫШЛЕННОЕ СТРОИТЕЛЬСТВО',
+      title: 'Промышленное строительство',
+      subtitle: 'Коммерческие объекты',
+      description: ['Строительство коммерческой недвижимости', 'Класс зданий B/B+'],
+      photos: [
+        competencyPhoto('industrial-01.jpg', [1280, 720], 'Высотный объект коммерческой недвижимости'),
+        competencyPhoto('industrial-02-enhanced.png', [1447, 1087], 'Фасад высотного коммерческого объекта')
+      ]
     }
   ];
   const competencyNumber = competenciesRoot.querySelector('[data-competency-number]');
@@ -845,52 +924,82 @@ if (competenciesRoot) {
   const competencyDetail = competenciesRoot.querySelector('[data-competency-detail]');
   const competencyMask = competenciesRoot.querySelector('.competency-media-mask');
   const competencyCounter = competenciesRoot.querySelector('[data-competency-counter]');
+  const competencyCounterTotal = competenciesRoot.querySelector('[data-competency-counter-total]');
   const competencyLabels = [...competenciesRoot.querySelectorAll('[data-competency-label]')];
   const competencyPrevious = competenciesRoot.querySelector('[data-competency-prev]');
   const competencyNext = competenciesRoot.querySelector('[data-competency-next]');
   const competencyText = [competencyTitle, competencySubtitle, competencyDescription, competencyLink].filter(Boolean);
   let activeCompetency = 0;
+  let activePhoto = 0;
   let competencyAnimating = false;
   let swipeStart = null;
 
-  const preloadCompetency = index => {
-    const item = competencies[(index + competencies.length) % competencies.length];
-    [item.mainImage, item.detailImage].forEach(source => {
-      const image = new Image();
-      image.src = source;
-    });
+  const stepState = (competencyIndex, photoIndex, delta) => {
+    let nextCompetency = competencyIndex;
+    let nextPhoto = photoIndex + delta;
+    if (nextPhoto >= competencies[nextCompetency].photos.length) {
+      nextCompetency = (nextCompetency + 1) % competencies.length;
+      nextPhoto = 0;
+    } else if (nextPhoto < 0) {
+      nextCompetency = (nextCompetency - 1 + competencies.length) % competencies.length;
+      nextPhoto = competencies[nextCompetency].photos.length - 1;
+    }
+    return { competencyIndex: nextCompetency, photoIndex: nextPhoto };
   };
 
-  const renderCompetency = index => {
+  const preloadState = ({ competencyIndex, photoIndex }) => {
+    const image = new Image();
+    image.src = competencies[competencyIndex].photos[photoIndex].src;
+  };
+
+  const renderDescription = lines => {
+    const fragment = document.createDocumentFragment();
+    lines.forEach((line, index) => {
+      if (index) fragment.append(document.createElement('br'));
+      fragment.append(document.createTextNode(`• ${line}`));
+    });
+    competencyDescription.replaceChildren(fragment);
+  };
+
+  const renderCompetency = (index, photoIndex = 0) => {
     const item = competencies[index];
+    const photo = item.photos[photoIndex];
     competenciesRoot.dataset.activeCompetency = item.id;
     competencyNumber.textContent = item.number;
     competencyTitle.textContent = item.title;
     competencySubtitle.textContent = item.subtitle;
-    competencyDescription.textContent = item.description;
+    renderDescription(item.description);
     if (competencyLink) {
       competencyLink.childNodes[0].nodeValue = `${item.linkLabel} `;
       competencyLink.href = item.href;
     }
-    competencyMain.src = item.mainImage;
-    competencyMain.srcset = item.mainSrcset;
-    competencyMain.width = item.mainSize[0];
-    competencyMain.height = item.mainSize[1];
-    competencyMain.alt = item.mainAlt;
-    competencyMain.style.objectPosition = item.mainPosition;
-    competencyDetail.src = item.detailImage;
-    competencyDetail.srcset = item.detailSrcset;
-    competencyDetail.width = item.detailSize[0];
-    competencyDetail.height = item.detailSize[1];
-    competencyDetail.alt = item.detailAlt;
-    competencyDetail.style.objectPosition = item.detailPosition;
-    competencyCounter.textContent = item.number;
+    competencyMain.src = photo.src;
+    competencyMain.srcset = `${photo.src} ${photo.size[0]}w`;
+    competencyMain.width = photo.size[0];
+    competencyMain.height = photo.size[1];
+    competencyMain.alt = photo.alt;
+    competencyMain.style.objectPosition = photo.position;
+    competencyDetail.src = photo.src;
+    competencyDetail.srcset = `${photo.src} ${photo.size[0]}w`;
+    competencyDetail.width = photo.size[0];
+    competencyDetail.height = photo.size[1];
+    competencyDetail.alt = '';
+    competencyDetail.style.objectPosition = photo.position;
+    competencyCounter.textContent = String(photoIndex + 1).padStart(2, '0');
+    competencyCounterTotal.textContent = String(item.photos.length).padStart(2, '0');
+    const labelIndexes = [index - 1, index, index + 1].map(value => (value + competencies.length) % competencies.length);
     competencyLabels.forEach((label, labelIndex) => {
-      label.setAttribute('aria-current', String(labelIndex === index));
+      const linkedIndex = labelIndexes[labelIndex];
+      label.textContent = competencies[linkedIndex].navigationLabel;
+      label.dataset.competencyIndex = linkedIndex;
+      label.dataset.competencyDirection = String(labelIndex - 1);
+      label.setAttribute('aria-current', String(labelIndex === 1));
+      label.setAttribute('aria-label', `Открыть компетенцию «${competencies[linkedIndex].title}»`);
     });
     activeCompetency = index;
-    preloadCompetency(index - 1);
-    preloadCompetency(index + 1);
+    activePhoto = photoIndex;
+    preloadState(stepState(index, photoIndex, -1));
+    preloadState(stepState(index, photoIndex, 1));
   };
 
   const runAnimation = (element, keyframes, options) => {
@@ -905,9 +1014,11 @@ if (competenciesRoot) {
       .filter(Boolean)
   );
 
-  const switchCompetency = async (nextIndex, direction = 'forward') => {
+  const switchCompetency = async (nextIndex, nextPhotoIndex = 0, direction = 'forward') => {
     const normalizedIndex = (nextIndex + competencies.length) % competencies.length;
-    if (competencyAnimating || normalizedIndex === activeCompetency) return;
+    const normalizedPhoto = Math.min(Math.max(nextPhotoIndex, 0), competencies[normalizedIndex].photos.length - 1);
+    if (competencyAnimating || (normalizedIndex === activeCompetency && normalizedPhoto === activePhoto)) return;
+    const competencyChanged = normalizedIndex !== activeCompetency;
     competencyAnimating = true;
     competenciesRoot.classList.add('is-changing');
 
@@ -915,7 +1026,7 @@ if (competenciesRoot) {
       const fadeOut = [competencyMain, competencyDetail].map(element => runAnimation(element, [{ opacity: 1 }, { opacity: 0 }], { duration: 100 }));
       await Promise.all(fadeOut.filter(Boolean).map(animation => animation.finished.catch(() => {})));
       fadeOut.forEach(animation => animation?.cancel());
-      renderCompetency(normalizedIndex);
+      renderCompetency(normalizedIndex, normalizedPhoto);
       await decodeVisibleCompetencyMedia();
       const fadeIn = [competencyMain, competencyDetail].map(element => runAnimation(element, [{ opacity: 0 }, { opacity: 1 }], { duration: 140 }));
       await Promise.all(fadeIn.filter(Boolean).map(animation => animation.finished.catch(() => {})));
@@ -935,17 +1046,17 @@ if (competenciesRoot) {
       { opacity: 1, transform: 'translateY(0)' },
       { opacity: 0, transform: `translateY(${forward ? '18px' : '-18px'})` }
     ], { duration: 260, delay: 90 });
-    const numberOut = runAnimation(competencyNumber, [
+    const numberOut = competencyChanged ? runAnimation(competencyNumber, [
       { opacity: 1, transform: 'translateY(0)' },
       { opacity: 0, transform: `translateY(${forward ? '-105%' : '105%'})` }
-    ], { duration: 260 });
-    const textOut = competencyText.map(element => runAnimation(element, [
+    ], { duration: 260 }) : null;
+    const textOut = competencyChanged ? competencyText.map(element => runAnimation(element, [
       { opacity: 1, transform: 'translateY(0)' },
       { opacity: 0, transform: 'translateY(-12px)' }
-    ], { duration: 210 }));
+    ], { duration: 210 })) : [];
 
     await maskIn.finished.catch(() => {});
-    renderCompetency(normalizedIndex);
+    renderCompetency(normalizedIndex, normalizedPhoto);
     await decodeVisibleCompetencyMedia();
     [mainOut, detailOut, numberOut, ...textOut].forEach(animation => animation?.cancel());
     maskIn.cancel();
@@ -959,14 +1070,14 @@ if (competenciesRoot) {
       { opacity: 0, clipPath: forward ? 'inset(100% 0 0)' : 'inset(0 0 100%)', transform: `translateY(${forward ? '18px' : '-18px'})` },
       { opacity: 1, clipPath: 'inset(0)', transform: 'translateY(0)' }
     ], { duration: 560, delay: 90 });
-    const numberIn = runAnimation(competencyNumber, [
+    const numberIn = competencyChanged ? runAnimation(competencyNumber, [
       { opacity: 0, transform: `translateY(${forward ? '105%' : '-105%'})` },
       { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: 480 });
-    const textIn = competencyText.map((element, index) => runAnimation(element, [
+    ], { duration: 480 }) : null;
+    const textIn = competencyChanged ? competencyText.map((element, index) => runAnimation(element, [
       { opacity: 0, transform: 'translateY(16px)' },
       { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: 420, delay: index * 65 }));
+    ], { duration: 420, delay: index * 65 })) : [];
     const incomingAnimations = [maskOut, mainIn, detailIn, numberIn, ...textIn].filter(Boolean);
     await Promise.all(incomingAnimations.map(animation => animation.finished.catch(() => {})));
     incomingAnimations.forEach(animation => animation.cancel());
@@ -974,18 +1085,24 @@ if (competenciesRoot) {
     competencyAnimating = false;
   };
 
-  competencyPrevious?.addEventListener('click', () => switchCompetency(activeCompetency - 1, 'backward'));
-  competencyNext?.addEventListener('click', () => switchCompetency(activeCompetency + 1, 'forward'));
-  competencyLabels.forEach((label, index) => {
+  const moveCompetency = direction => {
+    const nextState = stepState(activeCompetency, activePhoto, direction);
+    switchCompetency(nextState.competencyIndex, nextState.photoIndex, direction > 0 ? 'forward' : 'backward');
+  };
+
+  competencyPrevious?.addEventListener('click', () => moveCompetency(-1));
+  competencyNext?.addEventListener('click', () => moveCompetency(1));
+  competencyLabels.forEach(label => {
     label.addEventListener('click', () => {
-      const direction = index > activeCompetency ? 'forward' : 'backward';
-      switchCompetency(index, direction);
+      const index = Number(label.dataset.competencyIndex);
+      const direction = Number(label.dataset.competencyDirection) < 0 ? 'backward' : 'forward';
+      switchCompetency(index, 0, direction);
     });
   });
   competenciesRoot.addEventListener('keydown', event => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     event.preventDefault();
-    switchCompetency(activeCompetency + (event.key === 'ArrowRight' ? 1 : -1), event.key === 'ArrowRight' ? 'forward' : 'backward');
+    moveCompetency(event.key === 'ArrowRight' ? 1 : -1);
   });
   competenciesRoot.addEventListener('pointerdown', event => {
     if (event.pointerType === 'mouse' && window.innerWidth >= 768) return;
@@ -997,7 +1114,7 @@ if (competenciesRoot) {
     const deltaY = event.clientY - swipeStart.y;
     swipeStart = null;
     if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.2) return;
-    switchCompetency(activeCompetency + (deltaX < 0 ? 1 : -1), deltaX < 0 ? 'forward' : 'backward');
+    moveCompetency(deltaX < 0 ? 1 : -1);
   }, { passive: true });
   competenciesRoot.addEventListener('pointercancel', () => {
     swipeStart = null;
@@ -1016,7 +1133,7 @@ if (competenciesRoot) {
     }, { threshold: [.55] });
     competenciesObserver.observe(competenciesRoot);
   }
-  renderCompetency(0);
+  renderCompetency(0, 0);
 }
 
 const geography = document.querySelector('[data-geography]');
@@ -1044,9 +1161,47 @@ if (geography) {
   const regionsCount = regionsData.length;
   const geographyNames = Object.fromEntries(regionsData.map(region => [region.id, region.name]));
   const regionsById = Object.fromEntries(regionsData.map(region => [region.id, region]));
+  const geographyRegionItems = [...geography.querySelectorAll('.geography-region-list li')];
   geography.querySelector('[data-geography-count]').textContent = regionsCount;
   if (regionsCount !== 17 || new Set(regionsData.map(region => region.id)).size !== regionsCount) {
     console.error('На карте должно быть ровно 17 уникальных регионов');
+  }
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let geographyWaveFrame = 0;
+    const clampWave = value => Math.max(0, Math.min(1, value));
+    const smoothWave = value => value * value * (3 - 2 * value);
+    const updateGeographyRegionWave = () => {
+      geographyWaveFrame = 0;
+      const sectionTop = geography.getBoundingClientRect().top;
+      const waveStart = window.innerHeight * .36;
+      const waveRange = Math.max(680, window.innerHeight * .95);
+      const waveProgress = clampWave((waveStart - sectionTop) / waveRange);
+      const wavePosition = waveProgress * Math.max(0, geographyRegionItems.length - 3);
+
+      geographyRegionItems.forEach((item, index) => {
+        const distance = index - wavePosition;
+        const fadeIn = smoothWave(clampWave((distance + .65) / .65));
+        const fadeOut = smoothWave(clampWave((3 - distance) / .65));
+        const emphasis = fadeIn * fadeOut;
+        const opacity = .42 + emphasis * .58;
+        const shift = emphasis * -4;
+        const scale = 1 + emphasis * .055;
+        item.style.setProperty('--region-wave-opacity', opacity.toFixed(3));
+        item.style.setProperty('--region-wave-shift', `${shift.toFixed(2)}px`);
+        item.style.setProperty('--region-wave-scale', scale.toFixed(3));
+        item.style.setProperty('--region-line-opacity', (.28 + emphasis * .72).toFixed(3));
+      });
+    };
+    const queueGeographyRegionWave = () => {
+      if (geographyWaveFrame) return;
+      geographyWaveFrame = requestAnimationFrame(updateGeographyRegionWave);
+    };
+
+    geography.classList.add('is-region-wave-ready');
+    updateGeographyRegionWave();
+    window.addEventListener('scroll', queueGeographyRegionWave, { passive: true });
+    window.addEventListener('resize', queueGeographyRegionWave);
   }
   let geographyControls = [...geography.querySelectorAll('.geography-point')];
   const geographyMap = geography.querySelector('.geography-map');
@@ -1056,16 +1211,16 @@ if (geography) {
   let visibleRegion = '';
   let geographyCloseTimer = 0;
   const geographyMarkerPositions = {
-    murmansk: [769, 134], leningrad: [350, 334], vologda: [612, 436], smolensk: [356, 523],
-    tver: [428, 433], yaroslavl: [525, 481], moscow: [433, 525], vladimir: [518, 555],
-    nizhny: [733, 605], bryansk: [284, 674], oryol: [378, 644], tula: [449, 617],
-    ryazan: [591, 626], lipetsk: [498, 721], tambov: [582, 743], voronezh: [497, 806],
-    volgograd: [698, 916]
+    murmansk: [703, 211], leningrad: [364, 323], vologda: [524, 365], smolensk: [372, 534],
+    tver: [428, 442], yaroslavl: [494, 474], moscow: [435, 515], vladimir: [516, 529],
+    nizhny: [736, 552], bryansk: [270, 667], oryol: [375, 651], tula: [452, 586],
+    ryazan: [604, 626], lipetsk: [465, 669], tambov: [536, 669], voronezh: [578, 730],
+    volgograd: [783, 737]
   };
   const geographyMarkerOrder = [...geographyControls].sort((first, second) => {
     const [firstX, firstY] = geographyMarkerPositions[first.dataset.region];
     const [secondX, secondY] = geographyMarkerPositions[second.dataset.region];
-    return (firstX / 1400 + firstY / 1123) - (secondX / 1400 + secondY / 1123);
+    return ((firstX - 45) / 155 + (firstY - 295) / 305) - ((secondX - 45) / 155 + (secondY - 295) / 305);
   });
   const geographyMarkerDelays = Object.fromEntries(
     geographyMarkerOrder.map((control, index) => [control.dataset.region, index * 220])
@@ -1079,14 +1234,15 @@ if (geography) {
       circle.setAttribute('cx', x);
       circle.setAttribute('cy', y);
     });
-    control.querySelector('.geography-marker-pulse')?.setAttribute('r', '13');
+    control.querySelector('.geography-marker-pulse')?.setAttribute('r', '14');
     control.querySelector('.geography-marker-core')?.setAttribute('r', '5');
-    const hitArea = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const hitArea = control.querySelector('.geography-marker-hit')
+      || document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     hitArea.classList.add('geography-marker-hit');
     hitArea.setAttribute('cx', x);
     hitArea.setAttribute('cy', y);
-    hitArea.setAttribute('r', '26');
-    control.prepend(hitArea);
+    hitArea.setAttribute('r', '22');
+    if (!hitArea.parentNode) control.prepend(hitArea);
     control.style.setProperty('--region-delay', `${geographyMarkerDelays[control.dataset.region]}ms`);
   });
 
@@ -1204,60 +1360,44 @@ if (geography) {
   });
 
   const createSvgElement = name => document.createElementNS('http://www.w3.org/2000/svg', name);
-  const buildGeographyGeometry = async () => {
-    const geometry = await fetch('assets/data/geography-map.json').then(response => {
-      if (!response.ok) throw new Error('Не удалось загрузить геометрию карты');
-      return response.json();
-    });
-    const svg = geography.querySelector('.geography-map-svg');
-    const terrain = geography.querySelector('.geography-terrain');
-    const outline = geography.querySelector('.geography-land-outline');
+  const buildGeographyGeometry = () => {
     const regionLayer = geography.querySelector('.geography-points');
-    terrain.replaceChildren(...geometry.contextRegions.map(shape => {
-      const path = createSvgElement('path');
-      path.classList.add('geography-context-region');
-      if (shape.active) path.classList.add('is-present');
-      path.setAttribute('d', shape.path);
-      path.setAttribute('fill-rule', 'evenodd');
-      return path;
-    }));
-    outline.removeAttribute('d');
-    svg.setAttribute('viewBox', '45 295 155 305');
-    svg.setAttribute('preserveAspectRatio', 'none');
-    const bounds = geometry.regions.reduce((result, shape) => ({
-      minX: Math.min(result.minX, shape.x), maxX: Math.max(result.maxX, shape.x),
-      minY: Math.min(result.minY, shape.y), maxY: Math.max(result.maxY, shape.y)
+    const markerEntries = Object.entries(geographyMarkerPositions);
+    const bounds = markerEntries.reduce((result, [, [x, y]]) => ({
+      minX: Math.min(result.minX, x), maxX: Math.max(result.maxX, x),
+      minY: Math.min(result.minY, y), maxY: Math.max(result.maxY, y)
     }), { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity });
-    regionLayer.replaceChildren(...geometry.regions.map(shape => {
-      const data = regionsById[shape.id];
+    regionLayer.replaceChildren(...markerEntries.map(([regionId, [markerX, markerY]]) => {
+      const data = regionsById[regionId];
       const group = createSvgElement('g');
-      const normalizedX = (shape.x - bounds.minX) / (bounds.maxX - bounds.minX || 1);
-      const normalizedY = (shape.y - bounds.minY) / (bounds.maxY - bounds.minY || 1);
+      const normalizedX = (markerX - bounds.minX) / (bounds.maxX - bounds.minX || 1);
+      const normalizedY = (markerY - bounds.minY) / (bounds.maxY - bounds.minY || 1);
       group.classList.add('geography-point');
-      group.dataset.region = shape.id;
+      group.dataset.region = regionId;
       group.setAttribute('role', 'button');
       group.setAttribute('tabindex', '0');
       group.setAttribute('aria-label', data.name);
       group.style.setProperty('--region-delay', `${250 + (normalizedX * .55 + normalizedY * .45) * 1300}ms`);
-      const regionPath = createSvgElement('path');
-      regionPath.classList.add('geography-region-shape');
-      regionPath.setAttribute('d', shape.path);
-      regionPath.setAttribute('fill-rule', 'evenodd');
+      const hitArea = createSvgElement('circle');
+      hitArea.classList.add('geography-marker-hit');
+      hitArea.setAttribute('cx', markerX);
+      hitArea.setAttribute('cy', markerY);
+      hitArea.setAttribute('r', '26');
       const pulse = createSvgElement('circle');
       pulse.classList.add('geography-marker-pulse');
-      pulse.setAttribute('cx', shape.x);
-      pulse.setAttribute('cy', shape.y);
-      pulse.setAttribute('r', '10');
+      pulse.setAttribute('cx', markerX);
+      pulse.setAttribute('cy', markerY);
+      pulse.setAttribute('r', '13');
       const marker = createSvgElement('circle');
       marker.classList.add('geography-marker-core');
-      marker.setAttribute('cx', shape.x);
-      marker.setAttribute('cy', shape.y);
-      marker.setAttribute('r', '4');
+      marker.setAttribute('cx', markerX);
+      marker.setAttribute('cy', markerY);
+      marker.setAttribute('r', '5');
       const label = createSvgElement('text');
       label.classList.add('geography-label');
-      const opensLeft = shape.x > (bounds.minX + bounds.maxX) / 2;
-      label.setAttribute('x', shape.x + (opensLeft ? -14 : 14));
-      label.setAttribute('y', shape.y - 4);
+      const opensLeft = markerX > (bounds.minX + bounds.maxX) / 2;
+      label.setAttribute('x', markerX + (opensLeft ? -14 : 14));
+      label.setAttribute('y', markerY - 4);
       if (opensLeft) label.setAttribute('text-anchor', 'end');
       const labelParts = data.name.toUpperCase().split(' ОБЛАСТЬ');
       label.textContent = labelParts[0];
@@ -1268,7 +1408,7 @@ if (geography) {
         secondLine.textContent = 'ОБЛАСТЬ';
         label.append(secondLine);
       }
-      group.append(regionPath, pulse, marker, label);
+      group.append(hitArea, pulse, marker, label);
       return group;
     }));
     geographyControls = [...geography.querySelectorAll('.geography-point')];
@@ -1277,6 +1417,7 @@ if (geography) {
     requestAnimationFrame(() => geographyMap.classList.add('is-visible'));
   };
 
+  buildGeographyGeometry();
   closeRegion();
 }
 

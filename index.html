@@ -26,9 +26,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="css/theme.css" rel="stylesheet" type="text/css"> 
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&family=Montserrat:wght@100;200;400;500;600&family=Onest:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="styles.css?v=57">
-        <link rel="stylesheet" href="responsive.css?v=46">
-        <script src="script.js?v=43" defer></script>
+        <link rel="stylesheet" href="styles.css?v=70">
+        <link rel="stylesheet" href="responsive.css?v=58">
+        <script src="script.js?v=62" defer></script>
     </head>     
     <body> 
         <a class="skip-link" href="#main">К содержанию</a> 
@@ -44,8 +44,9 @@
                 <nav class="desktop-nav" aria-label="Основная навигация"> 
                     <a href="#about">О компании</a> 
                     <a href="#services">Компетенции</a> 
-                    <a href="#geography" data-projects-directory-nav-open>Проекты</a>
-                    <a href="#partners" data-partners-directory-nav-open>Партнёры</a>
+                    <a href="#geography">География</a>
+                    <a href="#partners">Партнёры</a>
+                    <a href="#permits">Документы</a>
                     <a href="#contacts">Контакты</a> 
                 </nav>                 
                 <div class="header-actions"> 
@@ -61,9 +62,10 @@
             <nav aria-label="Мобильная навигация"> 
                 <a href="#about"><span>02</span>О компании</a> 
                 <a href="#services"><span>05</span>Компетенции</a> 
-                <a href="#geography" data-projects-directory-nav-open><span>06</span>Проекты</a>
-                <a href="#partners" data-partners-directory-nav-open><span>07</span>Партнёры</a>
-                <a href="#contacts"><span>08</span>Контакты</a> 
+                <a href="#geography"><span>06</span>География</a>
+                <a href="#partners"><span>07</span>Партнёры</a>
+                <a href="#permits"><span>08</span>Документы</a>
+                <a href="#contacts"><span>09</span>Контакты</a>
             </nav>             
             <div class="mobile-contact"> 
                 <a href="tel:+74822785474">+7 (4822) 78-54-74</a> 
@@ -238,31 +240,31 @@
                         </div> 
                         <div class="competencies-heading" id="competencies-content"> 
                             <div class="competency-number-clip" aria-hidden="true"><span data-competency-number>01</span></div> 
-                            <h2 id="competencies-title" data-competency-title>Объекты энергетики</h2> 
-                            <p class="competency-subtitle" data-competency-subtitle>Энергия для развития</p> 
+                            <h2 id="competencies-title" data-competency-title>Внутренние электрические сети</h2>
+                            <p class="competency-subtitle" data-competency-subtitle>Инженерные системы</p>
                         </div> 
                         <div class="competencies-body"> 
-                            <p data-competency-description>Проектируем и строим электрические сети, линии электропередачи и трансформаторные подстанции. Выполняем наружное освещение, пусконаладочные работы и ГНБ.</p> 
+                            <p data-competency-description>• Внутренняя электрическая сеть<br>• Пожарная сигнализация<br>• Охранная сигнализация<br>• Локальная сеть<br>• Диспетчеризация</p>
                         </div> 
                     </div> 
                     <div class="competencies-media"> 
                         <div class="competency-main-media"> 
-                            <img src="assets/images/competency-energy-main-photo-1.jpg" srcset="assets/images/competency-energy-main-photo-1.jpg 892w" sizes="(max-width: 767px) 100vw, 62vw" width="892" height="502" loading="lazy" decoding="async" alt="Силовые трансформаторы на энергетическом объекте" data-competency-main>
+                            <img src="assets/images/competencies/internal-01-enhanced.png" srcset="assets/images/competencies/internal-01-enhanced.png 1448w" sizes="(max-width: 767px) 100vw, 62vw" width="1448" height="1086" loading="lazy" decoding="async" alt="Внутренние электрические сети в офисном помещении" data-competency-main>
                             <span class="competency-media-mask" aria-hidden="true"></span> 
                         </div> 
                         <figure class="competency-detail-media"> 
-                            <img src="assets/images/competency-energy-detail-ai-v1.jpg" srcset="assets/images/competency-energy-detail-ai-v1.jpg 1024w" sizes="(max-width: 767px) 38vw, 15vw" width="1024" height="1536" loading="lazy" decoding="async" alt="Крупный план оборудования силового трансформатора" data-competency-detail>
+                            <img src="assets/images/competencies/internal-02-enhanced.png" srcset="assets/images/competencies/internal-02-enhanced.png 1448w" sizes="(max-width: 767px) 38vw, 15vw" width="1448" height="1086" loading="lazy" decoding="async" alt="Монтаж внутренних электрических сетей" data-competency-detail>
                         </figure> 
                         <div class="competencies-navigation" aria-label="Переключение компетенций"> 
                             <div class="competency-arrows"> 
-                                <button type="button" aria-label="Предыдущая компетенция" data-competency-prev>←</button> 
-                                <button type="button" aria-label="Следующая компетенция" data-competency-next>→</button> 
+                                <button type="button" aria-label="Предыдущая фотография или компетенция" data-competency-prev>←</button>
+                                <button type="button" aria-label="Следующая фотография или компетенция" data-competency-next>→</button>
                             </div> 
-                            <p class="competency-counter" aria-live="polite"><span data-competency-counter>01</span> / 03</p> 
-                            <div class="competency-tabs" aria-label="Энергия системных решений">
-                                <button type="button" aria-current="true" data-competency-label>Энергия</button>
-                                <button type="button" aria-current="false" data-competency-label>Системных</button>
-                                <button type="button" aria-current="false" data-competency-label>Решений</button>
+                            <p class="competency-counter" aria-live="polite"><span data-competency-counter>01</span> / <span data-competency-counter-total>08</span></p>
+                            <div class="competency-tabs" aria-label="Соседние компетенции">
+                                <button type="button" aria-current="false" data-competency-label>Промышленное строительство</button>
+                                <button type="button" aria-current="true" data-competency-label>Внутренние сети</button>
+                                <button type="button" aria-current="false" data-competency-label>Кабельные линии</button>
                             </div> 
                         </div> 
                     </div> 
@@ -275,43 +277,40 @@
                             <div class="section-mark light"><span>06</span><p>География</p></div> 
                             <div class="geography-title"> 
                                 <h2>География <em>проектов</em></h2> 
-                                <p class="geography-total"><strong data-geography-count></strong><span>регионов<br>присутствия</span></p> 
+                                <p class="geography-total"><strong data-geography-count></strong><span>регионов<br>присутствия</span></p>
+                                <ul class="geography-region-list" aria-label="Регионы присутствия">
+                                    <li>Брянская область</li>
+                                    <li>Владимирская область</li>
+                                    <li>Волгоградская область</li>
+                                    <li>Вологодская область</li>
+                                    <li>Воронежская область</li>
+                                    <li>Ленинградская область</li>
+                                    <li>Липецкая область</li>
+                                    <li>Московская область</li>
+                                    <li>Мурманская область</li>
+                                    <li>Нижегородская область</li>
+                                    <li>Орловская область</li>
+                                    <li>Рязанская область</li>
+                                    <li>Смоленская область</li>
+                                    <li>Тамбовская область</li>
+                                    <li>Тверская область</li>
+                                    <li>Тульская область</li>
+                                    <li>Ярославская область</li>
+                                </ul>
                             </div> 
                         </div> 
-                        <div class="geography-map"> 
-                            <svg class="geography-map-svg" viewBox="0 0 1400 1123" role="img" aria-label="Интерактивная карта регионов присутствия ЭнергоГрупп">
+                        <div class="geography-map">
+                            <svg class="geography-map-svg" viewBox="0 0 1400 1123" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Интерактивная карта регионов присутствия ЭнергоГрупп">
                                 <defs> 
                                     <filter id="geography-glow" x="-200%" y="-200%" width="400%" height="400%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter> 
-                                    <filter id="geography-relief" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018 .042" numOctaves="2" seed="8" result="noise"/><feColorMatrix in="noise" values=".2 0 0 0 .08 0 .23 0 0 .1 0 0 .26 0 .12 0 0 0 .46 0" result="relief"/><feBlend in="SourceGraphic" in2="relief" mode="screen"/></filter> 
                                 </defs> 
-                                <image class="geography-map-art" href="assets/images/geography-russia-west-v4-uniform-orange.png" x="0" y="0" width="1400" height="1123" preserveAspectRatio="xMidYMid meet"/>
-                                <g class="geography-terrain"></g> 
-                                <path class="geography-land-outline"/> 
-                                <g class="geography-points" aria-label="Регионы присутствия ЭнергоГрупп"> 
-                                    <g class="geography-point" data-region="murmansk" role="button" tabindex="0" aria-label="Мурманская область"><path class="geography-region-shape" d="M130 35L224 20 256 75 217 121 143 103 111 67Z"/><circle class="geography-marker-pulse" cx="178" cy="70" r="10"/><circle class="geography-marker-core" cx="178" cy="70" r="4"/><text class="geography-label" x="194" y="65">МУРМАНСКАЯ<tspan x="194" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="leningrad" role="button" tabindex="0" aria-label="Ленинградская область"><path class="geography-region-shape" d="M215 92L315 72 355 123 314 174 240 158 197 128Z"/><circle class="geography-marker-pulse" cx="272" cy="122" r="10"/><circle class="geography-marker-core" cx="272" cy="122" r="4"/><text class="geography-label" x="289" y="115">ЛЕНИНГРАДСКАЯ<tspan x="289" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="vologda" role="button" tabindex="0" aria-label="Вологодская область"><path class="geography-region-shape" d="M391 79L511 68 553 120 517 179 411 173 363 126Z"/><circle class="geography-marker-pulse" cx="465" cy="128" r="10"/><circle class="geography-marker-core" cx="465" cy="128" r="4"/><text class="geography-label" x="481" y="122">ВОЛОГОДСКАЯ<tspan x="481" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="smolensk" role="button" tabindex="0" aria-label="Смоленская область"><path class="geography-region-shape" d="M137 184L224 169 259 214 224 263 145 256 112 218Z"/><circle class="geography-marker-pulse" cx="183" cy="220" r="10"/><circle class="geography-marker-core" cx="183" cy="220" r="4"/><text class="geography-label" x="199" y="214">СМОЛЕНСКАЯ<tspan x="199" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="tver" role="button" tabindex="0" aria-label="Тверская область"><path class="geography-region-shape" d="M265 158L363 145 400 194 370 243 291 251 247 207Z"/><circle class="geography-marker-pulse" cx="325" cy="199" r="10"/><circle class="geography-marker-core" cx="325" cy="199" r="4"/><text class="geography-label" x="341" y="192">ТВЕРСКАЯ<tspan x="341" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="yaroslavl" role="button" tabindex="0" aria-label="Ярославская область"><path class="geography-region-shape" d="M410 174L494 170 527 213 498 259 429 254 397 216Z"/><circle class="geography-marker-pulse" cx="459" cy="216" r="10"/><circle class="geography-marker-core" cx="459" cy="216" r="4"/><text class="geography-label" x="475" y="209">ЯРОСЛАВСКАЯ<tspan x="475" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="moscow" role="button" tabindex="0" aria-label="Московская область"><path class="geography-region-shape" d="M296 239L393 229 426 284 389 331 315 322 278 279Z"/><circle class="geography-marker-pulse" cx="350" cy="278" r="10"/><circle class="geography-marker-core" cx="350" cy="278" r="4"/><text class="geography-label" x="366" y="272">МОСКОВСКАЯ<tspan x="366" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="vladimir" role="button" tabindex="0" aria-label="Владимирская область"><path class="geography-region-shape" d="M426 248L515 240 551 288 518 337 447 331 411 292Z"/><circle class="geography-marker-pulse" cx="475" cy="287" r="10"/><circle class="geography-marker-core" cx="475" cy="287" r="4"/><text class="geography-label" x="491" y="281">ВЛАДИМИРСКАЯ<tspan x="491" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="nizhny" role="button" tabindex="0" aria-label="Нижегородская область"><path class="geography-region-shape" d="M551 236L670 229 709 288 672 350 577 343 536 289Z"/><circle class="geography-marker-pulse" cx="617" cy="291" r="10"/><circle class="geography-marker-core" cx="617" cy="291" r="4"/><text class="geography-label" x="633" y="284">НИЖЕГОРОДСКАЯ<tspan x="633" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="bryansk" role="button" tabindex="0" aria-label="Брянская область"><path class="geography-region-shape" d="M82 291L164 277 201 322 174 372 102 368 68 331Z"/><circle class="geography-marker-pulse" cx="128" cy="326" r="10"/><circle class="geography-marker-core" cx="128" cy="326" r="4"/><text class="geography-label" x="144" y="320">БРЯНСКАЯ<tspan x="144" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="oryol" role="button" tabindex="0" aria-label="Орловская область"><path class="geography-region-shape" d="M203 300L282 291 314 337 281 383 217 377 185 339Z"/><circle class="geography-marker-pulse" cx="247" cy="338" r="10"/><circle class="geography-marker-core" cx="247" cy="338" r="4"/><text class="geography-label" x="263" y="332">ОРЛОВСКАЯ<tspan x="263" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="tula" role="button" tabindex="0" aria-label="Тульская область"><path class="geography-region-shape" d="M314 325L396 317 425 360 393 404 331 397 301 360Z"/><circle class="geography-marker-pulse" cx="361" cy="359" r="10"/><circle class="geography-marker-core" cx="361" cy="359" r="4"/><text class="geography-label" x="377" y="353">ТУЛЬСКАЯ<tspan x="377" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="ryazan" role="button" tabindex="0" aria-label="Рязанская область"><path class="geography-region-shape" d="M442 330L535 321 572 374 537 424 466 417 428 374Z"/><circle class="geography-marker-pulse" cx="493" cy="373" r="10"/><circle class="geography-marker-core" cx="493" cy="373" r="4"/><text class="geography-label" x="509" y="367">РЯЗАНСКАЯ<tspan x="509" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="lipetsk" role="button" tabindex="0" aria-label="Липецкая область"><path class="geography-region-shape" d="M287 394L378 388 411 439 376 486 308 479 272 437Z"/><circle class="geography-marker-pulse" cx="338" cy="437" r="10"/><circle class="geography-marker-core" cx="338" cy="437" r="4"/><text class="geography-label" x="354" y="431">ЛИПЕЦКАЯ<tspan x="354" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="tambov" role="button" tabindex="0" aria-label="Тамбовская область"><path class="geography-region-shape" d="M411 414L503 407 540 462 506 515 431 505 395 459Z"/><circle class="geography-marker-pulse" cx="463" cy="459" r="10"/><circle class="geography-marker-core" cx="463" cy="459" r="4"/><text class="geography-label" x="479" y="453">ТАМБОВСКАЯ<tspan x="479" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="voronezh" role="button" tabindex="0" aria-label="Воронежская область"><path class="geography-region-shape" d="M224 456L319 449 356 506 319 556 244 546 207 503Z"/><circle class="geography-marker-pulse" cx="276" cy="501" r="10"/><circle class="geography-marker-core" cx="276" cy="501" r="4"/><text class="geography-label" x="292" y="495">ВОРОНЕЖСКАЯ<tspan x="292" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                    <g class="geography-point" data-region="volgograd" role="button" tabindex="0" aria-label="Волгоградская область"><path class="geography-region-shape" d="M527 487L665 475 716 540 674 604 558 595 508 540Z"/><circle class="geography-marker-pulse" cx="609" cy="545" r="10"/><circle class="geography-marker-core" cx="609" cy="545" r="4"/><text class="geography-label" x="625" y="539">ВОЛГОГРАДСКАЯ<tspan x="625" dy="12">ОБЛАСТЬ</tspan></text></g> 
-                                </g> 
+                                <image class="geography-map-art" href="assets/images/geography-russia-west-imagegen.png?v=3" x="0" y="0" width="1400" height="1123" preserveAspectRatio="xMidYMid meet"/>
+                                <g class="geography-points" aria-label="Регионы присутствия ЭнергоГрупп"></g>
                             </svg> 
                             <aside class="geography-region" aria-hidden="true" aria-live="polite" data-geography-popup> 
                                 <h3 data-geography-name></h3> 
                             </aside> 
                         </div> 
-                        <button class="geography-all" type="button" data-projects-directory-open><span>Наши проекты</span></button>
                     </div> 
                 </div> 
             </section>             
@@ -325,9 +324,8 @@
                         <p class="kicker">Единая система компетенций</p> 
                         <h2><span class="scroll-heading-line">Нам</span><em class="scroll-heading-line">доверяют</em></h2> 
                     </div>                     
-                    <div class="partners-slider reveal" data-partners-slider role="region" aria-roledescription="карусель" aria-label="Партнёры ЭнергоГрупп" tabindex="0"> 
-                        <div class="partners-slider__viewport" data-partners-viewport> 
-                            <div class="partners-slider__track" data-partners-track> 
+                    <div class="partners-grid reveal" role="region" aria-label="Партнёры ЭнергоГрупп">
+                        <div class="partners-grid__list">
                                 <div class="partner-card" role="group" aria-label="1 из 18: Россети Центр"><img src="assets/images/partners/rosseti-center.svg" width="423" height="165" loading="lazy" decoding="async" alt="Россети Центр"></div> 
                                 <div class="partner-card" role="group" aria-label="2 из 18: Россети Центр и Приволжье"><img src="assets/images/partners/rosseti-center-volga.png" width="507" height="163" loading="lazy" decoding="async" alt="Россети Центр и Приволжье"></div> 
                                 <div class="partner-card" role="group" aria-label="3 из 18: Россети Юг"><img src="assets/images/partners/rosseti-south.svg" width="433" height="165" loading="lazy" decoding="async" alt="Россети Юг"></div> 
@@ -346,21 +344,49 @@
                                 <div class="partner-card" role="group" aria-label="16 из 18: Метрострой Северной столицы"><img src="assets/images/partners/metrostroy.svg" width="547" height="140" loading="lazy" decoding="async" alt="Метрострой Северной столицы"></div> 
                                 <div class="partner-card" role="group" aria-label="17 из 18: Дороги и Мосты"><img src="assets/images/partners/nps-roads-bridges.svg" width="533" height="85" loading="lazy" decoding="async" alt="НПС Дороги и Мосты"></div> 
                                 <div class="partner-card" role="group" aria-label="18 из 18: Администрация Тверской области"><img src="assets/images/partners/tver-administration.svg" width="244" height="305" loading="lazy" decoding="async" alt="Администрация Тверской области"></div> 
-                            </div> 
-                        </div> 
-                        <div class="partners-slider__controls"> 
-                            <button class="partners-directory-trigger" type="button" data-partners-directory-open>
-                                <span>Все партнёры</span>
-                            </button>
-                            <div class="partners-slider__navigation">
-                                <button type="button" data-partners-prev aria-label="Предыдущий партнёр">←</button>
-                                <p data-partners-counter aria-live="polite">01 / 18</p>
-                                <button type="button" data-partners-next aria-label="Следующий партнёр">→</button>
-                            </div>
                         </div> 
                     </div>
                 </div>                 
-            </section>             
+            </section>
+            <section class="permits scene" id="permits" data-section="08" aria-labelledby="permits-title">
+                <div class="shell permits-layout">
+                    <div class="section-mark permits-mark reveal">
+                        <span>08</span>
+                        <p>Допуски и лицензии</p>
+                    </div>
+                    <header class="permits-title reveal">
+                        <p class="kicker">Подтверждённая ответственность</p>
+                        <h2 id="permits-title"><span class="scroll-heading-line">Разрешительные</span><em class="scroll-heading-line">документы</em></h2>
+                        <p>Документы подтверждают право компании выполнять проектные, строительные и специальные работы на объектах различного уровня ответственности</p>
+                    </header>
+                    <div class="permits-metric reveal" aria-label="Уровень ответственности СРО в области строительства — 3 миллиарда рублей">
+                        <p>Уровень ответственности СРО<br>в области строительства</p>
+                        <strong>3 <span>млрд ₽</span></strong>
+                    </div>
+                    <ol class="permits-register reveal" aria-label="Перечень разрешительных документов">
+                        <li>
+                            <span>01</span>
+                            <div><strong>СРО в области строительства, реконструкции, капитального ремонта и сноса объектов капитального строительства</strong><small>Уровень ответственности — 3 млрд ₽</small></div>
+                        </li>
+                        <li>
+                            <span>02</span>
+                            <div><strong>СРО в области инженерных изысканий и архитектурно-строительного проектирования</strong><small>Уровень ответственности — 25 млн ₽</small></div>
+                        </li>
+                        <li>
+                            <span>03</span>
+                            <div><strong>Лицензия Министерства культуры</strong></div>
+                        </li>
+                        <li>
+                            <span>04</span>
+                            <div><strong>Лицензия МЧС</strong></div>
+                        </li>
+                        <li>
+                            <span>05</span>
+                            <div><strong>Свидетельство Ростехнадзора о регистрации электролаборатории</strong></div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
         </main>
         <dialog class="projects-directory" data-projects-directory aria-labelledby="projects-directory-title">
             <div class="projects-directory__page">
@@ -402,26 +428,11 @@
                 </div>
             </div>
         </dialog>
-        <dialog class="partners-directory" data-partners-directory aria-labelledby="partners-directory-title">
-            <div class="partners-directory__page">
-                <header class="partners-directory__hero">
-                    <img src="assets/images/competency-energy-detail-v2.jpg" width="853" height="1280" loading="lazy" decoding="async" alt="Трансформаторное оборудование энергетического объекта">
-                    <div class="partners-directory__shade" aria-hidden="true"></div>
-                    <p>ЭнергоГрупп · партнёры</p>
-                    <h2 id="partners-directory-title">Наши партнёры</h2>
-                    <button class="partners-directory__close" type="button" data-partners-directory-close aria-label="Закрыть список партнёров">← <span>Назад</span></button>
-                </header>
-                <div class="partners-directory__content">
-                    <p class="partners-directory__intro">Компании и организации, доверяющие нам реализацию инженерных и инфраструктурных задач.</p>
-                    <div class="partners-directory__grid" data-partners-directory-grid></div>
-                </div>
-            </div>
-        </dialog>
         <div class="contact-media-layer">
-            <section class="contact scene scene-dark" id="contacts" data-section="08"> 
+            <section class="contact scene scene-dark" id="contacts" data-section="09">
                 <div class="shell contact-layout"> 
                     <div class="section-mark light reveal"> 
-                        <span>08</span> 
+                        <span>09</span>
                         <p>Контакты</p> 
                     </div>                     
                     <div class="contact-title reveal"> 
