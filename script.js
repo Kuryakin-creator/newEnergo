@@ -1214,8 +1214,8 @@ if (geography) {
     murmansk: [807, 136], leningrad: [545, 272], vologda: [603, 354], smolensk: [385, 389],
     tver: [474, 373], yaroslavl: [560, 420], moscow: [468, 454], vladimir: [526, 496],
     nizhny: [573, 550], bryansk: [345, 450], oryol: [376, 495], tula: [421, 494],
-    ryazan: [475, 531], lipetsk: [448, 592], tambov: [500, 614], voronezh: [416, 712],
-    volgograd: [408, 824]
+    ryazan: [475, 531], lipetsk: [448, 592], tambov: [500, 614], voronezh: [383, 605],
+    volgograd: [416, 712]
   };
   const geographyMarkerOrder = [...geographyControls].sort((first, second) => {
     const [firstX, firstY] = geographyMarkerPositions[first.dataset.region];
