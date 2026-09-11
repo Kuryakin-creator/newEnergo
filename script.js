@@ -791,11 +791,7 @@ if (competenciesRoot) {
       photos: [
         competencyPhoto('internal-01-enhanced.png', [1448, 1086], 'Внутренние электрические сети в офисном помещении'),
         competencyPhoto('internal-02-enhanced.png', [1448, 1086], 'Монтаж внутренних электрических сетей'),
-        competencyPhoto('internal-03.jpg', [1280, 964], 'Освещение и кабельные трассы офисного пространства'),
         competencyPhoto('internal-04.jpg', [1280, 964], 'Смонтированные внутренние инженерные сети'),
-        competencyPhoto('internal-05.jpg', [1280, 964], 'Электроснабжение современного офисного помещения'),
-        competencyPhoto('internal-06.jpg', [1280, 964], 'Кабельные лотки и освещение в офисе'),
-        competencyPhoto('internal-07.jpg', [1280, 964], 'Внутренние электрические сети открытого офиса'),
         competencyPhoto('internal-08-enhanced.png', [1448, 1086], 'Кабельная трасса внутренней электрической сети')
       ]
     },
@@ -807,9 +803,9 @@ if (competenciesRoot) {
       subtitle: 'Энергетическая инфраструктура',
       description: ['Собственная спецтехника', 'Профессиональный инженерный состав', 'Аккредитация заводов-изготовителей', 'Оптимизация сроков', 'Многолетний опыт строительства'],
       photos: [
-        competencyPhoto('cable-01.jpg', [1489, 915], 'Прокладка кабельной линии собственной спецтехникой'),
-        competencyPhoto('cable-02.jpg', [1489, 1045], 'Подготовка трассы для прокладки кабельных линий'),
-        competencyPhoto('cable-03.jpg', [1489, 1050], 'Земляные работы при строительстве кабельной линии')
+        competencyPhoto('cable-01-enhanced.webp', [1600, 983], 'Прокладка кабельной линии собственной спецтехникой'),
+        competencyPhoto('cable-02-enhanced.webp', [1497, 1051], 'Подготовка трассы для прокладки кабельных линий'),
+        competencyPhoto('cable-03-enhanced.webp', [1493, 1053], 'Земляные работы при строительстве кабельной линии')
       ]
     },
     {
@@ -852,7 +848,7 @@ if (competenciesRoot) {
       title: 'Декоративное и архитектурное освещение',
       subtitle: 'Светотехнические решения',
       description: ['Проектирование', 'Монтажные работы'],
-      photos: [competencyPhoto('decorative-lighting-01.jpg', [1489, 905], 'Декоративное архитектурное освещение здания')]
+      photos: [competencyPhoto('decorative-lighting-01-enhanced.webp', [1608, 978], 'Декоративное архитектурное освещение здания')]
     },
     {
       id: 'outdoor-lighting',
@@ -862,8 +858,8 @@ if (competenciesRoot) {
       subtitle: 'Инфраструктурное освещение',
       description: ['Проектирование', 'Строительство'],
       photos: [
-        competencyPhoto('outdoor-lighting-01.jpg', [1280, 960], 'Работы по устройству наружного электроосвещения ночью'),
-        competencyPhoto('outdoor-lighting-02.jpg', [1489, 780], 'Освещение участка автомобильной дороги М-11')
+        competencyPhoto('outdoor-lighting-01-enhanced.webp', [1448, 1086], 'Работы по устройству наружного электроосвещения ночью'),
+        competencyPhoto('outdoor-lighting-02-clean.webp', [1733, 907], 'Освещение участка автомобильной дороги М-11')
       ]
     },
     {
@@ -886,7 +882,7 @@ if (competenciesRoot) {
       title: 'ГНБ — горизонтально-направленное бурение',
       subtitle: 'Бестраншейная прокладка коммуникаций',
       description: ['Собственные установки', 'Квалифицированный инженерный состав', 'Оптимизация сроков', 'Многолетний опыт строительства'],
-      photos: [competencyPhoto('hdd-01.jpg', [1489, 780], 'Горизонтально-направленное бурение под автомобильной дорогой')]
+      photos: [competencyPhoto('hdd-01-enhanced.webp', [1733, 907], 'Горизонтально-направленное бурение под автомобильной дорогой')]
     },
     {
       id: 'civil',
@@ -1161,60 +1157,41 @@ if (geography) {
   const regionsCount = regionsData.length;
   const geographyNames = Object.fromEntries(regionsData.map(region => [region.id, region.name]));
   const regionsById = Object.fromEntries(regionsData.map(region => [region.id, region]));
+  const geographyTitle = geography.querySelector('.geography-title');
   const geographyRegionItems = [...geography.querySelectorAll('.geography-region-list li')];
+  const geographyRegionList = geography.querySelector('.geography-region-list');
   geography.querySelector('[data-geography-count]').textContent = regionsCount;
   if (regionsCount !== 17 || new Set(regionsData.map(region => region.id)).size !== regionsCount) {
     console.error('На карте должно быть ровно 17 уникальных регионов');
   }
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let geographyWaveFrame = 0;
-    const clampWave = value => Math.max(0, Math.min(1, value));
-    const smoothWave = value => value * value * (3 - 2 * value);
-    const updateGeographyRegionWave = () => {
-      geographyWaveFrame = 0;
-      const sectionTop = geography.getBoundingClientRect().top;
-      const waveStart = window.innerHeight * .36;
-      const waveRange = Math.max(680, window.innerHeight * .95);
-      const waveProgress = clampWave((waveStart - sectionTop) / waveRange);
-      const wavePosition = waveProgress * Math.max(0, geographyRegionItems.length - 3);
-
-      geographyRegionItems.forEach((item, index) => {
-        const distance = index - wavePosition;
-        const fadeIn = smoothWave(clampWave((distance + .65) / .65));
-        const fadeOut = smoothWave(clampWave((3 - distance) / .65));
-        const emphasis = fadeIn * fadeOut;
-        const opacity = .42 + emphasis * .58;
-        const shift = emphasis * -4;
-        const scale = 1 + emphasis * .055;
-        item.style.setProperty('--region-wave-opacity', opacity.toFixed(3));
-        item.style.setProperty('--region-wave-shift', `${shift.toFixed(2)}px`);
-        item.style.setProperty('--region-wave-scale', scale.toFixed(3));
-        item.style.setProperty('--region-line-opacity', (.28 + emphasis * .72).toFixed(3));
-      });
-    };
-    const queueGeographyRegionWave = () => {
-      if (geographyWaveFrame) return;
-      geographyWaveFrame = requestAnimationFrame(updateGeographyRegionWave);
-    };
-
-    geography.classList.add('is-region-wave-ready');
-    updateGeographyRegionWave();
-    window.addEventListener('scroll', queueGeographyRegionWave, { passive: true });
-    window.addEventListener('resize', queueGeographyRegionWave);
-  }
   let geographyControls = [...geography.querySelectorAll('.geography-point')];
   const geographyMap = geography.querySelector('.geography-map');
-  const geographyName = geography.querySelector('[data-geography-name]');
-  const geographyPopup = geography.querySelector('[data-geography-popup]');
+  const geographyCompactLayout = window.matchMedia('(max-width: 1023px)');
+  const geographyMobileLayout = window.matchMedia('(max-width: 767px)');
+  const placeGeographyRegionList = () => {
+    if (geographyCompactLayout.matches) {
+      geographyMap.after(geographyRegionList);
+    } else {
+      geographyTitle.append(geographyRegionList);
+    }
+    if (geographyMobileLayout.matches) {
+      geographyMap.style.order = '4';
+      geographyRegionList.style.order = '5';
+    } else {
+      geographyMap.style.removeProperty('order');
+      geographyRegionList.style.removeProperty('order');
+    }
+  };
+  placeGeographyRegionList();
+  geographyCompactLayout.addEventListener('change', placeGeographyRegionList);
+  geographyMobileLayout.addEventListener('change', placeGeographyRegionList);
   let activeRegion = '';
-  let visibleRegion = '';
   let geographyCloseTimer = 0;
   const geographyMarkerPositions = {
     murmansk: [807, 136], leningrad: [545, 272], vologda: [603, 354], smolensk: [385, 389],
     tver: [474, 373], yaroslavl: [560, 420], moscow: [468, 454], vladimir: [526, 496],
     nizhny: [573, 550], bryansk: [345, 450], oryol: [376, 495], tula: [421, 494],
-    ryazan: [475, 531], lipetsk: [448, 592], tambov: [500, 614], voronezh: [383, 605],
+    ryazan: [475, 531], lipetsk: [409, 547], tambov: [448, 592], voronezh: [383, 605],
     volgograd: [416, 712]
   };
   const geographyMarkerOrder = [...geographyControls].sort((first, second) => {
@@ -1253,52 +1230,30 @@ if (geography) {
   }, { threshold: .18 });
   geographyMarkerObserver.observe(geographyMap);
 
-  const renderRegion = region => {
-    geographyName.textContent = geographyNames[region];
-  };
-
-  const positionGeographyPopup = region => {
-    const control = geographyControls.find(item => item.dataset.region === region);
-    if (!control || !geographyPopup.classList.contains('is-open')) return;
-    const mapRect = geographyMap.getBoundingClientRect();
-    const pointRect = (control.querySelector('.geography-marker-core') || control).getBoundingClientRect();
-    const pointX = pointRect.left + pointRect.width / 2 - mapRect.left;
-    const pointY = pointRect.top + pointRect.height / 2 - mapRect.top;
-    const popupWidth = geographyPopup.offsetWidth;
-    const popupHeight = geographyPopup.offsetHeight;
-    let left = pointX + 18;
-    if (left + popupWidth > mapRect.width - 14) left = pointX - popupWidth - 18;
-    left = Math.max(14, Math.min(left, mapRect.width - popupWidth - 14));
-    const top = Math.max(14, Math.min(pointY - popupHeight / 2, mapRect.height - popupHeight - 14));
-    geographyPopup.style.left = `${left}px`;
-    geographyPopup.style.top = `${top}px`;
+  const highlightRegionItem = region => {
+    geographyRegionItems.forEach(item => {
+      item.classList.toggle('is-highlighted', item.dataset.region === region);
+    });
   };
 
   const showRegion = (region, isPreview = false) => {
     if (!geographyNames[region]) return;
     window.clearTimeout(geographyCloseTimer);
-    visibleRegion = region;
-    renderRegion(region);
-    geographyPopup.classList.add('is-open');
-    geographyPopup.setAttribute('aria-hidden', 'false');
-    geographyMap.classList.add('is-popup-open');
     geographyMap.classList.toggle('has-preview', isPreview);
     geographyControls.forEach(control => {
       control.classList.toggle('is-preview', isPreview && control.dataset.region === region);
       control.classList.toggle('is-active', control.dataset.region === activeRegion);
     });
-    requestAnimationFrame(() => positionGeographyPopup(region));
+    highlightRegionItem(region);
   };
 
   const closeRegion = () => {
-    visibleRegion = '';
-    geographyPopup.classList.remove('is-open');
-    geographyPopup.setAttribute('aria-hidden', 'true');
-    geographyMap.classList.remove('has-preview', 'is-popup-open');
+    geographyMap.classList.remove('has-preview');
     geographyControls.forEach(control => {
       control.classList.remove('is-preview');
       control.classList.toggle('is-active', control.dataset.region === activeRegion);
     });
+    highlightRegionItem(activeRegion);
   };
 
   const scheduleRegionClose = () => {
@@ -1340,23 +1295,28 @@ if (geography) {
 
   geographyControls.forEach(bindGeographyControl);
 
-  geographyPopup.addEventListener('pointerenter', () => window.clearTimeout(geographyCloseTimer));
-  geographyPopup.addEventListener('pointerleave', scheduleRegionClose);
+  geographyRegionItems.forEach((item, index) => {
+    const region = regionsData[index]?.id;
+    if (!region) return;
+    item.dataset.region = region;
+    item.tabIndex = 0;
+    item.addEventListener('pointerenter', () => showRegion(region, region !== activeRegion));
+    item.addEventListener('pointerleave', scheduleRegionClose);
+    item.addEventListener('focus', () => showRegion(region, region !== activeRegion));
+    item.addEventListener('blur', scheduleRegionClose);
+  });
+
   geographyMap.addEventListener('click', event => {
-    if (event.target.closest('.geography-point, .geography-region')) return;
+    if (event.target.closest('.geography-point')) return;
     activeRegion = '';
     closeRegion();
   });
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape') return;
-    if (visibleRegion) {
+    if (activeRegion || geographyMap.classList.contains('has-preview')) {
       activeRegion = '';
       closeRegion();
     }
-  });
-
-  window.addEventListener('resize', () => {
-    if (visibleRegion) positionGeographyPopup(visibleRegion);
   });
 
   const createSvgElement = name => document.createElementNS('http://www.w3.org/2000/svg', name);

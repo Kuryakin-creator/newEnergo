@@ -6215,7 +6215,7 @@ body.partners-directory-open {
     margin: clamp(24px, 3vh, 34px) 0 0;
     padding: 0;
     list-style: none;
-    color: rgba(245, 246, 247, .7);
+    color: rgba(245, 246, 247, .48);
     font-size: clamp(9px, .65vw, 11px);
     font-weight: 400;
     line-height: 1.15;
@@ -6228,7 +6228,8 @@ body.partners-directory-open {
     padding: 6px 0;
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    transition: opacity .16s linear, transform .24s cubic-bezier(.22, 1, .36, 1);
+    transform-origin: left center;
+    transition: color .18s ease, transform .22s cubic-bezier(.22, 1, .36, 1);
     white-space: nowrap;
 }
 
@@ -6242,18 +6243,21 @@ body.partners-directory-open {
     background: rgba(245, 246, 247, .16);
     transform: scaleX(1);
     transform-origin: left center;
-    transition: opacity .16s linear, transform .24s cubic-bezier(.22, 1, .36, 1);
+    transition: background-color .18s ease;
 }
 
-.geography-layout.is-region-wave-ready .geography-region-list li {
-    opacity: var(--region-wave-opacity, 1);
-    transform: translate3d(var(--region-wave-shift, 0), 0, 0) scale(var(--region-wave-scale, 1));
-    transform-origin: left center;
+.geography-region-list li:hover,
+.geography-region-list li:focus-visible,
+.geography-region-list li.is-highlighted {
+    color: var(--white);
+    transform: translate3d(2px, 0, 0) scale(1.025);
+    outline: none;
 }
 
-.geography-layout.is-region-wave-ready .geography-region-list li::after {
-    opacity: var(--region-line-opacity, 1);
-    transform: scaleX(1);
+.geography-region-list li:hover::after,
+.geography-region-list li:focus-visible::after,
+.geography-region-list li.is-highlighted::after {
+    background: rgba(245, 246, 247, .42);
 }
 
 .geography-all {
@@ -7102,7 +7106,7 @@ body.projects-directory-open {
 
 .geography-map.is-visible .geography-marker-pulse {
     opacity: .72;
-    animation: geography-marker-breathe 2.6s ease-in-out var(--region-delay, 0ms) infinite;
+    animation: none;
 }
 
 .geography-map.is-visible .geography-marker-core { transition-delay: 0ms; }
@@ -7120,11 +7124,6 @@ body.projects-directory-open {
 .geography-point.is-active .geography-marker-pulse {
     stroke-width: 1.8;
     opacity: 1;
-}
-
-@keyframes geography-marker-breathe {
-    0%, 100% { opacity: .25; transform: scale(.72); }
-    50% { opacity: .82; transform: scale(1.65); }
 }
 
 .geography-region-shape {
@@ -7819,31 +7818,36 @@ body.projects-directory-open {
 .geography-map.is-visible .geography-marker-core {
     opacity: 1;
     transform: scale(1);
-    transition: none;
-    animation: geography-marker-core-breathe 2.5s ease-in-out calc(var(--region-delay, 0ms) + 620ms) infinite;
+    transition: opacity .22s ease, transform .22s ease, filter .22s ease;
+    animation: none;
 }
 
 .geography-map.is-visible .geography-marker-pulse {
     display: block;
-    opacity: .34;
-    animation: geography-marker-pulse-breathe 2.5s ease-in-out calc(var(--region-delay, 0ms) + 620ms) infinite;
+    opacity: .3;
+    transform: scale(1);
+    transition: opacity .22s ease, transform .22s ease, stroke .22s ease;
+    animation: none;
 }
 
 .geography-map.is-visible .geography-point:hover .geography-marker-core,
 .geography-map.is-visible .geography-point:focus-visible .geography-marker-core,
+.geography-map.is-visible .geography-point.is-preview .geography-marker-core,
 .geography-map.is-visible .geography-point.is-active .geography-marker-core {
     animation: none;
     opacity: 1;
-    transform: scale(1.32);
-    filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 17px rgba(var(--accent-rgb),.82));
+    transform: scale(1.42);
+    filter: drop-shadow(0 0 7px var(--accent)) drop-shadow(0 0 20px rgba(var(--accent-rgb),.92));
 }
 
 .geography-map.is-visible .geography-point:hover .geography-marker-pulse,
 .geography-map.is-visible .geography-point:focus-visible .geography-marker-pulse,
+.geography-map.is-visible .geography-point.is-preview .geography-marker-pulse,
 .geography-map.is-visible .geography-point.is-active .geography-marker-pulse {
     animation: none;
-    opacity: .68;
-    transform: scale(1.18);
+    opacity: .92;
+    transform: scale(1.34);
+    stroke-width: 1.7;
 }
 
 @keyframes geography-marker-land {
@@ -7862,22 +7866,6 @@ body.projects-directory-open {
         transform: translateY(0) scale(1);
         filter: drop-shadow(0 0 0 rgba(var(--accent-rgb),0));
     }
-}
-
-@keyframes geography-marker-core-breathe {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 5px rgba(var(--accent-rgb),.96)) drop-shadow(0 0 13px rgba(var(--accent-rgb),.55));
-    }
-    50% {
-        transform: scale(1.18);
-        filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 16px rgba(var(--accent-rgb),.72));
-    }
-}
-
-@keyframes geography-marker-pulse-breathe {
-    0%, 100% { opacity: .3; transform: scale(1); }
-    50% { opacity: .62; transform: scale(1.16); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -8377,4 +8365,170 @@ section h2 em,
     line-height: 1.4;
     letter-spacing: .055em;
     text-transform: uppercase;
+}
+
+/* 06 — компактная адаптивная композиция карты и списка регионов. */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .geography {
+        min-height: 0;
+        padding: 38px 0 46px;
+    }
+
+    .geography-layout {
+        display: grid !important;
+        width: calc(100% - 48px);
+        height: auto;
+        grid-template-columns: calc(40% - 15px) calc(60% - 15px) !important;
+        grid-template-rows: auto auto;
+        column-gap: 30px;
+        align-items: start;
+        overflow: visible;
+    }
+
+    .geography-copy {
+        display: block !important;
+        grid-column: 1;
+        grid-row: 1;
+        min-height: 0;
+        padding: 0;
+    }
+
+    .geography-copy > .section-mark {
+        display: flex;
+    }
+
+    .geography-title { display: block !important; margin-top: 70px; }
+
+    .geography-title h2 {
+        max-width: 7ch;
+        margin: 0;
+        font-size: clamp(48px, 7.2vw, 66px);
+    }
+
+    .geography-title .geography-total {
+        margin-top: 34px;
+    }
+
+    .geography-total strong {
+        font-size: clamp(78px, 11vw, 104px);
+    }
+
+    .geography-map {
+        order: 0 !important;
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+        width: 100%;
+        height: clamp(300px, 42vw, 380px) !important;
+        min-height: 0 !important;
+        max-height: 380px !important;
+        margin: 70px 0 0;
+        padding: 0;
+    }
+
+    .geography-map-svg,
+    .geography-map.is-visible .geography-map-svg {
+        width: 100%;
+        height: 100%;
+        transform: none;
+    }
+
+    .geography-region-list {
+        order: 0 !important;
+        grid-column: 2;
+        grid-row: 2;
+        display: grid;
+        width: auto !important;
+        min-width: 100%;
+        max-width: none;
+        justify-self: stretch;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(9, auto);
+        grid-auto-flow: column;
+        column-gap: 22px;
+        margin: 24px 0 0;
+        font-size: clamp(8px, 1.05vw, 10px);
+    }
+
+    .geography-region-list li {
+        min-width: 0;
+        padding: 5px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .geography {
+        min-height: 0;
+        padding: 56px 0 44px;
+    }
+
+    .geography-layout {
+        display: flex !important;
+        width: calc(100% - 32px);
+        height: auto;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .geography-copy,
+    .geography-title {
+        display: contents;
+    }
+
+    .geography-copy > .section-mark {
+        order: 1;
+    }
+
+    .geography-title h2 {
+        order: 2;
+        max-width: 8ch;
+        margin-top: 58px;
+        font-size: clamp(42px, 12.8vw, 54px);
+    }
+
+    .geography-title .geography-total {
+        order: 3;
+        justify-self: end;
+        margin: 26px 4px 0 0;
+    }
+
+    .geography-total strong {
+        font-size: clamp(76px, 22vw, 92px);
+    }
+
+    .geography-map {
+        order: 4;
+        width: 100%;
+        height: clamp(230px, 62vw, 300px) !important;
+        min-height: 0 !important;
+        max-height: 300px !important;
+        margin: 30px 0 0;
+        padding: 0;
+    }
+
+    .geography-map-svg,
+    .geography-map.is-visible .geography-map-svg {
+        width: 100%;
+        height: 100%;
+        transform: none;
+    }
+
+    .geography-region-list {
+        order: 5;
+        display: grid;
+        width: 100%;
+        max-width: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(9, auto);
+        grid-auto-flow: column;
+        column-gap: 18px;
+        margin: 24px 0 0;
+        font-size: clamp(6.8px, 1.95vw, 8px);
+        letter-spacing: .02em;
+    }
+
+    .geography-region-list li {
+        min-width: 0;
+        padding: 5px 0;
+    }
 }
