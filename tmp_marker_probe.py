@@ -11,7 +11,7 @@ for y in range(image.height):
             barrier_pixels[x, y] = 255
 
 seen = {}
-for seed in [(x, y) for y in range(560, 721, 20) for x in range(340, 581, 20)]:
+for seed in [(360, 580), (390, 580), (420, 580), (360, 610), (390, 610), (420, 610), (360, 640), (390, 640), (420, 640), (450, 620), (470, 620)]:
     component = barrier.copy()
     ImageDraw.floodfill(component, seed, 128, thresh=0)
     component = component.point(lambda value: 255 if value == 128 else 0)
@@ -26,5 +26,4 @@ for seed in [(x, y) for y in range(560, 721, 20) for x in range(340, 581, 20)]:
     seen.setdefault(center, (seed, depth))
 
 for center, (seed, depth) in sorted(seen.items(), key=lambda item: item[0][1]):
-    if 300 < center[0] < 650 and 500 < center[1] < 760:
-        print(seed, "->", center, "depth", depth)
+    print(seed, "->", center, "depth", depth)
