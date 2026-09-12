@@ -6229,7 +6229,7 @@ body.partners-directory-open {
     opacity: 1;
     transform: translate3d(0, 0, 0);
     transform-origin: left center;
-    transition: color .18s ease, transform .22s cubic-bezier(.22, 1, .36, 1);
+    transition: color .2s ease, transform .26s cubic-bezier(.22, 1, .36, 1), text-shadow .2s ease;
     white-space: nowrap;
 }
 
@@ -6250,7 +6250,8 @@ body.partners-directory-open {
 .geography-region-list li:focus-visible,
 .geography-region-list li.is-highlighted {
     color: var(--white);
-    transform: translate3d(2px, 0, 0) scale(1.025);
+    transform: translate3d(6px, 0, 0) scale(1.08);
+    text-shadow: 0 0 12px rgba(255, 255, 255, .34);
     outline: none;
 }
 
@@ -7836,8 +7837,8 @@ body.projects-directory-open {
 .geography-map.is-visible .geography-point.is-active .geography-marker-core {
     animation: none;
     opacity: 1;
-    transform: scale(1.42);
-    filter: drop-shadow(0 0 7px var(--accent)) drop-shadow(0 0 20px rgba(var(--accent-rgb),.92));
+    transform: scale(1.9);
+    filter: drop-shadow(0 0 9px var(--accent)) drop-shadow(0 0 28px rgba(var(--accent-rgb),1));
 }
 
 .geography-map.is-visible .geography-point:hover .geography-marker-pulse,
@@ -7845,9 +7846,9 @@ body.projects-directory-open {
 .geography-map.is-visible .geography-point.is-preview .geography-marker-pulse,
 .geography-map.is-visible .geography-point.is-active .geography-marker-pulse {
     animation: none;
-    opacity: .92;
-    transform: scale(1.34);
-    stroke-width: 1.7;
+    opacity: 1;
+    transform: scale(1.7);
+    stroke-width: 2;
 }
 
 @keyframes geography-marker-land {
@@ -8216,18 +8217,6 @@ section h2 em,
     overflow: clip;
     color: var(--text);
     background: var(--paper);
-}
-
-.permits::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: .42;
-    background:
-        linear-gradient(90deg, transparent calc(50% - .5px), rgba(24,39,66,.07) 50%, transparent calc(50% + .5px)),
-        linear-gradient(rgba(24,39,66,.045) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 72px;
 }
 
 .permits-layout {
