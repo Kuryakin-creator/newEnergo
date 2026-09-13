@@ -8216,7 +8216,7 @@ section h2 em,
     min-height: max(760px, 100svh);
     overflow: clip;
     color: var(--text);
-    background: var(--paper);
+    background: #f7f6f2;
 }
 
 .permits-layout {

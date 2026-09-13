@@ -791,7 +791,6 @@ if (competenciesRoot) {
       photos: [
         competencyPhoto('internal-01-enhanced.png', [1448, 1086], 'Внутренние электрические сети в офисном помещении'),
         competencyPhoto('internal-02-enhanced.png', [1448, 1086], 'Монтаж внутренних электрических сетей'),
-        competencyPhoto('internal-04.jpg', [1280, 964], 'Смонтированные внутренние инженерные сети'),
         competencyPhoto('internal-08-enhanced.png', [1448, 1086], 'Кабельная трасса внутренней электрической сети')
       ]
     },
@@ -816,13 +815,13 @@ if (competenciesRoot) {
       subtitle: 'Электросетевое строительство',
       description: ['Проектирование воздушных линий', 'Строительство и реконструкция ВЛ', 'Монтаж опор и проводов'],
       photos: [
-        competencyPhoto('overhead-01.jpg', [1280, 960], 'Монтаж опоры воздушной линии электропередачи'),
+        competencyPhoto('overhead-01-enhanced.webp', [1448, 1086], 'Монтаж опоры воздушной линии электропередачи'),
         competencyPhoto('overhead-02-enhanced.png', [1448, 1086], 'Установка железобетонной опоры воздушной линии'),
         competencyPhoto('overhead-03-enhanced.png', [1448, 1086], 'Монтаж опор воздушной линии кранами'),
-        competencyPhoto('overhead-04.jpg', [1280, 960], 'Опора воздушной линии и техника ЭнергоГрупп'),
-        competencyPhoto('overhead-05.jpg', [1280, 960], 'Установленная опора воздушной линии'),
-        competencyPhoto('overhead-06.jpg', [1280, 960], 'Кран при строительстве воздушной линии электропередачи'),
-        competencyPhoto('overhead-07.jpg', [1280, 960], 'Работы на опоре воздушной линии электропередачи')
+        competencyPhoto('overhead-04-enhanced.webp', [1448, 1086], 'Опора воздушной линии и техника ЭнергоГрупп'),
+        competencyPhoto('overhead-05-enhanced.webp', [1448, 1086], 'Установленная опора воздушной линии'),
+        competencyPhoto('overhead-06-enhanced.webp', [1448, 1086], 'Кран при строительстве воздушной линии электропередачи'),
+        competencyPhoto('overhead-07-enhanced.webp', [1448, 1086], 'Работы на опоре воздушной линии электропередачи')
       ]
     },
     {
@@ -834,10 +833,10 @@ if (competenciesRoot) {
       description: ['Технико-экономическое обоснование', 'Проектирование', 'Строительство'],
       photos: [
         competencyPhoto('substation-01-clean.png', [1448, 1086], 'Трансформаторная подстанция после строительства'),
-        competencyPhoto('substation-02.jpg', [1280, 960], 'Распределительное устройство и трансформаторная подстанция'),
-        competencyPhoto('substation-03.jpg', [1280, 960], 'Строительство основания распределительного пункта'),
-        competencyPhoto('substation-04.jpg', [1280, 960], 'Подстанция с воздушными линиями электропередачи'),
-        competencyPhoto('substation-05.jpg', [1280, 960], 'Территория новой трансформаторной подстанции'),
+        competencyPhoto('substation-02-enhanced.webp', [1448, 1086], 'Распределительное устройство и трансформаторная подстанция'),
+        competencyPhoto('substation-03-enhanced.webp', [1448, 1086], 'Строительство основания распределительного пункта'),
+        competencyPhoto('substation-04-enhanced.webp', [1448, 1086], 'Подстанция с воздушными линиями электропередачи'),
+        competencyPhoto('substation-05-enhanced.webp', [1448, 1086], 'Территория новой трансформаторной подстанции'),
         competencyPhoto('substation-06.png', [1448, 1086], 'Трансформаторная подстанция без рекламной маркировки')
       ]
     },
@@ -872,7 +871,7 @@ if (competenciesRoot) {
       photos: [
         competencyPhoto('commissioning-01-enhanced.png', [1448, 1086], 'Работы на оборудовании трансформаторной подстанции'),
         competencyPhoto('commissioning-02-enhanced.png', [1448, 1086], 'Специалист выполняет пусконаладочные работы'),
-        competencyPhoto('commissioning-03.jpg', [1489, 895], 'Проверка электрического оборудования при пусконаладке')
+        competencyPhoto('commissioning-03-enhanced.webp', [1618, 972], 'Проверка электрического оборудования при пусконаладке')
       ]
     },
     {
@@ -906,7 +905,7 @@ if (competenciesRoot) {
       subtitle: 'Коммерческие объекты',
       description: ['Строительство коммерческой недвижимости', 'Класс зданий B/B+'],
       photos: [
-        competencyPhoto('industrial-01.jpg', [1280, 720], 'Высотный объект коммерческой недвижимости'),
+        competencyPhoto('industrial-01-enhanced.webp', [1672, 941], 'Высотный объект коммерческой недвижимости'),
         competencyPhoto('industrial-02-enhanced.png', [1447, 1087], 'Фасад высотного коммерческого объекта')
       ]
     }
