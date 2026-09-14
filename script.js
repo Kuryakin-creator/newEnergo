@@ -789,9 +789,9 @@ if (competenciesRoot) {
       subtitle: 'Инженерные системы',
       description: ['Внутренняя электрическая сеть', 'Пожарная сигнализация', 'Охранная сигнализация', 'Локальная сеть', 'Диспетчеризация'],
       photos: [
-        competencyPhoto('internal-01-enhanced.png', [1448, 1086], 'Внутренние электрические сети в офисном помещении'),
-        competencyPhoto('internal-02-enhanced.png', [1448, 1086], 'Монтаж внутренних электрических сетей'),
-        competencyPhoto('internal-08-enhanced.png', [1448, 1086], 'Кабельная трасса внутренней электрической сети')
+        competencyPhoto('internal-01-enhanced.webp', [1448, 1086], 'Внутренние электрические сети в офисном помещении'),
+        competencyPhoto('internal-02-enhanced.webp', [1448, 1086], 'Монтаж внутренних электрических сетей'),
+        competencyPhoto('internal-08-enhanced.webp', [1448, 1086], 'Кабельная трасса внутренней электрической сети')
       ]
     },
     {
@@ -800,7 +800,7 @@ if (competenciesRoot) {
       navigationLabel: 'КАБЕЛЬНЫЕ ЛИНИИ',
       title: 'Кабельные линии',
       subtitle: 'Энергетическая инфраструктура',
-      description: ['Собственная спецтехника', 'Профессиональный инженерный состав', 'Аккредитация заводов-изготовителей', 'Оптимизация сроков', 'Многолетний опыт строительства'],
+      description: ['Прокладка кабельных линий', 'Подготовка кабельных трасс', 'Земляные работы', 'Работа собственной спецтехники'],
       photos: [
         competencyPhoto('cable-01-enhanced.webp', [1600, 983], 'Прокладка кабельной линии собственной спецтехникой'),
         competencyPhoto('cable-02-enhanced.webp', [1497, 1051], 'Подготовка трассы для прокладки кабельных линий'),
@@ -813,11 +813,11 @@ if (competenciesRoot) {
       navigationLabel: 'ВОЗДУШНЫЕ ЛИНИИ',
       title: 'Воздушные линии электропередачи',
       subtitle: 'Электросетевое строительство',
-      description: ['Проектирование воздушных линий', 'Строительство и реконструкция ВЛ', 'Монтаж опор и проводов'],
+      description: ['Проектирование ЛЭП', 'Реконструкция воздушных линий', 'Монтаж опор и проводов'],
       photos: [
         competencyPhoto('overhead-01-enhanced.webp', [1448, 1086], 'Монтаж опоры воздушной линии электропередачи'),
-        competencyPhoto('overhead-02-enhanced.png', [1448, 1086], 'Установка железобетонной опоры воздушной линии'),
-        competencyPhoto('overhead-03-enhanced.png', [1448, 1086], 'Монтаж опор воздушной линии кранами'),
+        competencyPhoto('overhead-02-enhanced.webp', [1448, 1086], 'Установка железобетонной опоры воздушной линии'),
+        competencyPhoto('overhead-03-enhanced.webp', [1448, 1086], 'Монтаж опор воздушной линии кранами'),
         competencyPhoto('overhead-04-enhanced.webp', [1448, 1086], 'Опора воздушной линии и техника ЭнергоГрупп'),
         competencyPhoto('overhead-05-enhanced.webp', [1448, 1086], 'Установленная опора воздушной линии'),
         competencyPhoto('overhead-06-enhanced.webp', [1448, 1086], 'Кран при строительстве воздушной линии электропередачи'),
@@ -830,7 +830,7 @@ if (competenciesRoot) {
       navigationLabel: 'ПОДСТАНЦИИ',
       title: 'Распределительные пункты и трансформаторные подстанции',
       subtitle: 'Подстанционная инфраструктура',
-      description: ['Технико-экономическое обоснование', 'Проектирование', 'Строительство'],
+      description: ['Разработка технико-экономического обоснования', 'Проектирование распределительных пунктов', 'Монтаж трансформаторных подстанций'],
       photos: [
         competencyPhoto('substation-01-clean.png', [1448, 1086], 'Трансформаторная подстанция после строительства'),
         competencyPhoto('substation-02-enhanced.webp', [1448, 1086], 'Распределительное устройство и трансформаторная подстанция'),
@@ -846,7 +846,7 @@ if (competenciesRoot) {
       navigationLabel: 'АРХИТЕКТУРНОЕ ОСВЕЩЕНИЕ',
       title: 'Декоративное и архитектурное освещение',
       subtitle: 'Светотехнические решения',
-      description: ['Проектирование', 'Монтажные работы'],
+      description: ['Разработка светотехнических решений', 'Монтаж архитектурного освещения'],
       photos: [competencyPhoto('decorative-lighting-01-enhanced.webp', [1608, 978], 'Декоративное архитектурное освещение здания')]
     },
     {
@@ -855,7 +855,7 @@ if (competenciesRoot) {
       navigationLabel: 'НАРУЖНОЕ ОСВЕЩЕНИЕ',
       title: 'Наружное электроосвещение',
       subtitle: 'Инфраструктурное освещение',
-      description: ['Проектирование', 'Строительство'],
+      description: ['Проектирование наружного освещения', 'Монтаж опор и светильников'],
       photos: [
         competencyPhoto('outdoor-lighting-01-enhanced.webp', [1448, 1086], 'Работы по устройству наружного электроосвещения ночью'),
         competencyPhoto('outdoor-lighting-02-clean.webp', [1733, 907], 'Освещение участка автомобильной дороги М-11')
@@ -869,8 +869,8 @@ if (competenciesRoot) {
       subtitle: 'Наладка инженерных систем',
       description: ['Наладка работоспособности систем', 'Проверка проектной документации', 'Подготовка к вводу в эксплуатацию'],
       photos: [
-        competencyPhoto('commissioning-01-enhanced.png', [1448, 1086], 'Работы на оборудовании трансформаторной подстанции'),
-        competencyPhoto('commissioning-02-enhanced.png', [1448, 1086], 'Специалист выполняет пусконаладочные работы'),
+        competencyPhoto('commissioning-01-enhanced.webp', [1448, 1086], 'Работы на оборудовании трансформаторной подстанции'),
+        competencyPhoto('commissioning-02-enhanced.webp', [1448, 1086], 'Специалист выполняет пусконаладочные работы'),
         competencyPhoto('commissioning-03-enhanced.webp', [1618, 972], 'Проверка электрического оборудования при пусконаладке')
       ]
     },
@@ -880,7 +880,7 @@ if (competenciesRoot) {
       navigationLabel: 'ГНБ',
       title: 'ГНБ — горизонтально-направленное бурение',
       subtitle: 'Бестраншейная прокладка коммуникаций',
-      description: ['Собственные установки', 'Квалифицированный инженерный состав', 'Оптимизация сроков', 'Многолетний опыт строительства'],
+      description: ['Бестраншейная прокладка коммуникаций', 'Устройство проколов методом ГНБ', 'Работа собственными установками ГНБ'],
       photos: [competencyPhoto('hdd-01-enhanced.webp', [1733, 907], 'Горизонтально-направленное бурение под автомобильной дорогой')]
     },
     {
@@ -891,10 +891,10 @@ if (competenciesRoot) {
       subtitle: 'Жилые объекты',
       description: ['Кирпичные многоэтажные жилые дома', 'Индивидуальное отопление', 'Объекты комфорт-класса'],
       photos: [
-        competencyPhoto('civil-01-enhanced.png', [1448, 1086], 'Кирпичный многоэтажный жилой дом'),
-        competencyPhoto('civil-02-enhanced.png', [1448, 1086], 'Завершённый жилой дом комфорт-класса'),
-        competencyPhoto('civil-03-enhanced.png', [1448, 1086], 'Фасад введённого в эксплуатацию жилого дома'),
-        competencyPhoto('civil-04-enhanced.png', [1448, 1086], 'Строительство кирпичного жилого дома')
+        competencyPhoto('civil-01-enhanced.webp', [1448, 1086], 'Кирпичный многоэтажный жилой дом'),
+        competencyPhoto('civil-02-enhanced.webp', [1448, 1086], 'Завершённый жилой дом комфорт-класса'),
+        competencyPhoto('civil-03-enhanced.webp', [1448, 1086], 'Фасад введённого в эксплуатацию жилого дома'),
+        competencyPhoto('civil-04-enhanced.webp', [1448, 1086], 'Строительство кирпичного жилого дома')
       ]
     },
     {
@@ -903,10 +903,10 @@ if (competenciesRoot) {
       navigationLabel: 'ПРОМЫШЛЕННОЕ СТРОИТЕЛЬСТВО',
       title: 'Промышленное строительство',
       subtitle: 'Коммерческие объекты',
-      description: ['Строительство коммерческой недвижимости', 'Класс зданий B/B+'],
+      description: ['Возведение коммерческих объектов', 'Монтаж конструкций зданий класса B/B+'],
       photos: [
         competencyPhoto('industrial-01-enhanced.webp', [1672, 941], 'Высотный объект коммерческой недвижимости'),
-        competencyPhoto('industrial-02-enhanced.png', [1447, 1087], 'Фасад высотного коммерческого объекта')
+        competencyPhoto('industrial-02-enhanced.webp', [1447, 1087], 'Фасад высотного коммерческого объекта')
       ]
     }
   ];
@@ -1298,11 +1298,8 @@ if (geography) {
     const region = regionsData[index]?.id;
     if (!region) return;
     item.dataset.region = region;
-    item.tabIndex = 0;
     item.addEventListener('pointerenter', () => showRegion(region, region !== activeRegion));
     item.addEventListener('pointerleave', scheduleRegionClose);
-    item.addEventListener('focus', () => showRegion(region, region !== activeRegion));
-    item.addEventListener('blur', scheduleRegionClose);
   });
 
   geographyMap.addEventListener('click', event => {
@@ -1378,186 +1375,6 @@ if (geography) {
 
   buildGeographyGeometry();
   closeRegion();
-}
-
-// Keep desktop dialogs in browser history so native Back also closes them.
-const bindDirectoryHistory = (dialog, trigger, key) => {
-  if (!dialog || !trigger) return;
-  const desktop = window.matchMedia('(min-width: 1200px)');
-  let restoring = false;
-
-  trigger.addEventListener('click', () => {
-    if (!desktop.matches || !dialog.open || restoring) return;
-    history.pushState({ ...history.state, energoDirectory: key }, '');
-  });
-
-  window.addEventListener('popstate', () => {
-    if (history.state?.energoDirectory !== key) {
-      if (dialog.open) dialog.close();
-    } else if (desktop.matches && !dialog.open) {
-      restoring = true;
-      try {
-        trigger.click();
-      } finally {
-        restoring = false;
-      }
-    }
-  });
-
-  dialog.addEventListener('close', () => {
-    if (history.state?.energoDirectory === key) history.back();
-  });
-};
-
-const projectsDirectory = document.querySelector('[data-projects-directory]');
-const projectsDirectoryOpen = document.querySelector('[data-projects-directory-open]');
-const projectsDirectoryNavLinks = document.querySelectorAll('[data-projects-directory-nav-open]');
-const projectsDirectoryClose = document.querySelector('[data-projects-directory-close]');
-
-const closeProjectsDirectory = () => {
-  if (projectsDirectory?.open) projectsDirectory.close();
-};
-
-projectsDirectoryOpen?.addEventListener('click', () => {
-  if (!projectsDirectory?.showModal) return;
-  projectsDirectory.showModal();
-  document.body.classList.add('projects-directory-open');
-});
-projectsDirectoryNavLinks.forEach(link => link.addEventListener('click', event => {
-  event.preventDefault();
-  event.stopPropagation();
-  projectsDirectoryOpen?.click();
-}));
-projectsDirectoryClose?.addEventListener('click', closeProjectsDirectory);
-projectsDirectory?.addEventListener('click', event => {
-  if (event.target === projectsDirectory) closeProjectsDirectory();
-});
-projectsDirectory?.addEventListener('close', () => {
-  document.body.classList.remove('projects-directory-open');
-  projectsDirectoryOpen?.focus();
-});
-bindDirectoryHistory(projectsDirectory, projectsDirectoryOpen, 'projects');
-
-const partnersSlider = document.querySelector('[data-partners-slider]');
-
-if (partnersSlider) {
-  const partnersViewport = partnersSlider.querySelector('[data-partners-viewport]');
-  const partnersTrack = partnersSlider.querySelector('[data-partners-track]');
-  const partnerCards = [...partnersSlider.querySelectorAll('.partner-card')];
-  const partnersPrev = partnersSlider.querySelector('[data-partners-prev]');
-  const partnersNext = partnersSlider.querySelector('[data-partners-next]');
-  const partnersCounter = partnersSlider.querySelector('[data-partners-counter]');
-  const partnersDirectory = document.querySelector('[data-partners-directory]');
-  const partnersDirectoryOpen = document.querySelector('[data-partners-directory-open]');
-  const partnersDirectoryNavLinks = document.querySelectorAll('[data-partners-directory-nav-open]');
-  const partnersDirectoryClose = document.querySelector('[data-partners-directory-close]');
-  const partnersDirectoryGrid = document.querySelector('[data-partners-directory-grid]');
-  let partnerIndex = 0;
-  let partnerSwipeStart = null;
-
-  if (partnersDirectoryGrid) {
-    partnerCards.forEach((card, index) => {
-      const image = card.querySelector('img');
-      if (!image) return;
-      const directoryCard = document.createElement('article');
-      directoryCard.className = 'partners-directory__card';
-      const number = document.createElement('small');
-      number.textContent = String(index + 1).padStart(2, '0');
-      const directoryImage = image.cloneNode(true);
-      const name = document.createElement('p');
-      name.textContent = image.alt;
-      directoryCard.append(number, directoryImage, name);
-      partnersDirectoryGrid.append(directoryCard);
-    });
-  }
-
-  const openPartnersDirectory = () => {
-    if (!partnersDirectory?.showModal) return;
-    partnersDirectory.showModal();
-    document.body.classList.add('partners-directory-open');
-  };
-
-  const closePartnersDirectory = () => {
-    if (!partnersDirectory?.open) return;
-    partnersDirectory.close();
-  };
-
-  partnersDirectoryOpen?.addEventListener('click', openPartnersDirectory);
-  partnersDirectoryNavLinks.forEach(link => link.addEventListener('click', event => {
-    event.preventDefault();
-    event.stopPropagation();
-    partnersDirectoryOpen?.click();
-  }));
-  partnersDirectoryClose?.addEventListener('click', closePartnersDirectory);
-  partnersDirectory?.addEventListener('click', event => {
-    if (event.target === partnersDirectory) closePartnersDirectory();
-  });
-  partnersDirectory?.addEventListener('close', () => {
-    document.body.classList.remove('partners-directory-open');
-    partnersDirectoryOpen?.focus();
-  });
-  bindDirectoryHistory(partnersDirectory, partnersDirectoryOpen, 'partners');
-
-  const getVisiblePartners = () => window.innerWidth < 768 ? 1 : window.innerWidth <= 1100 ? 2 : 3;
-
-  const renderPartnersSlider = () => {
-    const visiblePartners = getVisiblePartners();
-    const maxIndex = Math.max(partnerCards.length - visiblePartners, 0);
-    partnerIndex = Math.min(partnerIndex, maxIndex);
-    const gap = parseFloat(getComputedStyle(partnersTrack).gap) || 0;
-    const cardWidth = partnerCards[0]?.getBoundingClientRect().width || 0;
-    partnersTrack.style.setProperty('--partners-x', `${-partnerIndex * (cardWidth + gap)}px`);
-    partnersPrev.disabled = partnerIndex === 0;
-    partnersNext.disabled = partnerIndex === maxIndex;
-    const visibleEndIndex = Math.min(partnerIndex + visiblePartners, partnerCards.length);
-    partnersCounter.textContent = `${String(visibleEndIndex).padStart(2, '0')} / ${String(partnerCards.length).padStart(2, '0')}`;
-    partnerCards.forEach((card, index) => {
-      card.setAttribute('aria-hidden', index < partnerIndex || index >= partnerIndex + visiblePartners ? 'true' : 'false');
-    });
-  };
-
-  const movePartnersSlider = direction => {
-    const maxIndex = Math.max(partnerCards.length - getVisiblePartners(), 0);
-    partnerIndex = Math.max(0, Math.min(partnerIndex + direction, maxIndex));
-    renderPartnersSlider();
-  };
-
-  partnersPrev.addEventListener('click', () => movePartnersSlider(-1));
-  partnersNext.addEventListener('click', () => movePartnersSlider(1));
-  partnersSlider.addEventListener('keydown', event => {
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      movePartnersSlider(-1);
-    }
-    if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      movePartnersSlider(1);
-    }
-  });
-  partnersSlider.addEventListener('pointerdown', event => {
-    if (window.innerWidth >= 768) return;
-    partnerSwipeStart = { x: event.clientX, y: event.clientY };
-  }, { passive: true });
-  partnersSlider.addEventListener('pointerup', event => {
-    if (!partnerSwipeStart) return;
-    const deltaX = event.clientX - partnerSwipeStart.x;
-    const deltaY = event.clientY - partnerSwipeStart.y;
-    partnerSwipeStart = null;
-    if (Math.abs(deltaX) < 44 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.2) return;
-    movePartnersSlider(deltaX < 0 ? 1 : -1);
-  }, { passive: true });
-  partnersSlider.addEventListener('pointercancel', () => {
-    partnerSwipeStart = null;
-  }, { passive: true });
-  partnersSlider.addEventListener('dragstart', event => event.preventDefault());
-
-  if ('ResizeObserver' in window) {
-    new ResizeObserver(renderPartnersSlider).observe(partnersViewport);
-  } else {
-    window.addEventListener('resize', renderPartnersSlider, { passive: true });
-  }
-
-  renderPartnersSlider();
 }
 
 const revealObserver = new IntersectionObserver(entries => {

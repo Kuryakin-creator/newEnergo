@@ -239,7 +239,7 @@
 
     .about-story .manifesto {
         padding: clamp(92px, 11vw, 124px) 0;
-        background: linear-gradient(135deg, rgba(7, 20, 36, .98), rgba(12, 38, 61, .94)), url("assets/images/intro-shared-lightline.png") center / cover no-repeat;
+        background: linear-gradient(135deg, rgba(7, 20, 36, .98), rgba(12, 38, 61, .94)), url("assets/images/intro-shared-lightline.webp") center / cover no-repeat;
     }
 
     .about-story .manifesto-grid {
@@ -305,7 +305,7 @@
 
     .about-story .mission {
         padding: clamp(92px, 11vw, 124px) 0;
-        background: #ecebe7 url("assets/images/mission-offwhite-texture.png") center / cover no-repeat;
+        background: #ecebe7 url("assets/images/mission-offwhite-texture.webp") center / cover no-repeat;
         color: var(--navy);
     }
 
@@ -414,7 +414,7 @@
     }
 
     .horizontal-numbers__panel--intro {
-        background: #142137 url("assets/images/numbers-powerline-muted.png") left center / cover no-repeat;
+        background: #142137 url("assets/images/numbers-powerline-muted.webp") left center / cover no-repeat;
     }
 
     .horizontal-numbers__panel:first-child {
@@ -709,18 +709,6 @@
         padding: clamp(32px, 5vw, 52px);
     }
 
-    .partners-directory__hero {
-        min-height: 58svh;
-    }
-
-    .partners-directory__hero > img {
-        object-position: center top;
-    }
-
-    .partners-directory__content {
-        padding-bottom: calc(80px + env(safe-area-inset-bottom));
-    }
-
     /* 08 — контакты */
     .contact {
         padding: clamp(84px, 10vw, 118px) 0 64px;
@@ -972,6 +960,7 @@
     }
 
     .competencies-heading {
+        width: auto;
         grid-row: 2;
         margin: 42px 22px 32px;
     }
@@ -986,7 +975,7 @@
 
     .competencies-heading h2 {
         margin-top: 18px;
-        font-size: clamp(32px, 9vw, 40px);
+        font-size: clamp(28px, 8.3vw, 38px);
         line-height: .96;
     }
 
@@ -1114,39 +1103,12 @@
         gap: 10px;
     }
 
-    .partners-directory-trigger {
-        width: 144px;
-        min-height: 42px;
-        padding-inline: 10px;
-        font-size: 7px;
-    }
-
     .partners-slider__navigation button {
         width: 38px;
     }
 
     .partners-slider__navigation p {
         width: 54px;
-    }
-
-    .partners-directory__hero {
-        min-height: clamp(360px, 46svh, 430px);
-    }
-
-    .partners-directory__hero > p {
-        max-width: 42%;
-    }
-
-    .partners-directory__hero h2 {
-        font-size: clamp(40px, 12vw, 54px);
-    }
-
-    .partners-directory__intro {
-        max-width: 88%;
-    }
-
-    .partners-directory__card {
-        min-height: 190px;
     }
 
     .contact {
@@ -1217,9 +1179,6 @@
         font-size: 29px;
     }
 
-    .partners-directory-trigger {
-        width: 132px;
-    }
 }
 
 /* На мобильных секция 04 остаётся вертикальной, без переходов между экранами. */
@@ -1689,11 +1648,6 @@
         bottom: clamp(80px, 14svh, 125px);
     }
 
-    .projects-directory__hero > img {
-        object-position: 42% top;
-        transform: scale(1.45);
-        transform-origin: 42% top;
-    }
 }
 
 @media (max-width: 767px) {
@@ -1709,9 +1663,6 @@
         font-size: clamp(17px, calc(5.2vw - 2px), 21px);
     }
 
-    .projects-directory__hero > img {
-        transform: scale(1.85);
-    }
 }
 
 @media (max-width: 767px) and (max-height: 560px) and (orientation: landscape) {
@@ -1952,6 +1903,30 @@
     .geography-region-list li {
         padding-block: 4px;
     }
+
+    /* 07 — встроенная сетка партнёров без полноэкранного каталога */
+    .partners {
+        min-height: 0;
+    }
+
+    .partners-grid .partner-card:nth-last-child(2):nth-child(4n + 1) {
+        grid-column: 2;
+    }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    .geography-region-list {
+        width: 100%;
+        max-width: 100%;
+        column-gap: 12px;
+        font-size: clamp(6px, 1.6vw, 7px);
+    }
+
+    .geography-region-list li {
+        min-width: 0;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -1964,33 +1939,8 @@
     .geography-region-list li {
         padding-block: 7px;
     }
-}
 
-@media (max-width: 767px) {
-    .geography-region-list {
-        width: 100%;
-        margin-top: 28px;
-        font-size: clamp(10px, 3vw, 11px);
-        letter-spacing: .065em;
-    }
-
-    .geography-region-list li {
-        padding-block: 8px;
-    }
-}
-
-/* 07 — встроенная сетка партнёров без полноэкранного каталога */
-@media (min-width: 1200px) {
-    .partners {
-        min-height: 0;
-    }
-
-    .partners-grid .partner-card:nth-last-child(2):nth-child(4n + 1) {
-        grid-column: 2;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
+    /* 07 — встроенная сетка партнёров без полноэкранного каталога */
     .partners-grid {
         grid-column: 1;
         margin-top: 58px;
@@ -2010,37 +1960,8 @@
         width: min(100%, 210px);
         height: clamp(76px, 10vw, 104px);
     }
-}
 
-@media (max-width: 767px) {
-    .partners {
-        min-height: 0;
-        padding-bottom: 88px;
-    }
-
-    .partners-grid {
-        grid-column: 1;
-        margin-top: 46px;
-    }
-
-    .partners-grid__list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    .partners-grid .partner-card {
-        height: clamp(132px, 42vw, 164px);
-        padding: clamp(16px, 5vw, 24px);
-    }
-
-    .partners-grid .partner-card img {
-        width: min(100%, 150px);
-        height: clamp(62px, 19vw, 82px);
-    }
-}
-
-/* 08 — адаптивная композиция разрешительных документов */
-@media (min-width: 768px) and (max-width: 1199px) {
+    /* 08 — адаптивная композиция разрешительных документов */
     .permits,
     .permits-layout {
         min-height: 0;
@@ -2094,6 +2015,44 @@
 }
 
 @media (max-width: 767px) {
+    .geography-region-list {
+        width: 100%;
+        margin-top: 28px;
+        font-size: clamp(10px, 3vw, 11px);
+        letter-spacing: .065em;
+    }
+
+    .geography-region-list li {
+        padding-block: 8px;
+    }
+
+    /* 07 — встроенная сетка партнёров без полноэкранного каталога */
+    .partners {
+        min-height: 0;
+        padding-bottom: 88px;
+    }
+
+    .partners-grid {
+        grid-column: 1;
+        margin-top: 46px;
+    }
+
+    .partners-grid__list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .partners-grid .partner-card {
+        height: clamp(132px, 42vw, 164px);
+        padding: clamp(16px, 5vw, 24px);
+    }
+
+    .partners-grid .partner-card img {
+        width: min(100%, 150px);
+        height: clamp(62px, 19vw, 82px);
+    }
+
+    /* 08 — адаптивная композиция разрешительных документов */
     .permits,
     .permits-layout {
         min-height: 0;

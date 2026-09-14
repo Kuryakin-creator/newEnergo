@@ -1,5 +1,6 @@
 ﻿tmp/
 _pgbackup/
+output/
 pinegrow.json
 projectdb.pgml
 *.zip
