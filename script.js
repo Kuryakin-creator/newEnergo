@@ -1156,7 +1156,6 @@ if (geography) {
   const regionsCount = regionsData.length;
   const geographyNames = Object.fromEntries(regionsData.map(region => [region.id, region.name]));
   const regionsById = Object.fromEntries(regionsData.map(region => [region.id, region]));
-  const geographyTitle = geography.querySelector('.geography-title');
   const geographyRegionItems = [...geography.querySelectorAll('.geography-region-list li')];
   const geographyRegionList = geography.querySelector('.geography-region-list');
   geography.querySelector('[data-geography-count]').textContent = regionsCount;
@@ -1165,25 +1164,7 @@ if (geography) {
   }
   let geographyControls = [...geography.querySelectorAll('.geography-point')];
   const geographyMap = geography.querySelector('.geography-map');
-  const geographyCompactLayout = window.matchMedia('(max-width: 1023px)');
-  const geographyMobileLayout = window.matchMedia('(max-width: 767px)');
-  const placeGeographyRegionList = () => {
-    if (geographyCompactLayout.matches) {
-      geographyMap.after(geographyRegionList);
-    } else {
-      geographyTitle.append(geographyRegionList);
-    }
-    if (geographyMobileLayout.matches) {
-      geographyMap.style.order = '4';
-      geographyRegionList.style.order = '5';
-    } else {
-      geographyMap.style.removeProperty('order');
-      geographyRegionList.style.removeProperty('order');
-    }
-  };
-  placeGeographyRegionList();
-  geographyCompactLayout.addEventListener('change', placeGeographyRegionList);
-  geographyMobileLayout.addEventListener('change', placeGeographyRegionList);
+  geographyMap.after(geographyRegionList);
   let activeRegion = '';
   let geographyCloseTimer = 0;
   const geographyMarkerPositions = {
