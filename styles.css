@@ -3444,6 +3444,11 @@ em {
     font-weight: 300;
 }
 
+.contact-details > a[href^="tel:"] {
+    font-size: clamp(17px, calc(2rem - 1px), 33px);
+    white-space: nowrap;
+}
+
 .contact-details p {
     margin: 0;
     color: #aeb8cc;
