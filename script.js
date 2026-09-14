@@ -920,6 +920,28 @@ if (competenciesRoot) {
   const competencyMask = competenciesRoot.querySelector('.competency-media-mask');
   const competencyCounter = competenciesRoot.querySelector('[data-competency-counter]');
   const competencyCounterTotal = competenciesRoot.querySelector('[data-competency-counter-total]');
+  const competencyTabsViewport = competenciesRoot.querySelector('.competency-tabs-viewport');
+  const competencyTabs = competenciesRoot.querySelector('.competency-tabs');
+  if (competencyTabs) {
+    const labelsFragment = document.createDocumentFragment();
+    for (let copyIndex = 0; copyIndex < 3; copyIndex += 1) {
+      competencies.forEach((item, index) => {
+        const label = document.createElement('button');
+        label.type = 'button';
+        label.textContent = item.navigationLabel;
+        label.dataset.competencyLabel = '';
+        label.dataset.competencyIndex = String(index);
+        label.dataset.competencyCopy = String(copyIndex);
+        label.setAttribute('aria-label', `Открыть компетенцию «${item.title}»`);
+        label.tabIndex = -1;
+        if (copyIndex !== 1) {
+          label.setAttribute('aria-hidden', 'true');
+        }
+        labelsFragment.append(label);
+      });
+    }
+    competencyTabs.replaceChildren(labelsFragment);
+  }
   const competencyLabels = [...competenciesRoot.querySelectorAll('[data-competency-label]')];
   const competencyPrevious = competenciesRoot.querySelector('[data-competency-prev]');
   const competencyNext = competenciesRoot.querySelector('[data-competency-next]');
@@ -928,6 +950,9 @@ if (competenciesRoot) {
   let activePhoto = 0;
   let competencyAnimating = false;
   let swipeStart = null;
+  let tabsDragStart = null;
+  let tabsSettling = false;
+  let suppressCompetencyLabelClick = false;
 
   const stepState = (competencyIndex, photoIndex, delta) => {
     let nextCompetency = competencyIndex;
@@ -956,6 +981,45 @@ if (competenciesRoot) {
     competencyDescription.replaceChildren(fragment);
   };
 
+  const setCompetencyTabsOffset = value => {
+    competencyTabs?.style.setProperty('--competency-tabs-x', `${value}px`);
+  };
+  const getCompetencyTabsMetrics = () => {
+    const firstLabel = competencyLabels[0];
+    const secondLabel = competencyLabels[1];
+    const itemWidth = firstLabel?.getBoundingClientRect().width || 0;
+    const step = secondLabel
+      ? Math.abs(secondLabel.getBoundingClientRect().left - firstLabel.getBoundingClientRect().left)
+      : itemWidth;
+    return { itemWidth, step, viewportWidth: competencyTabsViewport?.clientWidth || 0 };
+  };
+  const getCompetencyTabsOffset = physicalIndex => {
+    const { itemWidth, step, viewportWidth } = getCompetencyTabsMetrics();
+    return viewportWidth / 2 - itemWidth / 2 - physicalIndex * step;
+  };
+  const getMiddleCompetencyLabelIndex = index => competencies.length + index;
+  const clearCompetencyLabelState = () => {
+    competencyLabels.forEach(label => {
+      label.classList.remove('is-centered');
+      label.removeAttribute('aria-current');
+      label.tabIndex = -1;
+    });
+  };
+  const showCenteredCompetencyLabel = (physicalIndex, committed = false) => {
+    clearCompetencyLabelState();
+    const label = competencyLabels[physicalIndex];
+    label?.classList.add('is-centered');
+    if (committed && label?.dataset.competencyCopy === '1') {
+      label.setAttribute('aria-current', 'true');
+      label.tabIndex = 0;
+    }
+  };
+  const renderCompetencyLabels = index => {
+    const physicalIndex = getMiddleCompetencyLabelIndex(index);
+    setCompetencyTabsOffset(getCompetencyTabsOffset(physicalIndex));
+    showCenteredCompetencyLabel(physicalIndex, true);
+  };
+
   const renderCompetency = (index, photoIndex = 0) => {
     const item = competencies[index];
     const photo = item.photos[photoIndex];
@@ -982,15 +1046,7 @@ if (competenciesRoot) {
     competencyDetail.style.objectPosition = photo.position;
     competencyCounter.textContent = String(photoIndex + 1).padStart(2, '0');
     competencyCounterTotal.textContent = String(item.photos.length).padStart(2, '0');
-    const labelIndexes = [index - 1, index, index + 1].map(value => (value + competencies.length) % competencies.length);
-    competencyLabels.forEach((label, labelIndex) => {
-      const linkedIndex = labelIndexes[labelIndex];
-      label.textContent = competencies[linkedIndex].navigationLabel;
-      label.dataset.competencyIndex = linkedIndex;
-      label.dataset.competencyDirection = String(labelIndex - 1);
-      label.setAttribute('aria-current', String(labelIndex === 1));
-      label.setAttribute('aria-label', `Открыть компетенцию «${competencies[linkedIndex].title}»`);
-    });
+    renderCompetencyLabels(index);
     activeCompetency = index;
     activePhoto = photoIndex;
     preloadState(stepState(index, photoIndex, -1));
@@ -1016,6 +1072,7 @@ if (competenciesRoot) {
     const competencyChanged = normalizedIndex !== activeCompetency;
     competencyAnimating = true;
     competenciesRoot.classList.add('is-changing');
+    if (competencyChanged) renderCompetencyLabels(normalizedIndex);
 
     if (reducedMotionQuery.matches) {
       const fadeOut = [competencyMain, competencyDetail].map(element => runAnimation(element, [{ opacity: 1 }, { opacity: 0 }], { duration: 100 }));
@@ -1088,11 +1145,118 @@ if (competenciesRoot) {
   competencyPrevious?.addEventListener('click', () => moveCompetency(-1));
   competencyNext?.addEventListener('click', () => moveCompetency(1));
   competencyLabels.forEach(label => {
-    label.addEventListener('click', () => {
+    label.addEventListener('click', event => {
+      if (suppressCompetencyLabelClick) {
+        event.preventDefault();
+        return;
+      }
       const index = Number(label.dataset.competencyIndex);
-      const direction = Number(label.dataset.competencyDirection) < 0 ? 'backward' : 'forward';
+      const forwardDistance = (index - activeCompetency + competencies.length) % competencies.length;
+      const direction = forwardDistance > competencies.length / 2 ? 'backward' : 'forward';
       switchCompetency(index, 0, direction);
     });
+  });
+  const getCenteredCompetencyLabelIndex = offset => {
+    const { itemWidth, step, viewportWidth } = getCompetencyTabsMetrics();
+    if (!step) return getMiddleCompetencyLabelIndex(activeCompetency);
+    return Math.max(1, Math.min(competencyLabels.length - 2, Math.round((viewportWidth / 2 - itemWidth / 2 - offset) / step)));
+  };
+  const updateCompetencyLabelPreview = offset => {
+    const physicalIndex = getCenteredCompetencyLabelIndex(offset);
+    const centeredLabel = competencyLabels[physicalIndex];
+    if (!centeredLabel?.classList.contains('is-centered')) showCenteredCompetencyLabel(physicalIndex);
+    return physicalIndex;
+  };
+  const animateCompetencyTabsOffset = (from, to) => new Promise(resolve => {
+    if (reducedMotionQuery.matches || Math.abs(to - from) < 1) {
+      setCompetencyTabsOffset(to);
+      updateCompetencyLabelPreview(to);
+      resolve();
+      return;
+    }
+    const { step } = getCompetencyTabsMetrics();
+    const duration = Math.min(520, Math.max(320, 280 + Math.abs(to - from) / Math.max(step, 1) * 70));
+    const startedAt = performance.now();
+    const tick = now => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const offset = from + (to - from) * eased;
+      setCompetencyTabsOffset(offset);
+      updateCompetencyLabelPreview(offset);
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        resolve();
+      }
+    };
+    requestAnimationFrame(tick);
+  });
+  competencyTabsViewport?.addEventListener('pointerdown', event => {
+    if (competencyAnimating || tabsSettling || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    const physicalIndex = getMiddleCompetencyLabelIndex(activeCompetency);
+    const offset = getCompetencyTabsOffset(physicalIndex);
+    tabsDragStart = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      offset,
+      physicalIndex
+    };
+    suppressCompetencyLabelClick = false;
+    clearCompetencyLabelState();
+    competencyTabsViewport.setPointerCapture?.(event.pointerId);
+    competencyTabsViewport.classList.add('is-dragging');
+    event.stopPropagation();
+  });
+  competencyTabsViewport?.addEventListener('pointermove', event => {
+    if (!tabsDragStart || tabsDragStart.pointerId !== event.pointerId) return;
+    const deltaX = event.clientX - tabsDragStart.x;
+    const deltaY = event.clientY - tabsDragStart.y;
+    if (Math.abs(deltaX) <= 6 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    suppressCompetencyLabelClick = true;
+    const minOffset = getCompetencyTabsOffset(competencyLabels.length - 2);
+    const maxOffset = getCompetencyTabsOffset(1);
+    tabsDragStart.offset = Math.max(minOffset, Math.min(maxOffset, getCompetencyTabsOffset(tabsDragStart.physicalIndex) + deltaX));
+    setCompetencyTabsOffset(tabsDragStart.offset);
+    updateCompetencyLabelPreview(tabsDragStart.offset);
+    event.preventDefault();
+  });
+  const finishCompetencyTabsDrag = async event => {
+    if (!tabsDragStart || tabsDragStart.pointerId !== event.pointerId) return;
+    const drag = tabsDragStart;
+    const deltaX = event.clientX - drag.x;
+    const deltaY = event.clientY - drag.y;
+    const moved = Math.abs(deltaX) > 6 && Math.abs(deltaX) > Math.abs(deltaY);
+    tabsDragStart = null;
+    competencyTabsViewport.classList.remove('is-dragging');
+    competencyTabsViewport.releasePointerCapture?.(event.pointerId);
+    event.stopPropagation();
+    if (!moved) {
+      renderCompetencyLabels(activeCompetency);
+      return;
+    }
+    suppressCompetencyLabelClick = true;
+    tabsSettling = true;
+    const targetPhysicalIndex = getCenteredCompetencyLabelIndex(drag.offset);
+    const targetOffset = getCompetencyTabsOffset(targetPhysicalIndex);
+    await animateCompetencyTabsOffset(drag.offset, targetOffset);
+    const nextIndex = Number(competencyLabels[targetPhysicalIndex].dataset.competencyIndex);
+    const direction = targetPhysicalIndex < drag.physicalIndex ? 'backward' : 'forward';
+    renderCompetencyLabels(nextIndex);
+    if (nextIndex !== activeCompetency) switchCompetency(nextIndex, 0, direction);
+    tabsSettling = false;
+    window.setTimeout(() => {
+      suppressCompetencyLabelClick = false;
+    }, 0);
+  };
+  competencyTabsViewport?.addEventListener('pointerup', finishCompetencyTabsDrag);
+  competencyTabsViewport?.addEventListener('pointercancel', event => {
+    if (!tabsDragStart || tabsDragStart.pointerId !== event.pointerId) return;
+    tabsDragStart = null;
+    renderCompetencyLabels(activeCompetency);
+    competencyTabsViewport.classList.remove('is-dragging');
+    suppressCompetencyLabelClick = false;
+    event.stopPropagation();
   });
   competenciesRoot.addEventListener('keydown', event => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -1129,6 +1293,11 @@ if (competenciesRoot) {
     competenciesObserver.observe(competenciesRoot);
   }
   renderCompetency(0, 0);
+  if ('ResizeObserver' in window && competencyTabsViewport) {
+    new ResizeObserver(() => {
+      if (!tabsDragStart && !tabsSettling) renderCompetencyLabels(activeCompetency);
+    }).observe(competencyTabsViewport);
+  }
 }
 
 const geography = document.querySelector('[data-geography]');

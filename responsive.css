@@ -1022,9 +1022,13 @@
         padding: 18px 18px 22px;
     }
 
+    .competency-tabs-viewport,
     .competency-tabs {
         grid-column: 1 / -1;
-        gap: 2px;
+    }
+
+    .competency-tabs {
+        --competency-tabs-gap: 2px;
     }
 
     .competency-tabs button {
@@ -1032,7 +1036,7 @@
         padding: 10px 3px;
         font-size: 9px;
         letter-spacing: .04em;
-        touch-action: manipulation;
+        touch-action: pan-y;
     }
 
     .geography {

@@ -6924,11 +6924,28 @@ em {
     white-space: nowrap;
 }
 
-.competency-tabs {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(18px, 2.2vw, 36px);
+.competency-tabs-viewport {
     min-width: 0;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.competency-tabs {
+    --competency-tabs-gap: clamp(18px, 2.2vw, 36px);
+    display: grid;
+    grid-auto-columns: calc((100% - var(--competency-tabs-gap) - var(--competency-tabs-gap)) / 3);
+    grid-auto-flow: column;
+    gap: var(--competency-tabs-gap);
+    min-width: 0;
+    transform: translate3d(var(--competency-tabs-x, 0px), 0, 0);
+    will-change: transform;
+}
+
+.competency-tabs-viewport.is-dragging,
+.competency-tabs-viewport.is-dragging button {
+    cursor: grabbing;
 }
 
 .competency-tabs button {
@@ -6941,8 +6958,9 @@ em {
     letter-spacing: .08em;
     text-align: center;
     text-transform: uppercase;
+    touch-action: pan-y;
     opacity: .45;
-    transition: color 230ms ease, opacity 230ms ease;
+    transition: none;
 }
 
 .competency-tabs > span {
@@ -6967,14 +6985,22 @@ em {
     opacity: 1;
 }
 
-.competency-tabs button[aria-current="true"] {
+.competency-tabs button[aria-current="true"],
+.competency-tabs button.is-centered {
     color: #102943;
-    font-weight: 450;
+    font-weight: 600;
     opacity: 1;
+    transition: color 180ms ease-out, opacity 180ms ease-out;
 }
 
-.competency-tabs button:not([aria-current="true"]):hover {
+.competency-tabs button:not([aria-current="true"]):not(.is-centered):hover {
     opacity: .75;
+}
+
+.competency-tabs-viewport.is-dragging .competency-tabs button:not(.is-centered) {
+    color: #9aa1a8;
+    font-weight: 400;
+    opacity: .45;
 }
 
 .competency-arrows button:hover,
@@ -7044,6 +7070,7 @@ em {
         padding-inline: 28px;
     }
 
+    .competency-tabs-viewport,
     .competency-tabs {
         grid-column: 1 / -1;
     }
@@ -7183,9 +7210,13 @@ em {
         gap: 20px;
     }
 
+    .competency-tabs-viewport,
     .competency-tabs {
         grid-column: 1 / -1;
-        gap: 10px;
+    }
+
+    .competency-tabs {
+        --competency-tabs-gap: 10px;
     }
 
     .competency-tabs button,
