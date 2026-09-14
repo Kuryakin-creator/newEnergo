@@ -2334,7 +2334,7 @@
 }
 
 /* 06 — единая композиция: заголовок и карта сверху, список по центру ниже. */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
     .geography {
         min-height: 0;
         padding: clamp(48px, 6vw, 78px) 0 clamp(64px, 8vw, 104px);

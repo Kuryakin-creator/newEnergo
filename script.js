@@ -1164,7 +1164,16 @@ if (geography) {
   }
   let geographyControls = [...geography.querySelectorAll('.geography-point')];
   const geographyMap = geography.querySelector('.geography-map');
-  geographyMap.after(geographyRegionList);
+  const geographyDesktopLayout = window.matchMedia('(min-width: 1200px)');
+  const placeGeographyRegionList = () => {
+    if (geographyDesktopLayout.matches) {
+      geography.querySelector('.geography-title').append(geographyRegionList);
+    } else {
+      geographyMap.after(geographyRegionList);
+    }
+  };
+  placeGeographyRegionList();
+  geographyDesktopLayout.addEventListener('change', placeGeographyRegionList);
   let activeRegion = '';
   let geographyCloseTimer = 0;
   const geographyMarkerPositions = {
